@@ -2777,7 +2777,7 @@
         </div>
         <div class="gc-perk">
           <svg class="gc-perk-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="5.5" width="12" height="8.5" rx="1.5"/><path d="M5.5 5.5V4.5a2.5 2.5 0 015 0v1"/></svg>
-          <span class="gc-perk-text">Secure purchase via Square</span>
+          <span class="gc-perk-text">Secure online checkout</span>
         </div>
       </div>
 
@@ -2824,16 +2824,16 @@
       <div class="gc-divider" aria-hidden="true"></div>
 
       <a
-        href="https://app.squareup.com/gift/1M4AF8BFZT4F8/order?amount=6000"
+        href="/book?amount=6000"
         id="gcCta"
         class="gc-cta"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Purchase a $60 Elite Spa Utah gift card — opens Square checkout"
+        aria-label="Purchase a $60 Elite Spa Utah gift card — opens booking page"
       >Purchase Gift Card — $60</a>
 
       <p class="gc-legal">
-        Processed securely by Square. Email delivery in minutes. No expiration.<br>
+        Email delivery in minutes. Never expires.<br>
         Redeemable for any service at Elite Spa Utah, Salt Lake City, UT.
       </p>
 
@@ -2844,7 +2844,7 @@
 
 <script>
 (function () {
-  var BASE       = 'https://app.squareup.com/gift/1M4AF8BFZT4F8/order';
+  var BASE       = '/book';
   var mockAmt    = document.getElementById('gcMockAmt');
   var cta        = document.getElementById('gcCta');
   var customInp  = document.getElementById('gcCustomInput');
@@ -2859,7 +2859,7 @@
     cta.textContent = 'Purchase Gift Card \u2014 $' + dollars;
     cta.href = BASE + '?amount=' + Math.round(dollars * 100);
     cta.setAttribute('aria-label',
-      'Purchase a $' + dollars + ' Elite Spa Utah gift card \u2014 opens Square checkout');
+      'Purchase a $' + dollars + ' Elite Spa Utah gift card \u2014 opens booking page');
   }
 
   function clearActive() {
