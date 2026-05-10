@@ -46,7 +46,8 @@ SERVICES = [
         "tagline": "Scalp, neck, and shoulder ritual.",
         "description": "A scalp and neck ritual borrowed from Japanese spa tradition. Full-scalp treatment using rhythmic kneading and pressure-point work from the temples to the base of the skull. Most clients fall asleep.",
         "best_for": ["Tension headaches", "Migraines and screen fatigue", "Hair and scalp health", "Pure relaxation"],
-        "prices": UNIVERSAL_PRICES,
+        # Head spa runs its own pricing tier — not universal.
+        "prices": [(30, "$60"), (60, "$85"), (90, "$125")],
         "related": ["swedish-massage", "couples-massage", "foot-reflexology-massage"],
     },
     {
