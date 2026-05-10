@@ -1,5 +1,8 @@
 # Cloudflare Pages _redirects — see https://developers.cloudflare.com/pages/configuration/redirects/
-# Vagaro blocks iframe embed via X-Frame-Options on its booking widget; redirect /book straight to the hosted Vagaro URL.
+# 1) Force apex (www -> non-www) so canonical URLs are consistent for SEO.
+# 2) Vagaro blocks iframe embed via X-Frame-Options on its booking widget; redirect /book straight to the hosted Vagaro URL.
+
+https://www.elitespautah.com/* https://elitespautah.com/:splat 301
 
 /book      https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVPbioWk7pbE3hH6uFDYChm26gdj5dG9JvA4rT62hQqZzayOpw8AomZLFoCnQ5D9/sbhobKYHbPJtWtzgE1ybDq7UTxiTjiVnB4oCSowLSZ1ddS6/3xXMBPXNPyYNmL1u/qzjxuZtcq2R7BdC6HOu2VbAXbn+j+2Jl6LQsT8hwCk6AFw1tQNUrqNw52knuQ/YASP5IdlxY0ETCVv9QaDpm27iLIVVsR4x5Y4e0ONybp9DIJawuRCSquUrlrboYHqSR1WwY5Eup3XYs8FqBcDnmQlNJ6QndzIDQqn75c7p2FTfKSlsnbzCpJ/rRxfoRcJmQfgc63ovAJ6LiV06S8B++dXzjnM9pl9vTmZaWfSKUmSjdfnAXOqNBI8jFiaURp9jjbRZOZyFq219yUanaNQ/jjdrdcNyWgO8Nqcd/fdDWAvmo66bSLVaLRZEjUobrnxp/uIQphPcb+Fl5yK5KemkWTbQQOFaTnYulZSg9HSxeak4rGlUsi822NgCI5Z/KtTfWw==      302
 /book.html https://www.vagaro.com/Users/BusinessWidget.aspx?enc=MMLjhIwJMcwFQhXLL7ifVPbioWk7pbE3hH6uFDYChm26gdj5dG9JvA4rT62hQqZzayOpw8AomZLFoCnQ5D9/sbhobKYHbPJtWtzgE1ybDq7UTxiTjiVnB4oCSowLSZ1ddS6/3xXMBPXNPyYNmL1u/qzjxuZtcq2R7BdC6HOu2VbAXbn+j+2Jl6LQsT8hwCk6AFw1tQNUrqNw52knuQ/YASP5IdlxY0ETCVv9QaDpm27iLIVVsR4x5Y4e0ONybp9DIJawuRCSquUrlrboYHqSR1WwY5Eup3XYs8FqBcDnmQlNJ6QndzIDQqn75c7p2FTfKSlsnbzCpJ/rRxfoRcJmQfgc63ovAJ6LiV06S8B++dXzjnM9pl9vTmZaWfSKUmSjdfnAXOqNBI8jFiaURp9jjbRZOZyFq219yUanaNQ/jjdrdcNyWgO8Nqcd/fdDWAvmo66bSLVaLRZEjUobrnxp/uIQphPcb+Fl5yK5KemkWTbQQOFaTnYulZSg9HSxeak4rGlUsi822NgCI5Z/KtTfWw==      302
