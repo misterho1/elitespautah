@@ -166,7 +166,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css?v=2">
 
   <script type="application/ld+json">
   {{
@@ -286,7 +286,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     </div>
   </footer>
 
-  <script src="/assets/nav.js" defer></script>
+  <script src="/assets/nav.js?v=2" defer></script>
 </body>
 </html>
 '''
