@@ -4,6 +4,10 @@ Each service gets a clean ~5KB HTML file matching the homepage's design system."
 
 import os
 
+# Universal pricing across every service (matches the live Vagaro pricing table):
+#   30 min · $115   |   60 min · $165   |   90 min · $245   |   120 min · $325
+UNIVERSAL_PRICES = [(30, "$115"), (60, "$165"), (90, "$245"), (120, "$325")]
+
 SERVICES = [
     {
         "slug": "deep-tissue-massage",
@@ -12,7 +16,7 @@ SERVICES = [
         "tagline": "Targeted pressure for chronic tension.",
         "description": "Slow, deliberate strokes and firm pressure that reach the deeper layers of muscle and connective tissue. Unlike a relaxation massage, deep tissue targets the source of tension — the chronic adhesions that cause persistent pain.",
         "best_for": ["Chronic back pain", "Neck and shoulder tension", "Sports injuries and recovery", "IT band, hamstring, hip tightness"],
-        "prices": [(60, "$85"), (90, "$125"), (120, "$165")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["sports-massage", "hot-stone-massage", "ashiatsu-massage"],
     },
     {
@@ -22,7 +26,7 @@ SERVICES = [
         "tagline": "The classic, full-body unwind.",
         "description": "Long, flowing strokes designed to relax the whole nervous system. The default starting point for first-time clients and the easiest entry into regular bodywork.",
         "best_for": ["First-time massage clients", "Stress and overstimulation", "Better sleep", "Light muscle soreness"],
-        "prices": [(60, "$85"), (90, "$125"), (120, "$165")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["hot-stone-massage", "head-spa-massage", "foot-reflexology-massage"],
     },
     {
@@ -32,7 +36,7 @@ SERVICES = [
         "tagline": "Heated basalt stones reach deeper than hands alone.",
         "description": "Smooth basalt stones heated to a comforting temperature glide along the back, shoulders, and legs while your therapist works around them. The heat penetrates muscle layers your hands can't easily access.",
         "best_for": ["Cold weather aches", "Deep muscle warm-up", "Anxiety and tension", "Combining heat with massage"],
-        "prices": [(60, "$125"), (90, "$165")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["swedish-massage", "deep-tissue-massage", "medical-infrared-sauna"],
     },
     {
@@ -40,9 +44,9 @@ SERVICES = [
         "name": "Japanese Head Spa",
         "category": "For stress & restoration",
         "tagline": "Scalp, neck, and shoulder ritual.",
-        "description": "A 30 to 60-minute scalp and neck ritual borrowed from Japanese spa tradition. Cleansing, oil application, deep scalp massage, and a long warm-water rinse. Most clients fall asleep.",
+        "description": "A scalp and neck ritual borrowed from Japanese spa tradition. Full-scalp treatment using rhythmic kneading and pressure-point work from the temples to the base of the skull. Most clients fall asleep.",
         "best_for": ["Tension headaches", "Migraines and screen fatigue", "Hair and scalp health", "Pure relaxation"],
-        "prices": [(45, "$95"), (60, "$125"), (90, "$165")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["swedish-massage", "couples-massage", "foot-reflexology-massage"],
     },
     {
@@ -50,9 +54,9 @@ SERVICES = [
         "name": "Couples Massage",
         "category": "Specialty & couples",
         "tagline": "Two therapists. One private suite.",
-        "description": "Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting, and a shared 60 to 120 minutes. Anniversaries, date nights, traveling together — book the suite, not just the appointment.",
+        "description": "Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting. Anniversaries, date nights, traveling together — book the suite, not just the appointment.",
         "best_for": ["Date nights and anniversaries", "Traveling couples", "Pre-event reset", "Gift experiences"],
-        "prices": [(60, "$165"), (90, "$245"), (120, "$325")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["hot-stone-massage", "head-spa-massage", "swedish-massage"],
     },
     {
@@ -62,7 +66,7 @@ SERVICES = [
         "tagline": "Two therapists working in sync — on you.",
         "description": "Two therapists, one client, four hands moving in coordinated pressure. Covers double the body in the same time, and the sensory overload puts the nervous system in a state most single-therapist sessions never reach.",
         "best_for": ["Maximum bodywork in minimum time", "Special-occasion treatment", "Sensory escape", "Severe full-body tension"],
-        "prices": [(60, "$185"), (90, "$265")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["couples-massage", "hot-stone-massage", "deep-tissue-massage"],
     },
     {
@@ -72,7 +76,7 @@ SERVICES = [
         "tagline": "Pressure-point work that resets the whole body.",
         "description": "Reflexology maps zones on the feet to organ systems and energy pathways throughout the body. Targeted pressure on these points releases tension you didn't know was there.",
         "best_for": ["Tired feet after long days", "Improved circulation", "Stress release without disrobing", "Pregnancy-safe relaxation"],
-        "prices": [(45, "$85"), (60, "$105")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["swedish-massage", "head-spa-massage", "shiatsu-massage"],
     },
     {
@@ -82,7 +86,7 @@ SERVICES = [
         "tagline": "Active recovery for active bodies.",
         "description": "Deeper than Swedish, more dynamic than deep tissue. Combines stretching, compression, and targeted pressure to flush metabolic waste, restore range of motion, and prevent injury between training sessions.",
         "best_for": ["Athletes pre- and post-event", "Marathon and triathlon training", "CrossFit and Olympic lifting", "Climbers and skiers"],
-        "prices": [(60, "$95"), (90, "$135"), (120, "$175")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["deep-tissue-massage", "ashiatsu-massage", "cupping-therapy"],
     },
     {
@@ -92,7 +96,7 @@ SERVICES = [
         "tagline": "Deeper than hands can go.",
         "description": "Therapist applies pressure with their feet using overhead bars for balance. Reaches muscle depth that elbows and forearms can't access. Surprisingly precise, despite the name.",
         "best_for": ["Severe back tension", "Chronic shoulder bracing", "Athletes who can't get deep enough", "Larger-bodied clients"],
-        "prices": [(60, "$125"), (90, "$165")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["deep-tissue-massage", "sports-massage", "shiatsu-massage"],
     },
     {
@@ -102,7 +106,7 @@ SERVICES = [
         "tagline": "Japanese pressure-point therapy.",
         "description": "Originated in Japan, shiatsu uses thumb, palm, and finger pressure along the body's energy meridians. Performed clothed on a mat or table — no oil, no draping.",
         "best_for": ["Stiffness without soreness", "Energy and fatigue rebalance", "Clients who prefer clothed sessions", "First-time pressure-point work"],
-        "prices": [(60, "$85"), (90, "$125")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["foot-reflexology-massage", "ashiatsu-massage", "swedish-massage"],
     },
     {
@@ -112,17 +116,17 @@ SERVICES = [
         "tagline": "Suction releases what hands can't grab.",
         "description": "Silicone or glass cups create gentle suction that lifts skin and fascia, increasing blood flow and breaking up adhesions in tissue layers. Often paired with deep tissue or sports massage.",
         "best_for": ["Stubborn knots that resist pressure", "Lower back tension", "Post-injury circulation", "Athletic recovery"],
-        "prices": [(45, "$95"), (60, "$115")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["deep-tissue-massage", "sports-massage", "medical-infrared-sauna"],
     },
     {
         "slug": "chair-massage",
         "name": "Chair Massage",
         "category": "Specialty & couples",
-        "tagline": "Quick neck and shoulder reset.",
-        "description": "Fully clothed, 15 to 30 minutes of focused work on the neck, shoulders, upper back, and arms. Perfect for a between-meetings break or a first try if you've never had bodywork.",
+        "tagline": "Focused neck and shoulder reset.",
+        "description": "Fully clothed, focused work on the neck, shoulders, upper back, and arms. Perfect for a between-meetings break or a first try if you've never had bodywork.",
         "best_for": ["Lunch breaks", "First-time clients", "Office workers and screen-staring", "Quick stress relief"],
-        "prices": [(15, "$50"), (30, "$75")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["foot-reflexology-massage", "swedish-massage", "shiatsu-massage"],
     },
     {
@@ -132,7 +136,7 @@ SERVICES = [
         "tagline": "Customized session, single therapist.",
         "description": "Show up, talk to your therapist about what hurts, and get a custom blend of techniques tailored to that day. Most regular clients eventually default to this — they trust their therapist to read the room.",
         "best_for": ["Returning clients", "Mixed needs (some tension, some relaxation)", "When you don't want to choose", "Open-ended pampering"],
-        "prices": [(60, "$85"), (90, "$125"), (120, "$165")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["swedish-massage", "deep-tissue-massage", "head-spa-massage"],
     },
     {
@@ -140,9 +144,9 @@ SERVICES = [
         "name": "Medical Infrared Sauna",
         "category": "Specialty & couples",
         "tagline": "Detox and recovery via medical-grade infrared.",
-        "description": "Infrared light penetrates deeper than traditional sauna heat — warming muscles directly rather than just the air around you. Pairs perfectly with massage as a 30-minute pre-session warmup or as a standalone recovery session.",
+        "description": "Infrared light penetrates deeper than traditional sauna heat — warming muscles directly rather than just the air around you. Pairs perfectly with massage as a pre-session warmup or as a standalone recovery session.",
         "best_for": ["Post-workout recovery", "Cold winter days", "Skin and circulation", "Pre-massage muscle warm-up"],
-        "prices": [(30, "$50"), (45, "$70"), (60, "$90")],
+        "prices": UNIVERSAL_PRICES,
         "related": ["hot-stone-massage", "deep-tissue-massage", "cupping-therapy"],
     },
 ]
