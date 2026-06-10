@@ -720,3 +720,71 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
 
 /* Hero display scale. */
 .hero__heading { font-size: var(--type-hero); line-height: 1.04; letter-spacing: -0.01em; }
+
+/* Asymmetric editorial services grid. */
+.svc-editorial { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
+.svc-editorial__rest {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+@media (min-width: 800px) {
+  .svc-editorial { grid-template-columns: repeat(12, 1fr); }
+  .svc-feature--a { grid-column: span 7; }
+  .svc-feature--b { grid-column: span 5; }
+  .svc-editorial__rest { grid-column: 1 / -1; grid-template-columns: repeat(4, 1fr); }
+}
+.svc-feature {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 340px;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  overflow: hidden;
+  background: var(--ink-deep);
+  color: var(--cream-on-dark);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--t-slow) var(--ease-organic), box-shadow var(--t-slow) var(--ease-organic);
+}
+.svc-feature--b { background: var(--brand-orange-deep); }
+.svc-feature::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 85% 10%, rgba(245, 239, 230, 0.10), transparent 60%);
+  pointer-events: none;
+}
+.svc-feature:hover { transform: translateY(-4px); box-shadow: var(--shadow-bloom); }
+.svc-feature:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 4px; }
+.svc-feature__title {
+  font-family: var(--type-display);
+  font-size: var(--type-2);
+  color: var(--cream-on-dark);
+  margin: 0 0 var(--space-1);
+}
+.svc-feature__desc {
+  color: rgba(245, 239, 230, 0.8);
+  font-size: var(--type-5);
+  line-height: 1.55;
+  max-width: 44ch;
+  margin: var(--space-1) 0 0;
+}
+.svc-feature .service-card__price { color: #c9805a; }
+
+/* Editorial pull-quote reviews. */
+.pull-quote { position: relative; border: 0; background: transparent; padding: var(--space-3) 0 0; }
+.pull-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.18em;
+  left: -0.08em;
+  font-family: var(--type-display);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--brand-orange);
+  opacity: 0.22;
+  pointer-events: none;
+}
+.pull-quote .review__quote { font-size: var(--type-3); line-height: 1.35; }
