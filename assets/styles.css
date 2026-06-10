@@ -44,6 +44,16 @@
   --maxw-narrow: 720px;
   --maxw-content: 1080px;
   --maxw-wide: 1280px;
+
+  /* Elevation pass (2026-06) */
+  --ink-deep: #1f1a16;
+  --cream-on-dark: #f5efe6;
+  --shadow-soft: 0 2px 12px rgba(42, 30, 22, 0.06);
+  --shadow-lift: 0 10px 32px rgba(42, 30, 22, 0.10);
+  --shadow-bloom: 0 24px 64px rgba(160, 77, 44, 0.16);
+  --type-hero: clamp(3rem, 2rem + 5.5vw, 6rem);
+  --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-slow: 0.9s;
 }
 
 /* ============ BASE ============ */
@@ -658,3 +668,55 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
 @media (min-width: 800px) {
   .cols-2 { grid-template-columns: 1fr 1fr; gap: var(--space-6); }
 }
+
+/* ============ ELEVATION PASS (2026-06) ============ */
+
+/* Masked line reveals — visual state identical without JS; gsap.set hides. */
+.line { display: block; overflow: hidden; }
+.line-inner { display: inline-block; will-change: transform; }
+
+/* Dark editorial band — deeper than --ink for contrast moments. */
+.band-dark { background: var(--ink-deep); color: var(--cream-on-dark); }
+.band-dark h1, .band-dark h2, .band-dark h3 { color: var(--cream-on-dark); }
+.band-dark p { color: rgba(245, 239, 230, 0.85); }
+.band-dark .eyebrow { color: #c9805a; }
+.band-dark .trust-bar { border-block: 0; }
+.band-dark .trust-bar__item-label { color: var(--cream-on-dark); }
+.band-dark .trust-bar__item-text { color: rgba(245, 239, 230, 0.55); }
+
+/* Header scroll state (class toggled by motion.js). */
+.site-header { transition: box-shadow 0.4s var(--ease-organic), background 0.4s var(--ease-organic); }
+.site-header--scrolled { box-shadow: var(--shadow-soft); }
+
+/* Link underline draw. */
+.u-underline {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--t-slow) var(--ease-organic);
+}
+.u-underline:hover, .u-underline:focus-visible { background-size: 100% 1px; }
+
+/* Image zoom frame. */
+.img-zoom { overflow: hidden; border-radius: var(--radius-md); }
+.img-zoom img { transition: transform 1.2s var(--ease-organic); will-change: transform; }
+.img-zoom:hover img { transform: scale(1.04); }
+
+/* Card physics upgrade. */
+.service-card {
+  transition: transform var(--t-slow) var(--ease-organic),
+              border-color var(--t-slow) var(--ease-organic),
+              box-shadow var(--t-slow) var(--ease-organic);
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.service-card:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 4px; }
+
+.btn { transition: background 0.3s var(--ease-organic), color 0.3s var(--ease-organic),
+              border-color 0.3s var(--ease-organic), box-shadow 0.3s var(--ease-organic); }
+.btn--primary:hover { box-shadow: var(--shadow-bloom); }
+.btn-magnetic { will-change: transform; }
+
+/* Hero display scale. */
+.hero__heading { font-size: var(--type-hero); line-height: 1.04; letter-spacing: -0.01em; }
