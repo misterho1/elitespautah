@@ -500,6 +500,15 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
 .price-row__time { color: var(--ink-dim); font-size: var(--type-6); font-family: var(--type-ui); letter-spacing: 0.04em; }
 .price-row__amount { font-family: var(--type-ui); font-size: var(--type-4); color: var(--brand-orange); font-weight: 500; }
 
+/* Gift card amount cards */
+.gift-amount {
+  display: block;
+  margin: 0;
+  font-family: var(--type-display);
+  font-size: var(--type-3);
+  color: var(--ink);
+}
+
 /* ============ FAQ ============ */
 .faq {
   display: flex;
