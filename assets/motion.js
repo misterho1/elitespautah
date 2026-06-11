@@ -70,24 +70,47 @@
         });
       });
 
-      /* FAQ smooth accordion — progressive enhancement over <details>. */
+      /* FAQ smooth accordion — progressive enhancement over <details>.
+         Fail-safe: content visibility never depends on a tween finishing.
+         Opening flips the native open state first; closing flips it on
+         complete, and any GSAP exception still lands d.open in the correct
+         final state with body styles cleared. */
       gsap.utils.toArray('details.faq__item').forEach(function (d) {
         var summary = d.querySelector('summary');
         var body = d.querySelector('.faq__answer');
         if (!summary || !body) return;
+        var clearBody = function () {
+          try { gsap.set(body, { clearProps: 'all' }); }
+          catch (err) { body.style.cssText = ''; }
+        };
         summary.addEventListener('click', function (e) {
           e.preventDefault();
+          var tweenStarted = false;
           if (d.open) {
-            gsap.to(body, {
-              height: 0, autoAlpha: 0, duration: 0.4, ease: EASE,
-              onComplete: function () { d.open = false; gsap.set(body, { clearProps: 'all' }); }
-            });
+            /* Closing: animate shut, then set the native state on complete.
+               If the tween never starts, close immediately. */
+            var finishClose = function () { d.open = false; clearBody(); };
+            try {
+              gsap.to(body, {
+                height: 0, autoAlpha: 0, duration: 0.4, ease: EASE,
+                onComplete: finishClose
+              });
+              tweenStarted = true;
+            } finally {
+              if (!tweenStarted) finishClose();
+            }
           } else {
+            /* Opening: native state first — content shows even without GSAP. */
             d.open = true;
-            gsap.from(body, {
-              height: 0, autoAlpha: 0, duration: 0.55, ease: EASE,
-              onComplete: function () { gsap.set(body, { clearProps: 'all' }); }
-            });
+            try {
+              gsap.from(body, {
+                height: 0, autoAlpha: 0, duration: 0.55, ease: EASE,
+                onComplete: clearBody
+              });
+              tweenStarted = true;
+            } finally {
+              if (!tweenStarted) clearBody();
+            }
           }
         });
       });

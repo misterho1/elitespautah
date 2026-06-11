@@ -159,9 +159,16 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 247, 243, 0.92);
-  backdrop-filter: saturate(180%) blur(8px);
+  /* Near-opaque fallback: content never reads through the header when
+     backdrop-filter is unsupported. */
+  background: rgba(250, 247, 243, 0.97);
   border-bottom: 1px solid var(--line);
+}
+@supports (backdrop-filter: blur(8px)) {
+  .site-header {
+    background: rgba(250, 247, 243, 0.92);
+    backdrop-filter: saturate(180%) blur(8px);
+  }
 }
 .site-header__inner {
   display: flex;
