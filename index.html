@@ -12,21 +12,22 @@
   <meta property="og:description" content="Salt Lake City's elevated massage therapy and spa. Same-day appointments, open daily 10am to 10pm.">
   <meta property="og:url" content="https://elitespautah.com/">
   <meta property="og:site_name" content="Elite Spa Utah">
-  <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=1500w">
+  <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
   <meta property="og:image:width" content="1500">
   <meta property="og:image:height" content="843">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Elite Spa Utah — Massage Therapy &amp; Spa in Salt Lake City">
   <meta name="twitter:description" content="Salt Lake City's elevated massage therapy and spa. Same-day appointments at 1136 S State Street.">
-  <meta name="twitter:image" content="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=1500w">
+  <meta name="twitter:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
 
-  <link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/1615344f-dadc-44d5-9f23-81eb568f09a1/favicon.ico?format=100w">
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap">
-  <link rel="stylesheet" href="/assets/styles.css?v=2">
+  <link rel="preload" as="image" href="/assets/img/hero-1500.webp" imagesrcset="/assets/img/hero-750.webp 750w, /assets/img/hero-1500.webp 1500w, /assets/img/hero-2500.webp 2500w" imagesizes="100vw" fetchpriority="high">
+  <link rel="stylesheet" href="/assets/styles.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -37,7 +38,7 @@
         "@id": "https://elitespautah.com/#business",
         "name": "Elite Spa Utah",
         "alternateName": "Elite Spa Salt Lake City",
-        "image": "https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=1500w",
+        "image": "https://elitespautah.com/assets/img/hero-1500.webp",
         "url": "https://elitespautah.com/",
         "telephone": "+18018398880",
         "priceRange": "$$",
@@ -64,6 +65,9 @@
     ]
   }
   </script>
+  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
+  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
+  <script defer src="/assets/motion.js?v=1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -79,19 +83,19 @@
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
           <li><a class="site-nav__link" href="tel:+18018398880">(801) 839-8880</a></li>
-          <li><a class="btn btn--primary" href="/book">Book Now</a></li>
+          <li><a class="btn btn--primary" href="/book" data-magnetic>Book Now</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="hero__media" aria-hidden="true">
-        <img src="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=2500w"
-             srcset="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=750w 750w,
-                     https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=1500w 1500w,
-                     https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=2500w 2500w"
+    <section class="hero" data-hero>
+      <div class="hero__media" aria-hidden="true" data-hero-media>
+        <img src="/assets/img/hero-2500.webp"
+             srcset="/assets/img/hero-750.webp 750w,
+                     /assets/img/hero-1500.webp 1500w,
+                     /assets/img/hero-2500.webp 2500w"
              sizes="100vw"
              alt=""
              loading="eager"
@@ -101,19 +105,20 @@
       </div>
       <div class="container hero__inner">
         <p class="eyebrow hero__eyebrow">Salt Lake City · Open today 10am–10pm</p>
-        <h1 class="hero__heading">Walk in carrying<br>the week.</h1>
+        <h1 class="hero__heading"><span class="line"><span class="line-inner">Walk in carrying</span></span><span class="line"><span class="line-inner">the week.</span></span></h1>
         <p class="hero__lead">Walk out feeling like yourself again. Same-day massage and spa, from $115.</p>
-        <div class="hero__actions">
+        <div class="hero__actions" data-hero-cta>
           <a class="btn btn--primary" href="/book">Book Now</a>
           <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
         </div>
       </div>
     </section>
 
-    <section class="container">
-      <div class="trust-bar">
+    <section class="band-dark">
+      <div class="container">
+      <div class="trust-bar" data-reveal-stagger>
         <div>
-          <span class="trust-bar__item-label">8+</span>
+          <span class="trust-bar__item-label"><span data-count="8">8</span>+</span>
           <span class="trust-bar__item-text">Private rooms</span>
         </div>
         <div>
@@ -129,27 +134,33 @@
           <span class="trust-bar__item-text">Google reviews</span>
         </div>
       </div>
+      </div>
     </section>
 
     <section class="container section">
-      <p class="eyebrow">Services</p>
-      <h2>Choose how you want to feel.</h2>
-      <p class="lead">Eleven massage modalities and a full spa menu. Every session delivered by licensed therapists in private rooms at our State Street studio.</p>
-      <div class="service-grid">
-        <a class="service-card" href="/couples-massage">
-          <h3 class="service-card__title">Couples Massage</h3>
-          <p class="service-card__price">From $115</p>
-          <p class="service-card__desc">Side-by-side massage in our private couples suite — for date nights, anniversaries, or just the two of you.</p>
+      <p class="eyebrow" data-reveal>Services</p>
+      <h2 data-reveal>Choose how you want to feel.</h2>
+      <p class="lead" data-reveal>Eleven massage modalities and a full spa menu. Every session delivered by licensed therapists in private rooms at our State Street studio.</p>
+      <div class="svc-editorial">
+        <a class="svc-feature svc-feature--a" href="/head-spa-massage" data-reveal>
+          <div>
+            <h3 class="svc-feature__title">Japanese Head Spa</h3>
+            <p class="service-card__price">From $60</p>
+            <p class="svc-feature__desc">Scalp, neck, and shoulder ritual with a 30-minute drift. Most clients fall asleep.</p>
+          </div>
         </a>
+        <a class="svc-feature svc-feature--b" href="/couples-massage" data-reveal>
+          <div>
+            <h3 class="svc-feature__title">Couples Massage</h3>
+            <p class="service-card__price">From $115</p>
+            <p class="svc-feature__desc">Side-by-side massage in our private couples suite — for date nights, anniversaries, or just the two of you.</p>
+          </div>
+        </a>
+        <div class="svc-editorial__rest" data-reveal-stagger>
         <a class="service-card" href="/deep-tissue-massage">
           <h3 class="service-card__title">Deep Tissue Massage</h3>
           <p class="service-card__price">From $115</p>
           <p class="service-card__desc">Targeted pressure for chronic tension, sports recovery, and tight shoulders that won't quit.</p>
-        </a>
-        <a class="service-card" href="/head-spa-massage">
-          <h3 class="service-card__title">Japanese Head Spa</h3>
-          <p class="service-card__price">From $60</p>
-          <p class="service-card__desc">Scalp, neck, and shoulder ritual with a 30-minute drift. Most clients fall asleep.</p>
         </a>
         <a class="service-card" href="/hot-stone-massage">
           <h3 class="service-card__title">Hot Stone Massage</h3>
@@ -166,28 +177,29 @@
           <p class="service-card__price">From $115</p>
           <p class="service-card__desc">Detox and recovery via medical-grade infrared. Pairs well with any massage.</p>
         </a>
+        </div>
       </div>
-      <p class="text-center" style="margin-top: var(--space-4)">
+      <p class="text-center" style="margin-top: var(--space-4)" data-reveal>
         <a class="btn btn--secondary" href="/services">See all services</a>
       </p>
     </section>
 
     <section class="section section--cream">
       <div class="container">
-        <p class="eyebrow text-center">5.0 · Google reviews</p>
-        <h2 class="text-center">Real clients, real results.</h2>
-        <div class="reviews" style="margin-top: var(--space-4)">
-          <article class="review">
+        <p class="eyebrow text-center" data-reveal>5.0 · Google reviews</p>
+        <h2 class="text-center" data-reveal>Real clients, real results.</h2>
+        <div class="reviews" style="margin-top: var(--space-4)" data-reveal-stagger>
+          <article class="review pull-quote">
             <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
             <p class="review__quote">"Chronic neck tension for three years — nothing stuck. One head spa and deep tissue session here and I'm finally moving without pain."</p>
             <p class="review__author">— Andrew H.</p>
           </article>
-          <article class="review">
+          <article class="review pull-quote">
             <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
             <p class="review__quote">"My partner and I came in for our anniversary. The couples suite, the lighting, the therapists — it set the bar for everywhere else."</p>
             <p class="review__author">— Sarah M.</p>
           </article>
-          <article class="review">
+          <article class="review pull-quote">
             <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
             <p class="review__quote">"Same-day booking actually worked. Showed up after work, walked out lighter than I have in months."</p>
             <p class="review__author">— Michael T.</p>
@@ -196,12 +208,14 @@
       </div>
     </section>
 
-    <section class="cta-band container">
-      <h2 class="cta-band__heading">Ready when you are.</h2>
-      <p class="cta-band__text">Open daily, 10am to 10pm. Same-day appointments available.</p>
-      <div class="cluster cluster--center">
-        <a class="btn btn--primary" href="/book">Book Now</a>
-        <a class="btn btn--secondary" href="tel:+18018398880">Call (801) 839-8880</a>
+    <section class="band-dark">
+      <div class="cta-band container">
+      <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
+      <p class="cta-band__text" data-reveal>Open daily, 10am to 10pm. Same-day appointments available.</p>
+      <div class="cluster cluster--center" data-reveal>
+        <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+        <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
+      </div>
       </div>
     </section>
   </main>
