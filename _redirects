@@ -3,3 +3,4 @@
 # /book is now served directly (book.html embeds the Vagaro widget as an iframe).
 
 https://www.elitespautah.com/* https://elitespautah.com/:splat 301
+/home https://elitespautah.com/ 301

@@ -13,17 +13,30 @@
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/styles.css?v=3">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Sports Massage",
-    "provider": { "@type": "MassageTherapist", "name": "Elite Spa Utah", "url": "https://elitespautah.com/", "telephone": "+18018398880", "address": { "@type": "PostalAddress", "streetAddress": "1136 S State St", "addressLocality": "Salt Lake City", "addressRegion": "UT", "postalCode": "84111", "addressCountry": "US" } },
-    "areaServed": { "@type": "City", "name": "Salt Lake City" },
-    "offers": { "@type": "Offer", "price": "115", "priceCurrency": "USD", "url": "https://elitespautah.com/book" }
+    "@graph": [
+      {
+        "@type": "Service",
+        "serviceType": "Sports Massage",
+        "provider": { "@type": "MassageTherapist", "name": "Elite Spa Utah", "url": "https://elitespautah.com/", "telephone": "+18018398880", "address": { "@type": "PostalAddress", "streetAddress": "1136 S State Street", "addressLocality": "Salt Lake City", "addressRegion": "UT", "postalCode": "84111", "addressCountry": "US" } },
+        "areaServed": { "@type": "City", "name": "Salt Lake City" },
+        "offers": { "@type": "Offer", "price": "115", "priceCurrency": "USD", "url": "https://elitespautah.com/book" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://elitespautah.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://elitespautah.com/services" },
+          { "@type": "ListItem", "position": 3, "name": "Sports Massage", "item": "https://elitespautah.com/sports-massage" }
+        ]
+      }
+    ]
   }
   </script>
   <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
