@@ -44,20 +44,20 @@
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
           <li><a class="site-nav__link" href="tel:+18018398880">(801) 839-8880</a></li>
-          <li><a class="btn btn--primary" href="/book">Book Now</a></li>
+          <li><a class="btn btn--primary" href="/book" data-magnetic>Book Now</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="page-header">
+    <section class="page-header" data-hero>
       <div class="container container--narrow">
         <p class="eyebrow">Specialty & couples</p>
-        <h1>Couples Massage</h1>
+        <h1><span class="line"><span class="line-inner">Couples Massage</span></span></h1>
         <p class="lead">Two therapists. One private suite.</p>
-        <p style="margin-top: var(--space-3)">
-          <a class="btn btn--primary" href="/book">Book Now</a>
+        <p style="margin-top: var(--space-3)" data-hero-cta>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
           <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
         </p>
       </div>
@@ -66,10 +66,10 @@
     <section class="container container--content section">
       <div class="cols-2">
         <div>
-          <h2>What it does</h2>
-          <p>Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting. Anniversaries, date nights, traveling together — book the suite, not just the appointment.</p>
-          <h3 style="margin-top: var(--space-4); font-size: var(--type-4); font-family: var(--type-ui); font-weight: 500; letter-spacing: 0;">Best for</h3>
-          <ul style="padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7;">
+          <h2 data-reveal>What it does</h2>
+          <p data-reveal>Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting. Anniversaries, date nights, traveling together — book the suite, not just the appointment.</p>
+          <h3 style="margin-top: var(--space-4); font-size: var(--type-4); font-family: var(--type-ui); font-weight: 500; letter-spacing: 0;" data-reveal>Best for</h3>
+          <ul style="padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7;" data-reveal-stagger>
             <li>Date nights and anniversaries</li>
             <li>Traveling couples</li>
             <li>Pre-event reset</li>
@@ -77,10 +77,10 @@
           </ul>
         </div>
         <div>
-          <h2>Pricing</h2>
-          <div class="price-table">
+          <h2 data-reveal>Pricing</h2>
+          <div class="price-table" data-reveal>
             <div class="price-row"><p class="price-row__name">30 min</p><span class="price-row__time">30 minutes</span><span class="price-row__amount">$115</span></div>
-            <div class="price-row"><p class="price-row__name">60 min</p><span class="price-row__time">60 minutes</span><span class="price-row__amount">$165</span></div>
+            <div class="price-row price-row--featured"><p class="price-row__name">60 min</p><span class="price-row__time">60 minutes</span><span class="price-row__amount">$165</span></div>
             <div class="price-row"><p class="price-row__name">90 min</p><span class="price-row__time">90 minutes</span><span class="price-row__amount">$245</span></div>
             <div class="price-row"><p class="price-row__name">120 min</p><span class="price-row__time">120 minutes</span><span class="price-row__amount">$325</span></div>
           </div>
@@ -94,9 +94,9 @@
 
     <section class="section section--cream">
       <div class="container">
-        <p class="eyebrow">Pairs well with</p>
-        <h2>Related services</h2>
-        <div class="service-grid" style="margin-top: var(--space-3);">
+        <p class="eyebrow" data-reveal>Pairs well with</p>
+        <h2 data-reveal>Related services</h2>
+        <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
           <a class="service-card" href="/hot-stone-massage"><h3 class="service-card__title">Hot Stone Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
           <a class="service-card" href="/head-spa-massage"><h3 class="service-card__title">Japanese Head Spa</h3><p class="service-card__desc">View details and pricing →</p></a>
           <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
@@ -104,12 +104,14 @@
       </div>
     </section>
 
-    <section class="cta-band container">
-      <h2 class="cta-band__heading">Ready when you are.</h2>
-      <p class="cta-band__text">Same-day appointments available. Open daily, 10am to 10pm.</p>
-      <div class="cluster cluster--center">
-        <a class="btn btn--primary" href="/book">Book Now</a>
-        <a class="btn btn--secondary" href="tel:+18018398880">Call (801) 839-8880</a>
+    <section class="band-dark">
+      <div class="cta-band container">
+      <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
+      <p class="cta-band__text" data-reveal>Same-day appointments available. Open daily, 10am to 10pm.</p>
+      <div class="cluster cluster--center" data-reveal>
+        <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+        <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
+      </div>
       </div>
     </section>
   </main>

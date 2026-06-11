@@ -35,7 +35,7 @@
       if (hero) {
         var lines = hero.querySelectorAll('.line-inner');
         var eyebrow = hero.querySelector('.eyebrow');
-        var lead = hero.querySelector('.hero__lead');
+        var lead = hero.querySelector('.hero__lead, .lead');
         var cta = hero.querySelector('[data-hero-cta]');
         var tl = gsap.timeline({ defaults: { ease: EASE } });
         if (eyebrow) tl.from(eyebrow, { autoAlpha: 0, y: 14, duration: 0.8 });

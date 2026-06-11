@@ -166,8 +166,8 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   <meta property="og:title" content="{name} — Elite Spa Utah">
   <meta property="og:description" content="{tagline} From {price_from}. Same-day appointments at 1136 S State Street.">
   <meta property="og:url" content="https://elitespautah.com/{slug}">
-  <meta property="og:image" content="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/9ca02977-91cd-4d36-bd3b-3abfadfe3062/elite-spa-massage-salt-lake-city-utah.webp?format=1500w">
-  <link rel="icon" type="image/x-icon" href="https://images.squarespace-cdn.com/content/v1/69a71f3d2ea46264ee9697f6/1615344f-dadc-44d5-9f23-81eb568f09a1/favicon.ico?format=100w">
+  <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap">
@@ -183,6 +183,9 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     "offers": {{ "@type": "Offer", "price": "{price_from_num}", "priceCurrency": "USD", "url": "https://elitespautah.com/book" }}
   }}
   </script>
+  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
+  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
+  <script defer src="/assets/motion.js?v=1"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -198,20 +201,20 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
           <li><a class="site-nav__link" href="tel:+18018398880">(801) 839-8880</a></li>
-          <li><a class="btn btn--primary" href="/book">Book Now</a></li>
+          <li><a class="btn btn--primary" href="/book" data-magnetic>Book Now</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <section class="page-header">
+    <section class="page-header" data-hero>
       <div class="container container--narrow">
         <p class="eyebrow">{category}</p>
-        <h1>{name}</h1>
+        <h1><span class="line"><span class="line-inner">{name}</span></span></h1>
         <p class="lead">{tagline}</p>
-        <p style="margin-top: var(--space-3)">
-          <a class="btn btn--primary" href="/book">Book Now</a>
+        <p style="margin-top: var(--space-3)" data-hero-cta>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
           <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
         </p>
       </div>
@@ -220,16 +223,16 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     <section class="container container--content section">
       <div class="cols-2">
         <div>
-          <h2>What it does</h2>
-          <p>{description}</p>
-          <h3 style="margin-top: var(--space-4); font-size: var(--type-4); font-family: var(--type-ui); font-weight: 500; letter-spacing: 0;">Best for</h3>
-          <ul style="padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7;">
+          <h2 data-reveal>What it does</h2>
+          <p data-reveal>{description}</p>
+          <h3 style="margin-top: var(--space-4); font-size: var(--type-4); font-family: var(--type-ui); font-weight: 500; letter-spacing: 0;" data-reveal>Best for</h3>
+          <ul style="padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7;" data-reveal-stagger>
 {best_for_html}
           </ul>
         </div>
         <div>
-          <h2>Pricing</h2>
-          <div class="price-table">
+          <h2 data-reveal>Pricing</h2>
+          <div class="price-table" data-reveal>
 {prices_html}
           </div>
           <p style="margin-top: var(--space-3); font-size: var(--type-7); color: var(--ink-dim);">Add-ons (hot stones, aromatherapy, infrared sauna) at booking.</p>
@@ -242,20 +245,22 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 
     <section class="section section--cream">
       <div class="container">
-        <p class="eyebrow">Pairs well with</p>
-        <h2>Related services</h2>
-        <div class="service-grid" style="margin-top: var(--space-3);">
+        <p class="eyebrow" data-reveal>Pairs well with</p>
+        <h2 data-reveal>Related services</h2>
+        <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
 {related_html}
         </div>
       </div>
     </section>
 
-    <section class="cta-band container">
-      <h2 class="cta-band__heading">Ready when you are.</h2>
-      <p class="cta-band__text">Same-day appointments available. Open daily, 10am to 10pm.</p>
-      <div class="cluster cluster--center">
-        <a class="btn btn--primary" href="/book">Book Now</a>
-        <a class="btn btn--secondary" href="tel:+18018398880">Call (801) 839-8880</a>
+    <section class="band-dark">
+      <div class="cta-band container">
+      <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
+      <p class="cta-band__text" data-reveal>Same-day appointments available. Open daily, 10am to 10pm.</p>
+      <div class="cluster cluster--center" data-reveal>
+        <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+        <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
+      </div>
       </div>
     </section>
   </main>
@@ -302,8 +307,9 @@ def render_best_for(items):
 
 
 def render_prices(prices):
+    # 60 min is the most-booked duration — visually weighted, no copy change.
     return "\n".join(
-        f'            <div class="price-row"><p class="price-row__name">{minutes} min</p><span class="price-row__time">{minutes} minutes</span><span class="price-row__amount">{price}</span></div>'
+        f'            <div class="price-row{" price-row--featured" if minutes == 60 else ""}"><p class="price-row__name">{minutes} min</p><span class="price-row__time">{minutes} minutes</span><span class="price-row__amount">{price}</span></div>'
         for minutes, price in prices
     )
 
