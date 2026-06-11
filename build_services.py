@@ -167,6 +167,8 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   <meta property="og:description" content="{tagline} From {price_from}. Same-day appointments at 1136 S State Street.">
   <meta property="og:url" content="https://elitespautah.com/{slug}">
   <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="844">
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -327,14 +329,22 @@ def render_prices(prices):
     )
 
 
-def render_related(related_slugs, services_by_slug):
-    return "\n".join(
-        f'          <a class="service-card" href="/{slug}"><h3 class="service-card__title">{services_by_slug[slug]}</h3><p class="service-card__desc">View details and pricing →</p></a>'
-        for slug in related_slugs
-    )
+def render_related(related_slugs, services_by_slug, owner_slug):
+    cards = []
+    for slug in related_slugs:
+        if slug not in services_by_slug:
+            print(f"  WARNING: {owner_slug} references unknown related service '{slug}' — skipped")
+            continue
+        cards.append(
+            f'          <a class="service-card" href="/{slug}"><h3 class="service-card__title">{services_by_slug[slug]}</h3><p class="service-card__desc">View details and pricing →</p></a>'
+        )
+    return "\n".join(cards)
 
 
 def main():
+    for s in SERVICES:
+        if not s.get("prices"):
+            raise ValueError(f"Service '{s['slug']}' has an empty or missing 'prices' list")
     out_dir = os.path.dirname(os.path.abspath(__file__))
     for s in SERVICES:
         price_from = s["prices"][0][1]
@@ -347,7 +357,7 @@ def main():
             description=s["description"],
             best_for_html=render_best_for(s["best_for"]),
             prices_html=render_prices(s["prices"]),
-            related_html=render_related(s["related"], SLUG_TO_NAME),
+            related_html=render_related(s["related"], SLUG_TO_NAME, s["slug"]),
             price_from=price_from,
             price_from_num=price_from_num,
         )
