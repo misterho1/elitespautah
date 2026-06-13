@@ -3,3 +3,8 @@
 # /book is served directly (book.html hands off to the talech online scheduler).
 
 https://www.elitespautah.com/* https://elitespautah.com/:splat 301
+
+# Pricing restructure (2026-06-13): hot stone, cupping, infrared sauna are now add-ons.
+/hot-stone-massage      /services   301
+/cupping-therapy        /services   301
+/medical-infrared-sauna /services   301
