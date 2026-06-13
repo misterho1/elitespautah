@@ -1,5 +1,5 @@
 # Cloudflare Pages _redirects — see https://developers.cloudflare.com/pages/configuration/redirects/
 # Force apex (www -> non-www) so canonical URLs are consistent for SEO.
-# /book is now served directly (book.html embeds the Vagaro widget as an iframe).
+# /book is served directly (book.html hands off to the talech online scheduler).
 
 https://www.elitespautah.com/* https://elitespautah.com/:splat 301

@@ -4,7 +4,7 @@ Each service gets a clean ~5KB HTML file matching the homepage's design system."
 
 import os
 
-# Universal pricing across every service (matches the live Vagaro pricing table):
+# Universal pricing across every service (matches the live pricing table):
 #   30 min · $115   |   60 min · $165   |   90 min · $245   |   120 min · $325
 UNIVERSAL_PRICES = [(30, "$115"), (60, "$165"), (90, "$245"), (120, "$325")]
 

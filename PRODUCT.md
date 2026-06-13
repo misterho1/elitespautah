@@ -21,7 +21,7 @@ Elite Spa Utah is a Salt Lake City massage therapy and spa at 1136 S State Stree
 - Communicating "elevated but approachable" quality
 - Surfacing the full service menu (Couples, Deep Tissue, Head Spa, Foot Reflexology, Hot Stone, Cupping, Ashiatsu, Shiatsu, Sports, Swedish, 4-Hands, Medical Infrared Sauna, Chair, Individual)
 - Making pricing legible enough that visitors don't bounce
-- Handing off cleanly to the embedded Vagaro booking widget at `/book`
+- Handing off cleanly to the talech online scheduler from `/book`
 
 Success is **booked appointments**, not brand impressions. Trust signals + mobile UX matter more than long brand storytelling.
 
