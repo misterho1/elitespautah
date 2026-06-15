@@ -8,7 +8,6 @@ import os
 STANDARD_PRICES = [(60, "$85"), (90, "$125"), (120, "$165")]
 PREMIUM_PRICES  = [(60, "$165"), (90, "$245"), (120, "$325")]   # couples, 4-hand
 SINGLE_HOUR     = [(60, "$85")]                                 # foot reflexology, head spa
-CHAIR_PRICES    = [(30, "$60")]                                 # chair massage short-format
 
 SERVICES = [
     {
@@ -108,7 +107,7 @@ SERVICES = [
         "tagline": "Focused neck and shoulder reset.",
         "description": "Fully clothed, focused work on the neck, shoulders, upper back, and arms. Perfect for a between-meetings break or a first try if you've never had bodywork.",
         "best_for": ["Lunch breaks", "First-time clients", "Office workers and screen-staring", "Quick stress relief"],
-        "prices": CHAIR_PRICES,
+        "prices": STANDARD_PRICES,
         "related": ["foot-reflexology-massage", "swedish-massage", "shiatsu-massage"],
     },
     {
