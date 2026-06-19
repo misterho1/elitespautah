@@ -51,14 +51,73 @@
     </section>
 
     <section class="container section" style="padding-block: var(--space-3) var(--space-6)">
+
+      <style>
+        .book-menu__group{margin-bottom:1.35rem;}
+        .book-menu__title{font-family:'Marcellus',serif;font-size:1.15rem;margin:0 0 .55rem;color:#241a12;}
+        .book-menu__title small{opacity:.55;font-size:.72em;font-family:'DM Sans',sans-serif;}
+        .book-menu__row{display:flex;flex-wrap:wrap;gap:.55rem;}
+        .book-pick{cursor:pointer;opacity:.5;transition:opacity .2s;padding:.6rem 1.1rem;font-size:.82rem;}
+        .book-pick:hover{opacity:.85;}
+        .book-pick.is-active{opacity:1;}
+      </style>
+
+      <div class="book-menu" style="max-width:1080px;margin:0 auto 1.9rem;">
+        <div class="book-menu__group">
+          <p class="book-menu__title">Single Massage <small>— Swedish · Deep Tissue · Sports · Ashiatsu · Shiatsu · Individual · Chair · Prenatal</small></p>
+          <div class="book-menu__row">
+            <button type="button" class="btn btn--primary book-pick is-active" data-cal="prI3iNQcV8QT3iEFu0Mv">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="Cug9L9DRuVFYuYzBTDJb">90 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="rfIrTefsVemOu6BOLKdD">120 min</button>
+          </div>
+        </div>
+        <div class="book-menu__group">
+          <p class="book-menu__title">Couples Massage <small>— side by side</small></p>
+          <div class="book-menu__row">
+            <button type="button" class="btn btn--primary book-pick" data-cal="HtgYDuupj55nQgx44tYF">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="5izvoRzi3v4NgpBadip1">90 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="HbRxALP0Th6KwISwcj9V">120 min</button>
+          </div>
+        </div>
+        <div class="book-menu__group">
+          <p class="book-menu__title">4-Hand Massage <small>— two therapists</small></p>
+          <div class="book-menu__row">
+            <button type="button" class="btn btn--primary book-pick" data-cal="BwzHXpXu6S7naRHAu4Bz">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="7qhje4ttI4U88KNi86Cp">90 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="ac8W21n4qQ5bXcyY9g8H">120 min</button>
+          </div>
+        </div>
+        <div class="book-menu__group">
+          <p class="book-menu__title">Spa Treatments <small>— 60 min each</small></p>
+          <div class="book-menu__row">
+            <button type="button" class="btn btn--primary book-pick" data-cal="CAedvMjVuIJ4XjmNbhWn">Foot / Reflexology</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="bECoUAPFFpFdPDlL9Rth">Head Spa</button>
+          </div>
+        </div>
+      </div>
+
       <div style="max-width: 1080px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: 0 28px 70px -34px rgba(20,12,4,0.32); overflow: hidden;">
-        <iframe src="https://api.leadconnectorhq.com/widget/booking/OMtDgCePE4ejJcgsshkq" style="width: 100%; border: none; min-height: 760px; display: block;" scrolling="no" id="ghl-booking-elite" title="Book your appointment with Elite Spa Utah"></iframe>
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/prI3iNQcV8QT3iEFu0Mv" style="width: 100%; border: none; min-height: 760px; display: block;" scrolling="no" id="ghl-booking-elite" title="Book your appointment with Elite Spa Utah"></iframe>
       </div>
 
       <p style="text-align: center; margin-top: var(--space-4); color: var(--ink-muted); font-size: var(--type-6);">
         Trouble booking online? Call <a href="tel:+18018398880">(801) 839-8880</a> · Open daily 10am–10pm.
       </p>
     </section>
+
+    <script>
+      (function(){
+        var frame=document.getElementById('ghl-booking-elite');
+        var base='https://api.leadconnectorhq.com/widget/booking/';
+        document.querySelectorAll('.book-pick').forEach(function(b){
+          b.addEventListener('click',function(){
+            document.querySelectorAll('.book-pick').forEach(function(x){x.classList.remove('is-active');});
+            b.classList.add('is-active');
+            if(frame){frame.src=base+b.getAttribute('data-cal');frame.scrollIntoView({behavior:'smooth',block:'nearest'});}
+          });
+        });
+      })();
+    </script>
 
     <section class="cta-band container" style="padding-block: var(--space-4) var(--space-6)">
       <p class="lead" style="text-align: center; margin: 0 auto;">Need help choosing a service? <a href="/services">See the full menu</a> or <a href="tel:+18018398880">call us</a>.</p>
