@@ -57,14 +57,24 @@
         .book-menu__title{font-family:'Marcellus',serif;font-size:1.15rem;margin:0 0 .55rem;color:#241a12;}
         .book-menu__title small{opacity:.55;font-size:.72em;font-family:'DM Sans',sans-serif;}
         .book-menu__row{display:flex;flex-wrap:wrap;gap:.55rem;}
-        .book-pick{cursor:pointer;opacity:.5;transition:opacity .2s;padding:.6rem 1.1rem;font-size:.82rem;}
-        .book-pick:hover{opacity:.85;}
-        .book-pick.is-active{opacity:1;}
+        .book-pick,.book-type{cursor:pointer;opacity:.5;transition:opacity .2s;padding:.6rem 1.1rem;font-size:.82rem;}
+        .book-pick:hover,.book-type:hover{opacity:.85;}
+        .book-pick.is-active,.book-type.is-active{opacity:1;}
       </style>
 
       <div class="book-menu" style="max-width:1080px;margin:0 auto 1.9rem;">
-        <div class="book-menu__group">
-          <p class="book-menu__title">Single Massage <small>— Swedish · Deep Tissue · Sports · Ashiatsu · Shiatsu · Individual · Chair · Prenatal</small></p>
+        <div class="book-menu__group" data-typed>
+          <p class="book-menu__title">Full Body Massage <small>— pick your style, then a length</small></p>
+          <div class="book-menu__row book-type-row" style="margin-bottom:.65rem;">
+            <button type="button" class="btn btn--primary book-type is-active" data-type="Swedish">Swedish</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Deep Tissue">Deep Tissue</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Sports">Sports</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Ashiatsu">Ashiatsu</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Shiatsu">Shiatsu</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Individual">Individual</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Chair">Chair</button>
+            <button type="button" class="btn btn--primary book-type" data-type="Prenatal">Prenatal</button>
+          </div>
           <div class="book-menu__row">
             <button type="button" class="btn btn--primary book-pick is-active" data-cal="prI3iNQcV8QT3iEFu0Mv">60 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="Cug9L9DRuVFYuYzBTDJb">90 min</button>
@@ -97,7 +107,7 @@
       </div>
 
       <div style="max-width: 1080px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: 0 28px 70px -34px rgba(20,12,4,0.32); overflow: hidden;">
-        <iframe src="https://api.leadconnectorhq.com/widget/booking/prI3iNQcV8QT3iEFu0Mv" style="width: 100%; border: none; min-height: 760px; display: block;" scrolling="no" id="ghl-booking-elite" title="Book your appointment with Elite Spa Utah"></iframe>
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/prI3iNQcV8QT3iEFu0Mv?massage_type=Swedish" style="width: 100%; border: none; min-height: 760px; display: block;" scrolling="no" id="ghl-booking-elite" title="Book your appointment with Elite Spa Utah"></iframe>
       </div>
 
       <p style="text-align: center; margin-top: var(--space-4); color: var(--ink-muted); font-size: var(--type-6);">
@@ -109,11 +119,29 @@
       (function(){
         var frame=document.getElementById('ghl-booking-elite');
         var base='https://api.leadconnectorhq.com/widget/booking/';
+        function scrollFrame(){if(frame)frame.scrollIntoView({behavior:'smooth',block:'nearest'});}
+        function load(){
+          var pick=document.querySelector('.book-pick.is-active');
+          if(!frame||!pick)return;
+          var url=base+pick.getAttribute('data-cal');
+          var grp=pick.closest('[data-typed]');
+          if(grp){var t=grp.querySelector('.book-type.is-active');if(t)url+='?massage_type='+encodeURIComponent(t.getAttribute('data-type'));}
+          frame.src=url;
+        }
         document.querySelectorAll('.book-pick').forEach(function(b){
           b.addEventListener('click',function(){
             document.querySelectorAll('.book-pick').forEach(function(x){x.classList.remove('is-active');});
+            b.classList.add('is-active');load();scrollFrame();
+          });
+        });
+        document.querySelectorAll('.book-type').forEach(function(b){
+          b.addEventListener('click',function(){
+            b.closest('.book-type-row').querySelectorAll('.book-type').forEach(function(x){x.classList.remove('is-active');});
             b.classList.add('is-active');
-            if(frame){frame.src=base+b.getAttribute('data-cal');frame.scrollIntoView({behavior:'smooth',block:'nearest'});}
+            var grp=b.closest('[data-typed]');
+            document.querySelectorAll('.book-pick').forEach(function(x){x.classList.remove('is-active');});
+            var firstDur=grp.querySelector('.book-pick');if(firstDur)firstDur.classList.add('is-active');
+            load();scrollFrame();
           });
         });
       })();
