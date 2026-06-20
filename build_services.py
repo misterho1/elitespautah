@@ -135,13 +135,31 @@ SERVICES = [
 # Build slug -> name lookup for related services rendering
 SLUG_TO_NAME = {s["slug"]: s["name"] for s in SERVICES}
 
+# Keyword clusters per service (primary phrase first). Used in meta description +
+# keywords tag. Primary leads the description for relevance/CTR; no body stuffing.
+KEYWORDS = {
+    "deep-tissue-massage": ["Deep tissue massage in Salt Lake City", "sports recovery massage", "chronic back pain relief", "muscle knot therapy"],
+    "swedish-massage": ["Swedish massage in Salt Lake City", "relaxation massage", "full-body massage", "first-time massage"],
+    "head-spa-massage": ["Japanese head spa in Salt Lake City", "scalp massage", "tension headache relief", "head spa treatment"],
+    "couples-massage": ["Couples massage in Salt Lake City", "couples spa suite", "date-night massage", "side-by-side massage"],
+    "4-hands-massage": ["4-hands massage in Salt Lake City", "four-hand massage", "two-therapist massage"],
+    "foot-reflexology-massage": ["Foot reflexology in Salt Lake City", "reflexology massage", "pressure-point foot massage"],
+    "sports-massage": ["Sports massage in Salt Lake City", "athletic recovery massage", "post-workout massage", "pre-event massage"],
+    "ashiatsu-massage": ["Ashiatsu massage in Salt Lake City", "deep-pressure massage", "barefoot massage therapy"],
+    "shiatsu-massage": ["Shiatsu massage in Salt Lake City", "pressure-point therapy", "clothed massage", "Japanese massage"],
+    "chair-massage": ["Chair massage in Salt Lake City", "office chair massage", "neck and shoulder massage", "quick massage"],
+    "individual-massage": ["Custom massage in Salt Lake City", "personalized massage session", "tailored bodywork"],
+    "prenatal-massage": ["Prenatal massage in Salt Lake City", "pregnancy massage", "side-lying massage", "maternity massage"],
+}
+
 PAGE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{name} — Elite Spa Utah, Salt Lake City</title>
-  <meta name="description" content="{name} at Elite Spa Utah, Salt Lake City. {tagline} From {price_from}. Same-day appointments. Licensed therapists. 1136 S State Street.">
+  <meta name="description" content="{kw_primary} at Elite Spa Utah. {tagline} From {price_from}. Same-day appointments. Licensed therapists. 1136 S State Street, Salt Lake City.">
+  <meta name="keywords" content="{kw_csv}">
   <link rel="canonical" href="https://elitespautah.com/{slug}">
   <meta property="og:title" content="{name} — Elite Spa Utah">
   <meta property="og:description" content="{tagline} From {price_from}. Same-day appointments at 1136 S State Street.">
@@ -319,9 +337,14 @@ def main():
     for s in SERVICES:
         price_from = s["prices"][0][1]
         price_from_num = price_from.replace("$", "").replace(",", "")
+        kws = KEYWORDS.get(s["slug"], [f'{s["name"]} in Salt Lake City'])
+        kw_primary = kws[0]
+        kw_csv = ", ".join(kws)
         html = PAGE_TEMPLATE.format(
             slug=s["slug"],
             name=s["name"],
+            kw_primary=kw_primary,
+            kw_csv=kw_csv,
             category=s["category"],
             tagline=s["tagline"],
             description=s["description"],
