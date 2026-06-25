@@ -246,7 +246,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
           <div class="price-table" data-reveal>
 {prices_html}
           </div>
-          <p style="margin-top: var(--space-3); font-size: var(--type-7); color: var(--ink-muted);">Add-ons — cupping, hot stones, infrared sauna (30 min), or CBD — $30 each, added at booking.</p>
+          <p style="margin-top: var(--space-3); font-size: var(--type-7); color: var(--ink-muted);">Add-ons — hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each — added at booking.</p>
           <p style="margin-top: var(--space-3)">
             <a class="btn btn--primary" href="/book">Book {name}</a>
           </p>
