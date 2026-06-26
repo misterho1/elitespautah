@@ -148,8 +148,10 @@ HERO_IMAGES = {
         "alt": "Private couples suite with two side-by-side massage tables at Elite Spa Utah",
     },
     "head-spa-massage": {
-        "img": "infrared-sauna.webp", "w": 1376, "h": 768,
-        "alt": "Warm wood infrared sauna at Elite Spa Utah",
+        # Neutral treatment-room photo until a real head-spa image exists; a
+        # sauna here was a semantic mismatch for a head-spa page.
+        "img": "treatment-room.webp", "w": 1376, "h": 768,
+        "alt": "Warm, dimly lit private treatment room at Elite Spa Utah",
     },
 }
 
