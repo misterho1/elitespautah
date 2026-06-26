@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — Elite Spa Utah</title>
+  <title>Contact · Elite Spa Utah</title>
   <meta name="description" content="Visit Elite Spa Utah at 1136 S State Street, Salt Lake City. Open Mon–Sun 10AM–10PM. Call (801) 839-8880.">
   <link rel="canonical" href="https://elitespautah.com/contact">
-  <meta property="og:title" content="Contact — Elite Spa Utah">
+  <meta property="og:title" content="Contact · Elite Spa Utah">
   <meta property="og:description" content="1136 S State Street, Salt Lake City. Open daily 10am to 10pm.">
   <meta property="og:url" content="https://elitespautah.com/contact">
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
@@ -49,9 +49,10 @@
     ]
   }
   </script>
-  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
-  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
-  <script defer src="/assets/motion.js?v=1"></script>
+  <!-- Motion + chat widget are deferred off the first-paint path (idle /
+       first-interaction). See assets/defer-load.js. The page is fully visible
+       and usable without JS, so it no longer ships ~116KB of GSAP eagerly. -->
+  <script src="/assets/defer-load.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -128,7 +129,7 @@
               <textarea class="form__textarea" id="message" name="message" required></textarea>
             </div>
             <button class="btn btn--primary" type="submit">Send Message</button>
-            <p style="font-size: var(--type-7); color: var(--ink-dim); margin-top: var(--space-1);">Opens your email app. For appointments, call us — much faster.</p>
+            <p style="font-size: var(--type-7); color: var(--ink-dim); margin-top: var(--space-1);">Opens your email app. For appointments, call us. Much faster.</p>
           </form>
         </div>
       </div>
@@ -178,7 +179,7 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
-  <!-- GoHighLevel chat widget -->
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3602e7d896e3ca46331853" data-source="WEB_USER"></script>
+  <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
+       interaction (or idle) so it never competes with first paint. -->
 </body>
 </html>

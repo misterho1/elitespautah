@@ -67,9 +67,10 @@
     ]
   }
   </script>
-  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
-  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
-  <script defer src="/assets/motion.js?v=1"></script>
+  <!-- Motion + chat widget are deferred off the first-paint path (idle /
+       first-interaction). See assets/defer-load.js. The page is fully visible
+       and usable without JS, so it no longer ships ~116KB of GSAP eagerly. -->
+  <script src="/assets/defer-load.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -260,7 +261,7 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
-  <!-- GoHighLevel chat widget -->
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3602e7d896e3ca46331853" data-source="WEB_USER"></script>
+  <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
+       interaction (or idle) so it never competes with first paint. -->
 </body>
 </html>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
-  <title>How was your visit — Elite Spa Utah</title>
+  <title>How was your visit · Elite Spa Utah</title>
   <meta name="description" content="Tell us about your appointment at Elite Spa Utah.">
   <link rel="canonical" href="https://elitespautah.com/feedback">
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
@@ -14,7 +14,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/styles.css?v=3">
   <style>
-    /* Review-gate form — scoped, reuses site tokens */
+    /* Review-gate form, scoped, reuses site tokens */
     .fb-form { max-width: 32rem; }
     .fb-form fieldset { border: 0; padding: 0; margin: 0 0 var(--space-3); }
     .fb-form legend { font-family: var(--type-ui); font-size: var(--type-5); margin-bottom: var(--space-2); padding: 0; }
@@ -119,7 +119,7 @@
       const data = new FormData(e.target);
       if (!data.get("rating")) return;
       const rating = Number(data.get("rating"));
-      const payload = { access_key: "09b179d0-a8ea-48fe-ab01-9b1d40207026", subject: "Low review-gate feedback — Elite Spa Utah", brand: BRAND, rating, feedback: data.get("feedback") || "", ts: new Date().toISOString() };
+      const payload = { access_key: "09b179d0-a8ea-48fe-ab01-9b1d40207026", subject: "Low review-gate feedback · Elite Spa Utah", brand: BRAND, rating, feedback: data.get("feedback") || "", ts: new Date().toISOString() };
       if (rating >= 4) {
         // happy guest -> straight to Google
         window.location.href = GOOGLE_REVIEW_URL;

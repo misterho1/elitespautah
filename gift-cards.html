@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gift Cards — Elite Spa Utah</title>
+  <title>Gift Cards · Elite Spa Utah</title>
   <meta name="description" content="Buy a massage gift card from Elite Spa Utah, Salt Lake City. Delivered instantly by email, never expires, redeemable for any service. From $25.">
   <link rel="canonical" href="https://elitespautah.com/gift-cards">
-  <meta property="og:title" content="Gift Cards — Elite Spa Utah">
+  <meta property="og:title" content="Gift Cards · Elite Spa Utah">
   <meta property="og:description" content="The gift that actually gets used. Delivered by email, never expires.">
   <meta property="og:url" content="https://elitespautah.com/gift-cards">
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
@@ -15,9 +15,10 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/styles.css?v=3">
-  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
-  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
-  <script defer src="/assets/motion.js?v=1"></script>
+  <!-- Motion + chat widget are deferred off the first-paint path (idle /
+       first-interaction). See assets/defer-load.js. The page is fully visible
+       and usable without JS, so it no longer ships ~116KB of GSAP eagerly. -->
+  <script src="/assets/defer-load.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -110,7 +111,7 @@
     <section class="band-dark">
       <div class="cta-band container">
       <h2 class="cta-band__heading">Ready when you are.</h2>
-      <p class="cta-band__text">Buy a gift card now — delivered to their inbox in seconds.</p>
+      <p class="cta-band__text">Buy a gift card now, delivered to their inbox in seconds.</p>
       <div class="cluster cluster--center">
         <a class="btn btn--primary" href="https://microsite.talech.com/gift-card/ELITE-SPA-SALT-LAKE-CITY-UT/bXoq6Y81R7e9x7Dg" target="_blank" rel="noopener" data-magnetic>Buy a Gift Card</a>
         <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
@@ -151,7 +152,7 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
-  <!-- GoHighLevel chat widget -->
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3602e7d896e3ca46331853" data-source="WEB_USER"></script>
+  <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
+       interaction (or idle) so it never competes with first paint. -->
 </body>
 </html>

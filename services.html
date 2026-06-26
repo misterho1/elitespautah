@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>All Services — Elite Spa Utah</title>
-  <meta name="description" content="Full service menu at Elite Spa Utah, Salt Lake City. Couples massage, deep tissue, Swedish, head spa, sports, ashiatsu, shiatsu, foot reflexology, prenatal, and more — from $85.">
+  <title>All Services · Elite Spa Utah</title>
+  <meta name="description" content="Full service menu at Elite Spa Utah, Salt Lake City. Couples massage, deep tissue, Swedish, head spa, sports, ashiatsu, shiatsu, foot reflexology, prenatal, and more, from $85.">
   <link rel="canonical" href="https://elitespautah.com/services">
-  <meta property="og:title" content="All Services — Elite Spa Utah">
+  <meta property="og:title" content="All Services · Elite Spa Utah">
   <meta property="og:description" content="A full menu of massage modalities and spa services at 1136 S State Street, Salt Lake City.">
   <meta property="og:url" content="https://elitespautah.com/services">
   <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
@@ -48,9 +48,10 @@
     ]
   }
   </script>
-  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
-  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
-  <script defer src="/assets/motion.js?v=1"></script>
+  <!-- Motion + chat widget are deferred off the first-paint path (idle /
+       first-interaction). See assets/defer-load.js. The page is fully visible
+       and usable without JS, so it no longer ships ~116KB of GSAP eagerly. -->
+  <script src="/assets/defer-load.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -77,7 +78,7 @@
       <div class="container container--narrow">
         <p class="eyebrow">Service menu</p>
         <h1><span class="line"><span class="line-inner">Every modality. One standard of care.</span></span></h1>
-        <p class="lead">Whether you're managing chronic tension, recovering from training, or unwinding for the first time in months — every service below is delivered by licensed therapists in private rooms.</p>
+        <p class="lead">Whether you're managing chronic tension, recovering from training, or unwinding for the first time in months, every service below is delivered by licensed therapists in private rooms.</p>
       </div>
     </section>
 
@@ -93,12 +94,12 @@
         <a class="service-card" href="/sports-massage">
           <h3 class="service-card__title">Sports Massage</h3>
           <p class="service-card__price">From $85</p>
-          <p class="service-card__desc">Active recovery for athletes — pre-event, post-event, between sessions.</p>
+          <p class="service-card__desc">Active recovery for athletes, pre-event, post-event, between sessions.</p>
         </a>
         <a class="service-card" href="/ashiatsu-massage">
           <h3 class="service-card__title">Ashiatsu</h3>
           <p class="service-card__price">From $85</p>
-          <p class="service-card__desc">Therapist applies pressure with their feet — deeper than hands can reach.</p>
+          <p class="service-card__desc">Therapist applies pressure with their feet, deeper than hands can reach.</p>
         </a>
         <a class="service-card" href="/shiatsu-massage">
           <h3 class="service-card__title">Shiatsu</h3>
@@ -116,7 +117,7 @@
           <a class="service-card" href="/swedish-massage">
             <h3 class="service-card__title">Swedish Massage</h3>
             <p class="service-card__price">From $85</p>
-            <p class="service-card__desc">Long, flowing strokes — the classic full-body relaxation massage.</p>
+            <p class="service-card__desc">Long, flowing strokes. The classic full-body relaxation massage.</p>
           </a>
           <a class="service-card" href="/head-spa-massage">
             <h3 class="service-card__title">Japanese Head Spa</h3>
@@ -139,12 +140,12 @@
         <a class="service-card" href="/couples-massage">
           <h3 class="service-card__title">Couples Massage</h3>
           <p class="service-card__price">From $165</p>
-          <p class="service-card__desc">Side-by-side massage in our private couples suite — two therapists, one room.</p>
+          <p class="service-card__desc">Side-by-side massage in our private couples suite. Two therapists, one room.</p>
         </a>
         <a class="service-card" href="/4-hands-massage">
           <h3 class="service-card__title">4-Hands Massage</h3>
           <p class="service-card__price">From $165</p>
-          <p class="service-card__desc">Two therapists working in sync — covers double the body in the same time.</p>
+          <p class="service-card__desc">Two therapists working in sync, covers double the body in the same time.</p>
         </a>
         <a class="service-card" href="/foot-reflexology-massage">
           <h3 class="service-card__title">Foot Reflexology</h3>
@@ -154,12 +155,12 @@
         <a class="service-card" href="/chair-massage">
           <h3 class="service-card__title">Chair Massage</h3>
           <p class="service-card__price">From $85</p>
-          <p class="service-card__desc">Quick, effective neck-and-shoulder work — fully clothed.</p>
+          <p class="service-card__desc">Quick, effective neck-and-shoulder work, fully clothed.</p>
         </a>
         <a class="service-card" href="/individual-massage">
           <h3 class="service-card__title">Individual Massage</h3>
           <p class="service-card__price">From $85</p>
-          <p class="service-card__desc">Single-therapist customized session — your therapist chooses the technique.</p>
+          <p class="service-card__desc">Single-therapist customized session. Your therapist chooses the technique.</p>
         </a>
       </div>
     </section>
@@ -168,7 +169,7 @@
       <div class="container">
         <p class="eyebrow" data-reveal>Make it yours</p>
         <h2 data-reveal>Enhancements &amp; Add-Ons</h2>
-        <p data-reveal style="max-width: 60ch; color: var(--ink-muted);">Add any of these to a massage at booking — $30 each.</p>
+        <p data-reveal style="max-width: 60ch; color: var(--ink-muted);">Add any of these to a massage at booking. $30 each.</p>
         <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
           <div class="service-card"><h3 class="service-card__title">Cupping</h3><p class="service-card__price">+$30</p><p class="service-card__desc">Suction that lifts fascia and releases stubborn knots.</p></div>
           <div class="service-card"><h3 class="service-card__title">Hot Stones</h3><p class="service-card__price">+$20</p><p class="service-card__desc">Heated basalt stones layered into your massage.</p></div>
@@ -222,7 +223,7 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
-  <!-- GoHighLevel chat widget -->
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3602e7d896e3ca46331853" data-source="WEB_USER"></script>
+  <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
+       interaction (or idle) so it never competes with first paint. -->
 </body>
 </html>
