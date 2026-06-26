@@ -15,7 +15,7 @@ SERVICES = [
         "name": "Deep Tissue Massage",
         "category": "For pain & tension",
         "tagline": "Targeted pressure for chronic tension.",
-        "description": "Slow, deliberate strokes and firm pressure that reach the deeper layers of muscle and connective tissue. Unlike a relaxation massage, deep tissue targets the source of tension — the chronic adhesions that cause persistent pain.",
+        "description": "Slow, deliberate strokes and firm pressure that reach the deeper layers of muscle and connective tissue. Unlike a relaxation massage, deep tissue targets the source of tension, the chronic adhesions that cause persistent pain.",
         "best_for": ["Chronic back pain", "Neck and shoulder tension", "Sports injuries and recovery", "IT band, hamstring, hip tightness"],
         "prices": STANDARD_PRICES,
         "related": ["sports-massage", "shiatsu-massage", "ashiatsu-massage"],
@@ -45,7 +45,7 @@ SERVICES = [
         "name": "Couples Massage",
         "category": "Specialty & couples",
         "tagline": "Two therapists. One private suite.",
-        "description": "Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting. Anniversaries, date nights, traveling together — book the suite, not just the appointment.",
+        "description": "Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting. Anniversaries, date nights, traveling together. Book the suite, not just the appointment.",
         "best_for": ["Date nights and anniversaries", "Traveling couples", "Pre-event reset", "Gift experiences"],
         "prices": PREMIUM_PRICES,
         "related": ["4-hands-massage", "head-spa-massage", "swedish-massage"],
@@ -54,7 +54,7 @@ SERVICES = [
         "slug": "4-hands-massage",
         "name": "4-Hands Massage",
         "category": "Specialty & couples",
-        "tagline": "Two therapists working in sync — on you.",
+        "tagline": "Two therapists working in sync, on you.",
         "description": "Two therapists, one client, four hands moving in coordinated pressure. Covers double the body in the same time, and the sensory overload puts the nervous system in a state most single-therapist sessions never reach.",
         "best_for": ["Maximum bodywork in minimum time", "Special-occasion treatment", "Sensory escape", "Severe full-body tension"],
         "prices": PREMIUM_PRICES,
@@ -95,7 +95,7 @@ SERVICES = [
         "name": "Shiatsu",
         "category": "For pain & tension",
         "tagline": "Japanese pressure-point therapy.",
-        "description": "Originated in Japan, shiatsu uses thumb, palm, and finger pressure along the body's energy meridians. Performed clothed on a mat or table — no oil, no draping.",
+        "description": "Originated in Japan, shiatsu uses thumb, palm, and finger pressure along the body's energy meridians. Performed clothed on a mat or table, no oil, no draping.",
         "best_for": ["Stiffness without soreness", "Energy and fatigue rebalance", "Clients who prefer clothed sessions", "First-time pressure-point work"],
         "prices": STANDARD_PRICES,
         "related": ["foot-reflexology-massage", "ashiatsu-massage", "swedish-massage"],
@@ -115,7 +115,7 @@ SERVICES = [
         "name": "Individual Massage",
         "category": "Specialty & couples",
         "tagline": "Customized session, single therapist.",
-        "description": "Show up, talk to your therapist about what hurts, and get a custom blend of techniques tailored to that day. Most regular clients eventually default to this — they trust their therapist to read the room.",
+        "description": "Show up, talk to your therapist about what hurts, and get a custom blend of techniques tailored to that day. Most regular clients eventually default to this; they trust their therapist to read the room.",
         "best_for": ["Returning clients", "Mixed needs (some tension, some relaxation)", "When you don't want to choose", "Open-ended pampering"],
         "prices": STANDARD_PRICES,
         "related": ["swedish-massage", "deep-tissue-massage", "head-spa-massage"],
@@ -134,6 +134,24 @@ SERVICES = [
 
 # Build slug -> name lookup for related services rendering
 SLUG_TO_NAME = {s["slug"]: s["name"] for s in SERVICES}
+
+# Service-page hero photography. INTERIM/SWAPPABLE placeholders downloaded to
+# assets/img/ on 2026-06-25, replace with real Elite Spa shots, keep the alt text.
+# Default = treatment room; couples + sauna-adjacent services get their own slot.
+DEFAULT_HERO = {
+    "img": "treatment-room.webp", "w": 1376, "h": 768,
+    "alt": "Warm, dimly lit private massage room with a draped table at Elite Spa Utah",
+}
+HERO_IMAGES = {
+    "couples-massage": {
+        "img": "couples-suite.webp", "w": 2752, "h": 1536,
+        "alt": "Private couples suite with two side-by-side massage tables at Elite Spa Utah",
+    },
+    "head-spa-massage": {
+        "img": "infrared-sauna.webp", "w": 1376, "h": 768,
+        "alt": "Warm wood infrared sauna at Elite Spa Utah",
+    },
+}
 
 # Keyword clusters per service (primary phrase first). Used in meta description +
 # keywords tag. Primary leads the description for relevance/CTR; no body stuffing.
@@ -157,11 +175,11 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{name} — Elite Spa Utah, Salt Lake City</title>
+  <title>{name} · Elite Spa Utah, Salt Lake City</title>
   <meta name="description" content="{kw_primary} at Elite Spa Utah. {tagline} From {price_from}. Same-day appointments. Licensed therapists. 1136 S State Street, Salt Lake City.">
   <meta name="keywords" content="{kw_csv}">
   <link rel="canonical" href="https://elitespautah.com/{slug}">
-  <meta property="og:title" content="{name} — Elite Spa Utah">
+  <meta property="og:title" content="{name} · Elite Spa Utah">
   <meta property="og:description" content="{tagline} From {price_from}. Same-day appointments at 1136 S State Street.">
   <meta property="og:url" content="https://elitespautah.com/{slug}">
   <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
@@ -194,9 +212,11 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     ]
   }}
   </script>
-  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
-  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
-  <script defer src="/assets/motion.js?v=1"></script>
+  <!-- Motion + chat widget are deferred off the first-paint path (idle /
+       first-interaction). See assets/defer-load.js. The page is fully visible
+       and usable without JS, so static service pages no longer ship ~116KB of
+       GSAP eagerly. -->
+  <script src="/assets/defer-load.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -231,13 +251,18 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
       </div>
     </section>
 
+    <!-- Hero photo is INTERIM/SWAPPABLE (assets/img placeholder, 2026-06-25). -->
+    <figure class="svc-hero-media" data-reveal>
+      <img src="/assets/img/{hero_img}" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="eager" decoding="async">
+    </figure>
+
     <section class="container container--content section">
       <div class="cols-2">
         <div>
           <h2 data-reveal>What it does</h2>
           <p data-reveal>{description}</p>
-          <h3 style="margin-top: var(--space-4); font-size: var(--type-4); font-family: var(--type-ui); font-weight: 500; letter-spacing: 0;" data-reveal>Best for</h3>
-          <ul style="padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7;" data-reveal-stagger>
+          <h3 class="svc-subhead" data-reveal>Best for</h3>
+          <ul class="svc-best-for" data-reveal-stagger>
 {best_for_html}
           </ul>
         </div>
@@ -246,7 +271,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
           <div class="price-table" data-reveal>
 {prices_html}
           </div>
-          <p style="margin-top: var(--space-3); font-size: var(--type-7); color: var(--ink-muted);">Add-ons — hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each — added at booking.</p>
+          <p class="svc-note">Add-ons · hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each, added at booking.</p>
           <p style="margin-top: var(--space-3)">
             <a class="btn btn--primary" href="/book">Book {name}</a>
           </p>
@@ -308,8 +333,8 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
-  <!-- GoHighLevel chat widget -->
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3602e7d896e3ca46331853" data-source="WEB_USER"></script>
+  <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
+       interaction (or idle) so it never competes with first paint. -->
 </body>
 </html>
 '''
@@ -320,7 +345,7 @@ def render_best_for(items):
 
 
 def render_prices(prices):
-    # 60 min is the most-booked duration — visually weighted, no copy change.
+    # 60 min is the most-booked duration, visually weighted, no copy change.
     return "\n".join(
         f'            <div class="price-row{" price-row--featured" if minutes == 60 else ""}"><p class="price-row__name">{minutes} min</p><span class="price-row__time">{minutes} minutes</span><span class="price-row__amount">{price}</span></div>'
         for minutes, price in prices
@@ -342,6 +367,7 @@ def main():
         kws = KEYWORDS.get(s["slug"], [f'{s["name"]} in Salt Lake City'])
         kw_primary = kws[0]
         kw_csv = ", ".join(kws)
+        hero = HERO_IMAGES.get(s["slug"], DEFAULT_HERO)
         html = PAGE_TEMPLATE.format(
             slug=s["slug"],
             name=s["name"],
@@ -355,6 +381,10 @@ def main():
             related_html=render_related(s["related"], SLUG_TO_NAME),
             price_from=price_from,
             price_from_num=price_from_num,
+            hero_img=hero["img"],
+            hero_alt=hero["alt"],
+            hero_w=hero["w"],
+            hero_h=hero["h"],
         )
         path = os.path.join(out_dir, f"{s['slug']}.html")
         with open(path, "w", encoding="utf-8", newline="\n") as f:
