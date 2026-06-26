@@ -338,7 +338,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
         </div>
       </div>
       <div class="site-footer__legal">
-        <span>&#169; 2026 Elite Spa Utah &middot; Operated by J Massage LLC</span>
+        <span>© 2026 Elite Spa Utah &middot; Operated by J Massage LLC</span>
         <span>Licensed massage therapists, State of Utah</span>
       </div>
     </div>
@@ -411,12 +411,12 @@ AREAS = [
       <h2 data-reveal>Services worth knowing about</h2>
       <p data-reveal>Sugar House clients tend to start with one service and build from there. Here is a practical starting point based on what works for this neighborhood's lifestyle:</p>
       <ul class="svc-best-for" data-reveal-stagger>
-        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; the go-to for chronic back, neck, and shoulder tension from desk work or heavy training. 60, 90, or 120 minutes.</li>
-        <li><a href="/sports-massage">Sports Massage</a> &mdash; active-recovery work for runners, cyclists, and gym-goers who use the parks and trails in and around Sugar House.</li>
-        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body relaxation for when tension is systemic and you need to reset the whole nervous system.</li>
-        <li><a href="/couples-massage">Couples Massage</a> &mdash; private suite, two therapists, side-by-side. A reliable date-night upgrade for Sugar House's weekend crowd.</li>
-        <li><a href="/head-spa-massage">Japanese Head Spa</a> &mdash; scalp, neck, and shoulder work for the screen-fatigued professional. One hour, fully clothed, and most clients fall asleep.</li>
-        <li><a href="/individual-massage">Individual Massage</a> &mdash; tell the therapist what is bothering you. They build the session from there. The best option once you become a regular.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a>: the go-to for chronic back, neck, and shoulder tension from desk work or heavy training. 60, 90, or 120 minutes.</li>
+        <li><a href="/sports-massage">Sports Massage</a>: active-recovery work for runners, cyclists, and gym-goers who use the parks and trails in and around Sugar House.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a>: full-body relaxation for when tension is systemic and you need to reset the whole nervous system.</li>
+        <li><a href="/couples-massage">Couples Massage</a>: private suite, two therapists, side-by-side. A reliable date-night upgrade for Sugar House's weekend crowd.</li>
+        <li><a href="/head-spa-massage">Japanese Head Spa</a>: scalp, neck, and shoulder work for the screen-fatigued professional. One hour, fully clothed, and most clients fall asleep.</li>
+        <li><a href="/individual-massage">Individual Massage</a>: tell the therapist what is bothering you. They build the session from there. The best option once you become a regular.</li>
       </ul>
       <p data-reveal>Add-ons are available at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each).</p>
 
@@ -439,7 +439,7 @@ AREAS = [
       <p data-reveal>Street parking on State Street and the surrounding blocks is generally available. The studio does not have a dedicated lot, but the neighborhood is navigable on foot from the 900 South TRAX station.</p>
 
       <h3 class="svc-subhead" data-reveal>How do I know which service to book for my first visit?</h3>
-      <p data-reveal>If you carry tension in your upper back and neck, start with deep tissue. If you want full-body relaxation with no specific complaint, book Swedish. If you are unsure, call the studio at (801) 839-8880 and we will point you in the right direction based on what you describe.</p>
+      <p data-reveal>If you carry tension in your upper back and neck, start with deep tissue. For full-body relaxation with no specific complaint, Swedish is the right choice. When you are unsure, call the studio at (801) 839-8880 and we will point you in the right direction based on what you describe.</p>
 
       <div class="nap-block" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--color-cream, #f9f6f1); border-radius: 4px;">
         <p><strong>Elite Spa Utah</strong><br>
@@ -484,17 +484,17 @@ AREAS = [
       <h2 data-reveal>Services for the downtown visitor and worker</h2>
       <p data-reveal>The full service menu is available to downtown clients. These options align most closely with what downtown clients typically need:</p>
       <ul class="svc-best-for" data-reveal-stagger>
-        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body relaxation, ideal for travel fatigue or a mid-week stress reset. 60, 90, or 120 minutes from $85.</li>
-        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; targeted pressure for the chronic shoulder and neck tension that desk work produces. The most-requested service among our downtown regulars.</li>
-        <li><a href="/chair-massage">Chair Massage</a> &mdash; focused work on the neck, upper back, and shoulders. Fully clothed. A strong option for a lunch-break reset without the full session commitment.</li>
-        <li><a href="/couples-massage">Couples Massage</a> &mdash; private suite, two therapists working in tandem. A well-used option for hotel guests on a special occasion visit to the city.</li>
-        <li><a href="/4-hands-massage">4-Hands Massage</a> &mdash; two therapists, one client. Covers the full body with coordinated pressure and is the most efficient session for someone who has limited time and significant full-body tension.</li>
-        <li><a href="/individual-massage">Individual Massage</a> &mdash; a customized blend of techniques built around what you describe to the therapist. Preferred by returning clients who trust the therapist to read the room.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a>: full-body relaxation, ideal for travel fatigue or a mid-week stress reset. 60, 90, or 120 minutes from $85.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a>: targeted pressure for the chronic shoulder and neck tension that desk work produces. The most-requested service among our downtown regulars.</li>
+        <li><a href="/chair-massage">Chair Massage</a>: focused work on the neck, upper back, and shoulders. Fully clothed. A strong option for a lunch-break reset without the full session commitment.</li>
+        <li><a href="/couples-massage">Couples Massage</a>: private suite, two therapists working in tandem. A well-used option for hotel guests on a special occasion visit to the city.</li>
+        <li><a href="/4-hands-massage">4-Hands Massage</a>: two therapists, one client. Covers the full body with coordinated pressure and is the most efficient session for someone who has limited time and significant full-body tension.</li>
+        <li><a href="/individual-massage">Individual Massage</a>: a customized blend of techniques built around what you describe to the therapist. Preferred by returning clients who trust the therapist to read the room.</li>
       </ul>
       <p data-reveal>Add-ons available at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each). Add-ons work well when you have the time to let the session run long and want more out of the hour.</p>
 
       <h2 data-reveal>Getting here from downtown</h2>
-      <p data-reveal>The studio is at 1136 S State Street, Salt Lake City, UT 84111. From Temple Square and the City Creek area, drive or walk south on State Street for about 1.2 miles. From the TRAX stations at 400 South and 600 South, the 9-line or the 200-line bus on State Street will bring you close. Street parking is available on State Street and on the side streets east of the studio.</p>
+      <p data-reveal>The studio is at 1136 S State Street, Salt Lake City, UT 84111. From Temple Square and the City Creek area, drive or walk south on State Street for about 1.2 miles. From the TRAX stations at 400 South and 600 South, UTA Route 200 (State Street bus) runs directly along State Street to our stop. Street parking is available on State Street and on the side streets east of the studio.</p>
       <p data-reveal>We are open every day of the week from 10AM to 10PM. If you are booking same-day, call (801) 839-8880 to confirm availability before coming in. Online booking is at elitespautah.com/book and updates in real time.</p>
 
       <h2 data-reveal>Questions from downtown clients</h2>
@@ -557,12 +557,12 @@ AREAS = [
       <h2 data-reveal>Services for the Millcreek lifestyle</h2>
       <p data-reveal>These services address what Millcreek clients most frequently bring in:</p>
       <ul class="svc-best-for" data-reveal-stagger>
-        <li><a href="/sports-massage">Sports Massage</a> &mdash; active-recovery work combining stretching, compression, and targeted pressure. The best fit for canyon hikers, trail runners, and weekend cyclists. 60, 90, or 120 minutes from $85.</li>
-        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; slow, firm pressure targeting chronic adhesions in the back, hips, and shoulders. The layered tension of an active outdoor life over a desk-work week responds well to this approach.</li>
-        <li><a href="/prenatal-massage">Prenatal Massage</a> &mdash; gentle, side-lying work for second and third trimester. Addresses lower back, hip, and leg tension. Millcreek's family rate makes this one of our most-requested services in the area.</li>
-        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body relaxation. Long, flowing strokes to reset the entire nervous system after a week that moved too fast.</li>
-        <li><a href="/shiatsu-massage">Shiatsu</a> &mdash; pressure-point work along energy meridians, performed clothed. A good option when you want effective bodywork without oil or draping.</li>
-        <li><a href="/individual-massage">Individual Massage</a> &mdash; customized blend based on what you tell the therapist. The best return-visit option once you know what your body needs.</li>
+        <li><a href="/sports-massage">Sports Massage</a>: active-recovery work combining stretching, compression, and targeted pressure. The best fit for canyon hikers, trail runners, and weekend cyclists. 60, 90, or 120 minutes from $85.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a>: slow, firm pressure targeting chronic adhesions in the back, hips, and shoulders. The layered tension of an active outdoor life over a desk-work week responds well to this approach.</li>
+        <li><a href="/prenatal-massage">Prenatal Massage</a>: gentle, side-lying work for second and third trimester. Addresses lower back, hip, and leg tension. Millcreek&rsquo;s high proportion of households with children under 18 makes this a frequently requested service in the area.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a>: full-body relaxation. Long, flowing strokes to reset the entire nervous system after a week that moved too fast.</li>
+        <li><a href="/shiatsu-massage">Shiatsu</a>: pressure-point work along energy meridians, performed clothed. A good option when you want effective bodywork without oil or draping.</li>
+        <li><a href="/individual-massage">Individual Massage</a>: customized blend based on what you tell the therapist. The best return-visit option once you know what your body needs.</li>
       </ul>
       <p data-reveal>Add-ons at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each).</p>
 
@@ -633,12 +633,12 @@ AREAS = [
       <h2 data-reveal>Services for Holladay residents</h2>
       <p data-reveal>These are the services that align most closely with what Holladay clients bring in:</p>
       <ul class="svc-best-for" data-reveal-stagger>
-        <li><a href="/couples-massage">Couples Massage</a> &mdash; private suite, two therapists, side-by-side. A natural fit for Holladay&rsquo;s married-couple majority. 60, 90, or 120 minutes from $165.</li>
-        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; firm, deliberate pressure for the chronic back and shoulder tension that accumulates through an active and working life. From $85.</li>
-        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body restoration for the client who needs to stop moving and let the body recover from the week. A reliable reset regardless of fitness level.</li>
-        <li><a href="/sports-massage">Sports Massage</a> &mdash; active-recovery work for the Mount Olympus hiker or outdoor athlete who carries specific muscle tightness after weekend exertion.</li>
-        <li><a href="/prenatal-massage">Prenatal Massage</a> &mdash; side-lying, trimester-appropriate work for lower-back and hip tension during pregnancy. Available for clients in the second and third trimester.</li>
-        <li><a href="/foot-reflexology-massage">Foot Reflexology</a> &mdash; pressure-point work on the feet, no disrobing required. A straightforward option when you want a focused 60-minute session without committing to a full table massage.</li>
+        <li><a href="/couples-massage">Couples Massage</a>: private suite, two therapists, side-by-side. A natural fit for Holladay&rsquo;s married-couple majority. 60, 90, or 120 minutes from $165.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a>: firm, deliberate pressure for the chronic back and shoulder tension that accumulates through an active and working life. From $85.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a>: full-body restoration for the client who needs to stop moving and let the body recover from the week. A reliable reset regardless of fitness level.</li>
+        <li><a href="/sports-massage">Sports Massage</a>: active-recovery work for the Mount Olympus hiker or outdoor athlete who carries specific muscle tightness after weekend exertion.</li>
+        <li><a href="/prenatal-massage">Prenatal Massage</a>: side-lying, trimester-appropriate work for lower-back and hip tension during pregnancy. Available for clients in the second and third trimester.</li>
+        <li><a href="/foot-reflexology-massage">Foot Reflexology</a>: pressure-point work on the feet, no disrobing required. A straightforward option when you want a focused 60-minute session without committing to a full table massage.</li>
       </ul>
       <p data-reveal>Add-ons at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each). The infrared sauna add-on is a popular combination with deep tissue for clients driving in from the Holladay area.</p>
 
@@ -751,7 +751,7 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
         "@type": "BreadcrumbList",
         "itemListElement": [
           {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://elitespautah.com/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "Areas", "item": "https://elitespautah.com/services" }},
+          {{ "@type": "ListItem", "position": 2, "name": "Services", "item": "https://elitespautah.com/services" }},
           {{ "@type": "ListItem", "position": 3, "name": "Massage in {name}", "item": "https://elitespautah.com/massage-in-{slug}" }}
         ]
       }}
