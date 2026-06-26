@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Individual Massage — Elite Spa Utah, Salt Lake City</title>
+  <title>Individual Massage · Elite Spa Utah, Salt Lake City</title>
   <meta name="description" content="Custom massage in Salt Lake City at Elite Spa Utah. Customized session, single therapist. From $85. Same-day appointments. Licensed therapists. 1136 S State Street, Salt Lake City.">
   <meta name="keywords" content="Custom massage in Salt Lake City, personalized massage session, tailored bodywork">
   <link rel="canonical" href="https://elitespautah.com/individual-massage">
-  <meta property="og:title" content="Individual Massage — Elite Spa Utah">
+  <meta property="og:title" content="Individual Massage · Elite Spa Utah">
   <meta property="og:description" content="Customized session, single therapist. From $85. Same-day appointments at 1136 S State Street.">
   <meta property="og:url" content="https://elitespautah.com/individual-massage">
   <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
@@ -40,9 +40,11 @@
     ]
   }
   </script>
-  <script defer src="/assets/vendor/gsap.min.js?v=1"></script>
-  <script defer src="/assets/vendor/ScrollTrigger.min.js?v=1"></script>
-  <script defer src="/assets/motion.js?v=1"></script>
+  <!-- Motion + chat widget are deferred off the first-paint path (idle /
+       first-interaction). See assets/defer-load.js. The page is fully visible
+       and usable without JS, so static service pages no longer ship ~116KB of
+       GSAP eagerly. -->
+  <script src="/assets/defer-load.js?v=1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -77,13 +79,18 @@
       </div>
     </section>
 
+    <!-- Hero photo is INTERIM/SWAPPABLE (assets/img placeholder, 2026-06-25). -->
+    <figure class="svc-hero-media" data-reveal>
+      <img src="/assets/img/treatment-room.webp" alt="Warm, dimly lit private massage room with a draped table at Elite Spa Utah" width="1376" height="768" loading="eager" decoding="async">
+    </figure>
+
     <section class="container container--content section">
       <div class="cols-2">
         <div>
           <h2 data-reveal>What it does</h2>
-          <p data-reveal>Show up, talk to your therapist about what hurts, and get a custom blend of techniques tailored to that day. Most regular clients eventually default to this — they trust their therapist to read the room.</p>
-          <h3 style="margin-top: var(--space-4); font-size: var(--type-4); font-family: var(--type-ui); font-weight: 500; letter-spacing: 0;" data-reveal>Best for</h3>
-          <ul style="padding-left: 1.2em; color: var(--ink-muted); line-height: 1.7;" data-reveal-stagger>
+          <p data-reveal>Show up, talk to your therapist about what hurts, and get a custom blend of techniques tailored to that day. Most regular clients eventually default to this; they trust their therapist to read the room.</p>
+          <h3 class="svc-subhead" data-reveal>Best for</h3>
+          <ul class="svc-best-for" data-reveal-stagger>
             <li>Returning clients</li>
             <li>Mixed needs (some tension, some relaxation)</li>
             <li>When you don't want to choose</li>
@@ -97,7 +104,7 @@
             <div class="price-row"><p class="price-row__name">90 min</p><span class="price-row__time">90 minutes</span><span class="price-row__amount">$125</span></div>
             <div class="price-row"><p class="price-row__name">120 min</p><span class="price-row__time">120 minutes</span><span class="price-row__amount">$165</span></div>
           </div>
-          <p style="margin-top: var(--space-3); font-size: var(--type-7); color: var(--ink-muted);">Add-ons — hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each — added at booking.</p>
+          <p class="svc-note">Add-ons · hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each, added at booking.</p>
           <p style="margin-top: var(--space-3)">
             <a class="btn btn--primary" href="/book">Book Individual Massage</a>
           </p>
@@ -161,7 +168,7 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
-  <!-- GoHighLevel chat widget -->
-  <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a3602e7d896e3ca46331853" data-source="WEB_USER"></script>
+  <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
+       interaction (or idle) so it never competes with first paint. -->
 </body>
 </html>
