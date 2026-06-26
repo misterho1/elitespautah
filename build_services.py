@@ -1,6 +1,7 @@
-"""Generate the 14 service detail pages from one template + service data.
+"""Generate service detail pages and neighborhood hub pages from templates + data.
 Run from the project root: `python build_services.py`
-Each service gets a clean ~5KB HTML file matching the homepage's design system."""
+Each service gets a clean ~5KB HTML file matching the homepage's design system.
+Each neighborhood hub page captures '{service} in {area}' local search intent."""
 
 import os
 
@@ -326,9 +327,18 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
             <li><a href="/contact">Contact form</a></li>
           </ul>
         </div>
+        <div>
+          <p class="site-footer__heading">Areas We Serve</p>
+          <ul class="site-footer__list">
+            <li><a href="/massage-in-sugar-house">Massage in Sugar House</a></li>
+            <li><a href="/massage-in-downtown-salt-lake-city">Massage in Downtown SLC</a></li>
+            <li><a href="/massage-in-millcreek">Massage near Millcreek</a></li>
+            <li><a href="/massage-in-holladay">Massage near Holladay</a></li>
+          </ul>
+        </div>
       </div>
       <div class="site-footer__legal">
-        <span>© 2026 Elite Spa Utah · Operated by J Massage LLC</span>
+        <span>&#169; 2026 Elite Spa Utah &middot; Operated by J Massage LLC</span>
         <span>Licensed massage therapists, State of Utah</span>
       </div>
     </div>
@@ -359,6 +369,476 @@ def render_related(related_slugs, services_by_slug):
         f'          <a class="service-card" href="/{slug}"><h3 class="service-card__title">{services_by_slug[slug]}</h3><p class="service-card__desc">View details and pricing →</p></a>'
         for slug in related_slugs
     )
+
+
+# ---------------------------------------------------------------------------
+# Neighborhood hub pages
+# ---------------------------------------------------------------------------
+
+AREAS = [
+    {
+        "slug": "sugar-house",
+        "name": "Sugar House",
+        "title_area": "Sugar House, Salt Lake City",
+        "meta_desc": "Massage in Sugar House at Elite Spa Utah. Licensed therapists, private rooms, same-day appointments. 10 minutes from 2100 South on State Street.",
+        "body": """\
+    <section class="page-header" data-hero>
+      <div class="container container--narrow">
+        <p class="eyebrow">Salt Lake City &rsaquo; Sugar House</p>
+        <h1><span class="line"><span class="line-inner">Massage in Sugar House</span></span></h1>
+        <p class="lead">Elite Spa Utah serves Sugar House residents from our studio at 1136 S State Street, about 10 minutes north on State Street.</p>
+        <p style="margin-top: var(--space-3)" data-hero-cta>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
+        </p>
+      </div>
+    </section>
+
+    <figure class="svc-hero-media" data-reveal>
+      <img src="/assets/img/treatment-room.webp" alt="Warm, dimly lit private massage room at Elite Spa Utah" width="1376" height="768" loading="eager" decoding="async">
+    </figure>
+
+    <section class="container container--content section">
+      <h2 data-reveal>A short trip from the &ldquo;Second Downtown&rdquo;</h2>
+      <p data-reveal>Sugar House sits at the center of Salt Lake City's social life. The neighborhood around 2100 South and Highland Drive runs dense with coffee shops, restaurants, and independent businesses. That energy is part of what makes Sugar House residents so worn out by Thursday. You move through the city, you stay active at Sugar House Park, and the tension builds up in your neck and lower back the way it always does.</p>
+      <p data-reveal>Elite Spa Utah is a 10-minute drive north on State Street from the Sugar House commercial core. If you take the S Line streetcar to the 900 South TRAX station, the walk south to our studio is about eight minutes. No parking problems, no complicated detour. You finish work, you come in, you leave feeling like a different person.</p>
+
+      <h2 data-reveal>Why Sugar House clients choose Elite</h2>
+      <p data-reveal>Westminster University students, remote workers in the apartments along 1300 East, people who spend their weekends at Hidden Hollow or on the trails above the neighborhood: they all carry the same physical pattern. Shoulders loaded from screens, hips tight from sitting, and a baseline of stress that does not switch off when the laptop closes.</p>
+      <p data-reveal>Our therapists work with that pattern every day. A deep tissue session targets the adhesions in the mid-back and shoulder girdle. Sports massage restores hip flexor length for runners who log miles on the Bonneville Shoreline Trail. Swedish massage works for the person who just needs to stop thinking for 60 minutes. We match the technique to what your body is actually carrying, not a default protocol.</p>
+      <p data-reveal>Same-day appointments are available most days. Private rooms, licensed therapists, no shared waiting areas. The studio is quiet in a way that the Sugar House restaurant strip is not, and that difference is part of the service.</p>
+
+      <h2 data-reveal>Services worth knowing about</h2>
+      <p data-reveal>Sugar House clients tend to start with one service and build from there. Here is a practical starting point based on what works for this neighborhood's lifestyle:</p>
+      <ul class="svc-best-for" data-reveal-stagger>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; the go-to for chronic back, neck, and shoulder tension from desk work or heavy training. 60, 90, or 120 minutes.</li>
+        <li><a href="/sports-massage">Sports Massage</a> &mdash; active-recovery work for runners, cyclists, and gym-goers who use the parks and trails in and around Sugar House.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body relaxation for when tension is systemic and you need to reset the whole nervous system.</li>
+        <li><a href="/couples-massage">Couples Massage</a> &mdash; private suite, two therapists, side-by-side. A reliable date-night upgrade for Sugar House's weekend crowd.</li>
+        <li><a href="/head-spa-massage">Japanese Head Spa</a> &mdash; scalp, neck, and shoulder work for the screen-fatigued professional. One hour, fully clothed, and most clients fall asleep.</li>
+        <li><a href="/individual-massage">Individual Massage</a> &mdash; tell the therapist what is bothering you. They build the session from there. The best option once you become a regular.</li>
+      </ul>
+      <p data-reveal>Add-ons are available at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each).</p>
+
+      <h2 data-reveal>Getting here from Sugar House</h2>
+      <p data-reveal>The address is 1136 S State Street, Salt Lake City, UT 84111. From the Sugar House commercial core at 2100 South and Highland Drive, head north on Highland Drive to State Street and continue north. The drive is under 10 minutes with light traffic. Street parking is available on State Street and on adjacent side streets. If you take the S Line to the 900 South TRAX/streetcar station, we are a short walk south on State Street.</p>
+      <p data-reveal>We are open daily from 10AM to 10PM. Same-day bookings are accepted online and by phone. Call (801) 839-8880 or book at the button below.</p>
+
+      <h2 data-reveal>Questions from Sugar House clients</h2>
+
+      <h3 class="svc-subhead" data-reveal>How long does it take to get to Elite Spa Utah from Sugar House?</h3>
+      <p data-reveal>From 2100 South and Highland Drive, expect 8 to 12 minutes by car depending on traffic on State Street. The S Line streetcar to the downtown TRAX network puts you within walking distance of the studio without a car.</p>
+
+      <h3 class="svc-subhead" data-reveal>Do you offer same-day massage appointments?</h3>
+      <p data-reveal>Yes. Same-day appointments are available most days depending on therapist schedule. Book online at elitespautah.com/book or call (801) 839-8880 to check availability.</p>
+
+      <h3 class="svc-subhead" data-reveal>What is the difference between deep tissue and sports massage?</h3>
+      <p data-reveal>Deep tissue targets chronic adhesions and persistent tension through slow, firm pressure. Sports massage combines compression, stretching, and targeted pressure to aid active recovery and restore range of motion. If you train regularly, sports massage is the better fit. If your tension is from sitting and stress, deep tissue tends to address it more directly.</p>
+
+      <h3 class="svc-subhead" data-reveal>Is parking available near the studio?</h3>
+      <p data-reveal>Street parking on State Street and the surrounding blocks is generally available. The studio does not have a dedicated lot, but the neighborhood is navigable on foot from the 900 South TRAX station.</p>
+
+      <h3 class="svc-subhead" data-reveal>How do I know which service to book for my first visit?</h3>
+      <p data-reveal>If you carry tension in your upper back and neck, start with deep tissue. If you want full-body relaxation with no specific complaint, book Swedish. If you are unsure, call the studio at (801) 839-8880 and we will point you in the right direction based on what you describe.</p>
+
+      <div class="nap-block" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--color-cream, #f9f6f1); border-radius: 4px;">
+        <p><strong>Elite Spa Utah</strong><br>
+        1136 S State Street, Salt Lake City, UT 84111<br>
+        <a href="tel:+18018398880">(801) 839-8880</a><br>
+        Open daily 10AM&ndash;10PM</p>
+      </div>
+    </section>""",
+    },
+    {
+        "slug": "downtown-salt-lake-city",
+        "name": "Downtown Salt Lake City",
+        "title_area": "Downtown Salt Lake City",
+        "meta_desc": "Massage in downtown Salt Lake City at Elite Spa Utah, 1136 S State Street. Same-day appointments, licensed therapists, private rooms. Walk from most downtown hotels.",
+        "body": """\
+    <section class="page-header" data-hero>
+      <div class="container container--narrow">
+        <p class="eyebrow">Salt Lake City &rsaquo; Downtown</p>
+        <h1><span class="line"><span class="line-inner">Massage in Downtown Salt Lake City</span></span></h1>
+        <p class="lead">Elite Spa Utah is on State Street in the downtown corridor. For anyone working, visiting, or staying in central SLC, this is not a destination spa requiring a drive.</p>
+        <p style="margin-top: var(--space-3)" data-hero-cta>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
+        </p>
+      </div>
+    </section>
+
+    <figure class="svc-hero-media" data-reveal>
+      <img src="/assets/img/treatment-room.webp" alt="Warm, dimly lit private massage room at Elite Spa Utah in Salt Lake City" width="1376" height="768" loading="eager" decoding="async">
+    </figure>
+
+    <section class="container container--content section">
+      <h2 data-reveal>On State Street, in the thick of it</h2>
+      <p data-reveal>State Street runs south from the steps of the Utah State Capitol. By the time it reaches 1136 South, it has passed through the heart of downtown: the financial district, the legal corridor, the hotel row, the dining cluster around 200 South. Our studio sits a few blocks past that concentration, which means it is quiet enough to unwind in but close enough to reach on foot from most downtown blocks.</p>
+      <p data-reveal>Downtown Salt Lake City employs tens of thousands of people in offices within a five-block radius of State Street. The pattern in those buildings is familiar: long hours, stressful weeks, and a nagging tension in the neck and shoulders that accumulates from Monday to Friday. Elite Spa Utah exists to interrupt that pattern. We are open daily from 10AM to 10PM, same-day appointments accepted, and you do not need to leave the general downtown area to get here.</p>
+
+      <h2 data-reveal>Who we serve in the downtown area</h2>
+      <p data-reveal>Downtown SLC draws office workers, hotel guests, and convention visitors in roughly equal measure on any given day. Each group has a different reason to come in.</p>
+      <p data-reveal>Office workers in the nearby buildings tend to book a 60-minute session after work or on a lunch hour when the schedule allows. The 60-minute deep tissue or Swedish massage fits the downtown workday cadence: in at 5:30, out by 7:00, dinner on the way home. For the person who sits at a desk for eight hours straight, that 60 minutes addresses more than the physical tension. It creates a clear boundary between the work day and the evening.</p>
+      <p data-reveal>Hotel guests and convention visitors face a different problem: they are tired from travel, they are sleeping in a different bed, and they have no car to get to a wellness appointment across town. Our location on State Street is a short taxi or rideshare from every major downtown hotel. Several guests walk from the Marriott and Hilton properties on 100 South. The same-day booking model works well for this group because conference schedules change and you need flexibility.</p>
+
+      <h2 data-reveal>Services for the downtown visitor and worker</h2>
+      <p data-reveal>The full service menu is available to downtown clients. These options align most closely with what downtown clients typically need:</p>
+      <ul class="svc-best-for" data-reveal-stagger>
+        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body relaxation, ideal for travel fatigue or a mid-week stress reset. 60, 90, or 120 minutes from $85.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; targeted pressure for the chronic shoulder and neck tension that desk work produces. The most-requested service among our downtown regulars.</li>
+        <li><a href="/chair-massage">Chair Massage</a> &mdash; focused work on the neck, upper back, and shoulders. Fully clothed. A strong option for a lunch-break reset without the full session commitment.</li>
+        <li><a href="/couples-massage">Couples Massage</a> &mdash; private suite, two therapists working in tandem. A well-used option for hotel guests on a special occasion visit to the city.</li>
+        <li><a href="/4-hands-massage">4-Hands Massage</a> &mdash; two therapists, one client. Covers the full body with coordinated pressure and is the most efficient session for someone who has limited time and significant full-body tension.</li>
+        <li><a href="/individual-massage">Individual Massage</a> &mdash; a customized blend of techniques built around what you describe to the therapist. Preferred by returning clients who trust the therapist to read the room.</li>
+      </ul>
+      <p data-reveal>Add-ons available at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each). Add-ons work well when you have the time to let the session run long and want more out of the hour.</p>
+
+      <h2 data-reveal>Getting here from downtown</h2>
+      <p data-reveal>The studio is at 1136 S State Street, Salt Lake City, UT 84111. From Temple Square and the City Creek area, drive or walk south on State Street for about 1.2 miles. From the TRAX stations at 400 South and 600 South, the 9-line or the 200-line bus on State Street will bring you close. Street parking is available on State Street and on the side streets east of the studio.</p>
+      <p data-reveal>We are open every day of the week from 10AM to 10PM. If you are booking same-day, call (801) 839-8880 to confirm availability before coming in. Online booking is at elitespautah.com/book and updates in real time.</p>
+
+      <h2 data-reveal>Questions from downtown clients</h2>
+
+      <h3 class="svc-subhead" data-reveal>Can I book a massage on the same day I arrive in Salt Lake City?</h3>
+      <p data-reveal>Yes. Same-day appointments are our most common booking type. Check availability at elitespautah.com/book or call (801) 839-8880. We recommend calling if you need a specific time window within a few hours, since the online system updates but may not reflect the most recent opening.</p>
+
+      <h3 class="svc-subhead" data-reveal>How far is Elite Spa Utah from the downtown hotels?</h3>
+      <p data-reveal>From the hotel cluster along 100 South to 300 South, the studio is about 1 to 1.5 miles south on State Street. A rideshare takes 5 minutes. The walk is manageable in good weather and under 25 minutes.</p>
+
+      <h3 class="svc-subhead" data-reveal>Do you take walk-in appointments?</h3>
+      <p data-reveal>Walk-ins are welcome when there is availability. To avoid waiting, book ahead online or by phone. Same-day slots often fill by early afternoon, so morning booking gives you the best selection of times.</p>
+
+      <h3 class="svc-subhead" data-reveal>What should I do about parking on State Street?</h3>
+      <p data-reveal>Street parking is available on State Street and on the cross streets near the studio. Metered parking is common in this part of downtown. TRAX and buses run on State Street if you prefer to arrive without a car.</p>
+
+      <h3 class="svc-subhead" data-reveal>Is a couples massage available without booking far in advance?</h3>
+      <p data-reveal>The couples suite requires two therapists to be available at the same time. For weekend evenings and Friday nights, a day or two of advance booking is practical. For weekday sessions or off-peak hours, same-day or next-day availability is common. Call us to check.</p>
+
+      <div class="nap-block" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--color-cream, #f9f6f1); border-radius: 4px;">
+        <p><strong>Elite Spa Utah</strong><br>
+        1136 S State Street, Salt Lake City, UT 84111<br>
+        <a href="tel:+18018398880">(801) 839-8880</a><br>
+        Open daily 10AM&ndash;10PM</p>
+      </div>
+    </section>""",
+    },
+    {
+        "slug": "millcreek",
+        "name": "Millcreek",
+        "title_area": "Millcreek, Utah",
+        "meta_desc": "Massage near Millcreek, Utah at Elite Spa Utah. 15 minutes north on State Street. Deep tissue, sports massage, Swedish, and more. Same-day appointments available.",
+        "body": """\
+    <section class="page-header" data-hero>
+      <div class="container container--narrow">
+        <p class="eyebrow">Salt Lake County &rsaquo; Millcreek</p>
+        <h1><span class="line"><span class="line-inner">Massage near Millcreek</span></span></h1>
+        <p class="lead">Elite Spa Utah is 15 minutes north of Millcreek on State Street. Same-day appointments, licensed therapists, and private rooms on the Salt Lake City side of the county line.</p>
+        <p style="margin-top: var(--space-3)" data-hero-cta>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
+        </p>
+      </div>
+    </section>
+
+    <figure class="svc-hero-media" data-reveal>
+      <img src="/assets/img/treatment-room.webp" alt="Private massage room at Elite Spa Utah, serving Millcreek residents" width="1376" height="768" loading="eager" decoding="async">
+    </figure>
+
+    <section class="container container--content section">
+      <h2 data-reveal>Millcreek: Utah&rsquo;s newest city, with familiar tension</h2>
+      <p data-reveal>Millcreek incorporated in December 2016, making it the newest city in Utah. The people who live here have been here for generations, and the tension they carry is not new. The median age is 35, the household rate for children under 18 is 28%, and the recreational culture runs deep. Mill Creek Canyon is out the back door. The Wasatch is 15 minutes east. Families here are active, and active bodies accumulate wear in specific places.</p>
+      <p data-reveal>Millcreek also sends a large number of commuters north into Salt Lake City every workday. If you are already making that drive, the turn onto State Street toward Elite Spa Utah adds almost no time to your trip. The studio is at 1136 S State Street, which sits between Millcreek and the core of downtown SLC. You pass through our neighborhood on the way in or on the way back.</p>
+
+      <h2 data-reveal>What brings Millcreek clients in</h2>
+      <p data-reveal>The Canyon Rim, East Mill Creek, and Mount Olympus neighborhoods in particular send us clients with a consistent physical pattern: hip flexor and IT band tightness from trail running and canyon hiking, lower-back tension from desk work layered on top of weekend exertion, and the general full-body fatigue that comes from being a working parent in a place where the mountains are always visible and always calling.</p>
+      <p data-reveal>Our therapists know that pattern. Sports massage is the most effective tool for the Millcreek hiker who pushed too hard on a Saturday in Big Cottonwood Canyon and is paying for it by Monday. Deep tissue addresses the chronic adhesions that build up when high-activity weekends and high-stress workweeks alternate without a recovery protocol. Swedish massage serves the person who simply needs to stop moving for an hour and let the nervous system recalibrate.</p>
+      <p data-reveal>We do not rush sessions. A 90-minute deep tissue appointment runs a full 90 minutes of hands-on work. Private rooms, licensed therapists, no shared spaces. The studio stays quiet in a way that makes the hour feel longer than it is, which is the point.</p>
+
+      <h2 data-reveal>Services for the Millcreek lifestyle</h2>
+      <p data-reveal>These services address what Millcreek clients most frequently bring in:</p>
+      <ul class="svc-best-for" data-reveal-stagger>
+        <li><a href="/sports-massage">Sports Massage</a> &mdash; active-recovery work combining stretching, compression, and targeted pressure. The best fit for canyon hikers, trail runners, and weekend cyclists. 60, 90, or 120 minutes from $85.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; slow, firm pressure targeting chronic adhesions in the back, hips, and shoulders. The layered tension of an active outdoor life over a desk-work week responds well to this approach.</li>
+        <li><a href="/prenatal-massage">Prenatal Massage</a> &mdash; gentle, side-lying work for second and third trimester. Addresses lower back, hip, and leg tension. Millcreek's family rate makes this one of our most-requested services in the area.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body relaxation. Long, flowing strokes to reset the entire nervous system after a week that moved too fast.</li>
+        <li><a href="/shiatsu-massage">Shiatsu</a> &mdash; pressure-point work along energy meridians, performed clothed. A good option when you want effective bodywork without oil or draping.</li>
+        <li><a href="/individual-massage">Individual Massage</a> &mdash; customized blend based on what you tell the therapist. The best return-visit option once you know what your body needs.</li>
+      </ul>
+      <p data-reveal>Add-ons at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each).</p>
+
+      <h2 data-reveal>Getting here from Millcreek</h2>
+      <p data-reveal>The studio is at 1136 S State Street, Salt Lake City, UT 84111. From the Millcreek area, take 1300 East or 900 East north toward Salt Lake City, then connect to State Street and head north. From Millcreek Common near 3900 South and 1300 East, the drive is approximately 15 to 20 minutes depending on traffic. Parking is on-street along State Street and the side streets east of the studio.</p>
+      <p data-reveal>We are open daily 10AM to 10PM. Same-day appointments are available most days. Book online or call (801) 839-8880 to check the current schedule.</p>
+
+      <h2 data-reveal>Questions from Millcreek clients</h2>
+
+      <h3 class="svc-subhead" data-reveal>How far is Elite Spa Utah from the Millcreek area?</h3>
+      <p data-reveal>From central Millcreek near 3900 South and 1300 East, the studio is about 7 to 8 miles north. The drive takes 15 to 20 minutes on a typical weekday, depending on traffic on 1300 East or State Street.</p>
+
+      <h3 class="svc-subhead" data-reveal>Is sports massage good for hiking recovery?</h3>
+      <p data-reveal>Yes. Sports massage combines compression, assisted stretching, and targeted pressure on overworked muscle groups. After a long day in Mill Creek Canyon, the glutes, hip flexors, calves, and lower back take the most load. A 90-minute sports massage addresses all of those areas with enough time to work each zone properly.</p>
+
+      <h3 class="svc-subhead" data-reveal>Do you offer prenatal massage for Millcreek clients?</h3>
+      <p data-reveal>Yes. Prenatal massage is available for clients in their second and third trimester. Our therapists are trained in prenatal positioning and pressure and work with each trimester's specific needs. It is a good option for lower-back, hip, and leg tension that increases as pregnancy progresses.</p>
+
+      <h3 class="svc-subhead" data-reveal>Can I book a same-day appointment from Millcreek?</h3>
+      <p data-reveal>Same-day appointments are available most days. The easiest path is to check elitespautah.com/book, which shows real-time availability. If you need a specific window within the same afternoon, calling (801) 839-8880 directly is faster than waiting for the online system to update.</p>
+
+      <h3 class="svc-subhead" data-reveal>What is the difference between Millcreek and Millcreek Canyon for your clients?</h3>
+      <p data-reveal>Millcreek the city is the incorporated community in central Salt Lake County where many of our clients live and work. Mill Creek Canyon is the national forest canyon east of the city that many of them hike and trail-run in. Both are common reference points when clients describe where they are coming from or what brought on their tension.</p>
+
+      <div class="nap-block" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--color-cream, #f9f6f1); border-radius: 4px;">
+        <p><strong>Elite Spa Utah</strong><br>
+        1136 S State Street, Salt Lake City, UT 84111<br>
+        <a href="tel:+18018398880">(801) 839-8880</a><br>
+        Open daily 10AM&ndash;10PM</p>
+      </div>
+    </section>""",
+    },
+    {
+        "slug": "holladay",
+        "name": "Holladay",
+        "title_area": "Holladay, Utah",
+        "meta_desc": "Massage near Holladay, Utah at Elite Spa Utah. 20 minutes on I-215 and State Street. Licensed therapists, private rooms, same-day appointments for Holladay residents.",
+        "body": """\
+    <section class="page-header" data-hero>
+      <div class="container container--narrow">
+        <p class="eyebrow">Salt Lake County &rsaquo; Holladay</p>
+        <h1><span class="line"><span class="line-inner">Massage near Holladay</span></span></h1>
+        <p class="lead">Elite Spa Utah serves Holladay residents from our studio at 1136 S State Street. The drive is about 20 minutes, and the gap in local spa options makes it worth it.</p>
+        <p style="margin-top: var(--space-3)" data-hero-cta>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
+        </p>
+      </div>
+    </section>
+
+    <figure class="svc-hero-media" data-reveal>
+      <img src="/assets/img/treatment-room.webp" alt="Private massage room at Elite Spa Utah, accessible from Holladay Utah" width="1376" height="768" loading="eager" decoding="async">
+    </figure>
+
+    <section class="container container--content section">
+      <h2 data-reveal>Holladay: fine homes, few spas</h2>
+      <p data-reveal>Holladay is one of the most established residential communities in Salt Lake County. The city has been continuously inhabited since 1847, and the character reflects that history: wooded lots, well-kept homes, quiet streets near the base of Mount Olympus, and a community that has deliberately kept commercial development limited. That restraint produces a pleasant place to live and a limited selection of personal-care services within city limits.</p>
+      <p data-reveal>Holladay has no day spa operating at the level most residents are accustomed to when they travel. The Olympus Hills Shopping Center covers basic retail. For massage, most Holladay residents have historically driven to a hotel spa in SLC or booked wherever a deal appeared. Those options are inconvenient or expensive. Elite Spa Utah at 1136 S State Street is a focused alternative: private rooms, licensed therapists, consistent pricing, no resort fee attached.</p>
+
+      <h2 data-reveal>The 20-minute drive is the whole obstacle</h2>
+      <p data-reveal>From central Holladay, the trip to our studio is approximately 20 minutes. Take I-215 west from the Holladay exit and connect to State Street north. Or take 1300 East north through Millcreek and into SLC. Both routes are straightforward and familiar to most Holladay residents who already commute to work in the city.</p>
+      <p data-reveal>The demographic here tends toward established families and long-term residents. Median age in Holladay is just over 39. More than half of households are married couples. The lifestyle runs toward Mount Olympus hikes, Cottonwood Country Club, and the kind of weekend that leaves the body tired in a specific way. Holladay residents understand the value of a proper recovery session. They also understand that a 20-minute drive for a 90-minute deep tissue massage is a reasonable trade.</p>
+
+      <h2 data-reveal>What works for Holladay clients</h2>
+      <p data-reveal>Holladay's physical culture is less urban grind and more sustained outdoor activity. The clients who come from this area tend to carry tension from hiking the Grandeur Peak trail, from long days at the club, from the cumulative fatigue of a household that stays active. The upper back and hips take the load. Our therapists work with that pattern efficiently.</p>
+      <p data-reveal>The couples dynamic also shapes what Holladay clients book. More than half of households are married-couple families, and a couples massage session in our private suite is the kind of evening that works better than most other options for a date night in the city. Two therapists, two tables, a quiet private room. We do not offer a shared lounging area or a resort experience. We offer a focused, professional massage session without the overhead that hotel spas charge.</p>
+
+      <h2 data-reveal>Services for Holladay residents</h2>
+      <p data-reveal>These are the services that align most closely with what Holladay clients bring in:</p>
+      <ul class="svc-best-for" data-reveal-stagger>
+        <li><a href="/couples-massage">Couples Massage</a> &mdash; private suite, two therapists, side-by-side. A natural fit for Holladay&rsquo;s married-couple majority. 60, 90, or 120 minutes from $165.</li>
+        <li><a href="/deep-tissue-massage">Deep Tissue Massage</a> &mdash; firm, deliberate pressure for the chronic back and shoulder tension that accumulates through an active and working life. From $85.</li>
+        <li><a href="/swedish-massage">Swedish Massage</a> &mdash; full-body restoration for the client who needs to stop moving and let the body recover from the week. A reliable reset regardless of fitness level.</li>
+        <li><a href="/sports-massage">Sports Massage</a> &mdash; active-recovery work for the Mount Olympus hiker or outdoor athlete who carries specific muscle tightness after weekend exertion.</li>
+        <li><a href="/prenatal-massage">Prenatal Massage</a> &mdash; side-lying, trimester-appropriate work for lower-back and hip tension during pregnancy. Available for clients in the second and third trimester.</li>
+        <li><a href="/foot-reflexology-massage">Foot Reflexology</a> &mdash; pressure-point work on the feet, no disrobing required. A straightforward option when you want a focused 60-minute session without committing to a full table massage.</li>
+      </ul>
+      <p data-reveal>Add-ons at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each). The infrared sauna add-on is a popular combination with deep tissue for clients driving in from the Holladay area.</p>
+
+      <h2 data-reveal>Getting here from Holladay</h2>
+      <p data-reveal>The studio address is 1136 S State Street, Salt Lake City, UT 84111. The most direct route from Holladay is I-215 west to the State Street exit, then north on State Street to 1136 South. From the Holladay area near 4800 South, that drive is typically 18 to 22 minutes depending on traffic. Street parking is available on State Street and on the side streets near the studio. No lot is required.</p>
+      <p data-reveal>We are open every day from 10AM to 10PM. Call (801) 839-8880 or book online at elitespautah.com/book. Same-day appointments are available most days, though the couples suite benefits from a day or two of advance booking on weekends.</p>
+
+      <h2 data-reveal>Questions from Holladay clients</h2>
+
+      <h3 class="svc-subhead" data-reveal>Is there a spa or massage studio in Holladay itself?</h3>
+      <p data-reveal>Holladay has limited commercial development by design. There are few dedicated massage studios within city limits. Most residents with a regular massage practice drive to Salt Lake City, Murray, or Cottonwood Heights for appointments. Elite Spa Utah on State Street is the closest licensed spa at this service level in the direction of downtown SLC.</p>
+
+      <h3 class="svc-subhead" data-reveal>How long is the drive from Holladay to your studio?</h3>
+      <p data-reveal>From central Holladay near 4800 South, expect 18 to 22 minutes via I-215 west to State Street north. Weekday afternoon traffic can push that toward 25 minutes. The drive is direct and on familiar roads for anyone who commutes north into the city.</p>
+
+      <h3 class="svc-subhead" data-reveal>What is included in the couples massage suite?</h3>
+      <p data-reveal>The couples suite has two side-by-side tables and two therapists working simultaneously, one per client. The room is private for the duration of your session. You choose your massage type and duration independently; they do not have to match. Both clients are worked at the same time, which is the point of a couples session. Pricing starts at $165 per person for 60 minutes.</p>
+
+      <h3 class="svc-subhead" data-reveal>Do you offer gift cards for Holladay residents?</h3>
+      <p data-reveal>Yes. Gift cards are available at elitespautah.com/gift-cards. They cover any service amount and do not expire. A popular option for Holladay households looking for a considered gift that is not another object.</p>
+
+      <h3 class="svc-subhead" data-reveal>Is deep tissue massage appropriate for hikers and outdoor athletes?</h3>
+      <p data-reveal>Deep tissue works well for the specific tension patterns that hiking and outdoor activity produce: IT band tightness, hip flexor shortening, lower back adhesions from carrying a pack or absorbing trail impact. For acute post-activity soreness within 48 hours, Swedish is gentler and equally effective. For chronic tension that has built up over multiple weeks of activity, deep tissue addresses the underlying tissue layers more directly.</p>
+
+      <div class="nap-block" style="margin-top: var(--space-4); padding: var(--space-3); background: var(--color-cream, #f9f6f1); border-radius: 4px;">
+        <p><strong>Elite Spa Utah</strong><br>
+        1136 S State Street, Salt Lake City, UT 84111<br>
+        <a href="tel:+18018398880">(801) 839-8880</a><br>
+        Open daily 10AM&ndash;10PM</p>
+      </div>
+    </section>""",
+    },
+]
+
+HUB_TEMPLATE = '''<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Massage in {title_area} · Elite Spa Utah</title>
+  <meta name="description" content="{meta_desc}">
+  <meta name="keywords" content="massage in {name}, {name} massage, massage near {name}, Elite Spa Utah {name}">
+  <link rel="canonical" href="https://elitespautah.com/massage-in-{slug}">
+  <meta property="og:title" content="Massage in {title_area} · Elite Spa Utah">
+  <meta property="og:description" content="{meta_desc}">
+  <meta property="og:url" content="https://elitespautah.com/massage-in-{slug}">
+  <meta property="og:image" content="https://elitespautah.com/assets/img/hero-1500.webp">
+  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/styles.css?v=3">
+
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": ["LocalBusiness", "MassageTherapist"],
+        "name": "Elite Spa Utah",
+        "url": "https://elitespautah.com/",
+        "telephone": "+18018398880",
+        "address": {{
+          "@type": "PostalAddress",
+          "streetAddress": "1136 S State Street",
+          "addressLocality": "Salt Lake City",
+          "addressRegion": "UT",
+          "postalCode": "84111",
+          "addressCountry": "US"
+        }},
+        "geo": {{
+          "@type": "GeoCoordinates",
+          "latitude": 40.7447,
+          "longitude": -111.8909
+        }},
+        "openingHours": "Mo-Su 10:00-22:00",
+        "priceRange": "$$",
+        "aggregateRating": {{
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "153",
+          "bestRating": "5"
+        }},
+        "areaServed": {{
+          "@type": "City",
+          "name": "{name}"
+        }}
+      }},
+      {{
+        "@type": "Service",
+        "serviceType": "Massage Therapy",
+        "provider": {{
+          "@type": "MassageTherapist",
+          "name": "Elite Spa Utah",
+          "url": "https://elitespautah.com/"
+        }},
+        "areaServed": {{
+          "@type": "City",
+          "name": "{name}"
+        }},
+        "offers": {{
+          "@type": "Offer",
+          "price": "85",
+          "priceCurrency": "USD",
+          "url": "https://elitespautah.com/book"
+        }}
+      }},
+      {{
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://elitespautah.com/" }},
+          {{ "@type": "ListItem", "position": 2, "name": "Areas", "item": "https://elitespautah.com/services" }},
+          {{ "@type": "ListItem", "position": 3, "name": "Massage in {name}", "item": "https://elitespautah.com/massage-in-{slug}" }}
+        ]
+      }}
+    ]
+  }}
+  </script>
+  <script src="/assets/defer-load.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="/">Elite Spa Utah</a>
+      <nav class="site-nav" aria-label="Primary">
+        <button class="site-nav__menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
+        <ul class="site-nav__list" id="primary-nav">
+          <li><a class="site-nav__link" href="/services">Services</a></li>
+          <li><a class="site-nav__link" href="/gift-cards">Gift Cards</a></li>
+          <li><a class="site-nav__link" href="/faq">FAQ</a></li>
+          <li><a class="site-nav__link" href="/contact">Contact</a></li>
+          <li><a class="site-nav__link" href="tel:+18018398880">(801) 839-8880</a></li>
+          <li><a class="btn btn--primary" href="/book" data-magnetic>Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+{body}
+
+    <section class="band-dark">
+      <div class="cta-band container">
+        <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
+        <p class="cta-band__text" data-reveal>Same-day appointments available. Open daily, 10am to 10pm.</p>
+        <div class="cluster cluster--center" data-reveal>
+          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <p class="site-footer__brand">Elite Spa Utah</p>
+          <p style="max-width: 36ch;">Salt Lake City&rsquo;s elevated massage therapy and spa. Licensed therapists, private rooms, same-day appointments.</p>
+        </div>
+        <div>
+          <p class="site-footer__heading">Hours</p>
+          <p>Mon&ndash;Sun<br>10AM&ndash;10PM</p>
+        </div>
+        <div>
+          <p class="site-footer__heading">Location</p>
+          <p>1136 S State Street<br>Salt Lake City, UT 84111</p>
+        </div>
+        <div>
+          <p class="site-footer__heading">Contact</p>
+          <ul class="site-footer__list">
+            <li><a href="tel:+18018398880">(801) 839-8880</a></li>
+            <li><a href="/book">Book online</a></li>
+            <li><a href="/contact">Contact form</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__heading">Areas We Serve</p>
+          <ul class="site-footer__list">
+            <li><a href="/massage-in-sugar-house">Massage in Sugar House</a></li>
+            <li><a href="/massage-in-downtown-salt-lake-city">Massage in Downtown SLC</a></li>
+            <li><a href="/massage-in-millcreek">Massage near Millcreek</a></li>
+            <li><a href="/massage-in-holladay">Massage near Holladay</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__legal">
+        <span>&copy; 2026 Elite Spa Utah &middot; Operated by J Massage LLC</span>
+        <span>Licensed massage therapists, State of Utah</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/nav.js?v=2" defer></script>
+</body>
+</html>
+'''
 
 
 def main():
@@ -392,6 +872,20 @@ def main():
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             f.write(html)
         print(f"  wrote {s['slug']}.html ({len(html)} bytes)")
+
+    # Generate neighborhood hub pages
+    for area in AREAS:
+        html = HUB_TEMPLATE.format(
+            slug=area["slug"],
+            name=area["name"],
+            title_area=area["title_area"],
+            meta_desc=area["meta_desc"],
+            body=area["body"],
+        )
+        path = os.path.join(out_dir, f"massage-in-{area['slug']}.html")
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(html)
+        print(f"  wrote massage-in-{area['slug']}.html ({len(html)} bytes)")
 
 
 if __name__ == "__main__":
