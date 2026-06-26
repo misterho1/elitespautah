@@ -380,6 +380,7 @@ AREAS = [
         "slug": "sugar-house",
         "name": "Sugar House",
         "title_area": "Sugar House, Salt Lake City",
+        "area_type": "Place",
         "meta_desc": "Massage in Sugar House at Elite Spa Utah. Licensed therapists, private rooms, same-day appointments. 10 minutes from 2100 South on State Street.",
         "body": """\
     <section class="page-header" data-hero>
@@ -421,7 +422,7 @@ AREAS = [
       <p data-reveal>Add-ons are available at booking: hot stones ($20), cupping, infrared sauna, or CBD ($30 each).</p>
 
       <h2 data-reveal>Getting here from Sugar House</h2>
-      <p data-reveal>The address is 1136 S State Street, Salt Lake City, UT 84111. From the Sugar House commercial core at 2100 South and Highland Drive, head north on Highland Drive to State Street and continue north. The drive is under 10 minutes with light traffic. Street parking is available on State Street and on adjacent side streets. If you take the S Line to the 900 South TRAX/streetcar station, we are a short walk south on State Street.</p>
+      <p data-reveal>The address is 1136 S State Street, Salt Lake City, UT 84111. From the Sugar House commercial core at 2100 South and Highland Drive, head west on 2100 South to State Street, then north on State Street. The drive is under 10 minutes with light traffic. Street parking is available on State Street and on adjacent side streets. If you take the S Line to the 900 South TRAX/streetcar station, we are a short walk south on State Street.</p>
       <p data-reveal>We are open daily from 10AM to 10PM. Same-day bookings are accepted online and by phone. Call (801) 839-8880 or book at the button below.</p>
 
       <h2 data-reveal>Questions from Sugar House clients</h2>
@@ -453,6 +454,7 @@ AREAS = [
         "slug": "downtown-salt-lake-city",
         "name": "Downtown Salt Lake City",
         "title_area": "Downtown Salt Lake City",
+        "area_type": "Place",
         "meta_desc": "Massage in downtown Salt Lake City at Elite Spa Utah, 1136 S State Street. Same-day appointments, licensed therapists, private rooms. Walk from most downtown hotels.",
         "body": """\
     <section class="page-header" data-hero>
@@ -479,7 +481,7 @@ AREAS = [
       <h2 data-reveal>Who we serve in the downtown area</h2>
       <p data-reveal>Downtown SLC draws office workers, hotel guests, and convention visitors in roughly equal measure on any given day. Each group has a different reason to come in.</p>
       <p data-reveal>Office workers in the nearby buildings tend to book a 60-minute session after work or on a lunch hour when the schedule allows. The 60-minute deep tissue or Swedish massage fits the downtown workday cadence: in at 5:30, out by 7:00, dinner on the way home. For the person who sits at a desk for eight hours straight, that 60 minutes addresses more than the physical tension. It creates a clear boundary between the work day and the evening.</p>
-      <p data-reveal>Hotel guests and convention visitors face a different problem: they are tired from travel, they are sleeping in a different bed, and they have no car to get to a wellness appointment across town. Our location on State Street is a short taxi or rideshare from every major downtown hotel. Several guests walk from the Marriott and Hilton properties on 100 South. The same-day booking model works well for this group because conference schedules change and you need flexibility.</p>
+      <p data-reveal>Hotel guests and convention visitors face a different problem: they are tired from travel, they are sleeping in a different bed, and they have no car to get to a wellness appointment across town. Our location on State Street is a short taxi or rideshare from every major downtown hotel. Several guests walk from the Marriott and Hilton properties on West Temple. The same-day booking model works well for this group because conference schedules change and you need flexibility.</p>
 
       <h2 data-reveal>Services for the downtown visitor and worker</h2>
       <p data-reveal>The full service menu is available to downtown clients. These options align most closely with what downtown clients typically need:</p>
@@ -526,7 +528,8 @@ AREAS = [
         "slug": "millcreek",
         "name": "Millcreek",
         "title_area": "Millcreek, Utah",
-        "meta_desc": "Massage near Millcreek, Utah at Elite Spa Utah. 15 minutes north on State Street. Deep tissue, sports massage, Swedish, and more. Same-day appointments available.",
+        "area_type": "City",
+        "meta_desc": "Massage near Millcreek, Utah at Elite Spa Utah. 15 to 20 minutes north on State Street. Deep tissue, sports massage, Swedish, and more. Same-day appointments available.",
         "body": """\
     <section class="page-header" data-hero>
       <div class="container container--narrow">
@@ -599,6 +602,7 @@ AREAS = [
         "slug": "holladay",
         "name": "Holladay",
         "title_area": "Holladay, Utah",
+        "area_type": "City",
         "meta_desc": "Massage near Holladay, Utah at Elite Spa Utah. 20 minutes on I-215 and State Street. Licensed therapists, private rooms, same-day appointments for Holladay residents.",
         "body": """\
     <section class="page-header" data-hero>
@@ -724,7 +728,7 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
           "bestRating": "5"
         }},
         "areaServed": {{
-          "@type": "City",
+          "@type": "{area_type}",
           "name": "{name}"
         }}
       }},
@@ -737,7 +741,7 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
           "url": "https://elitespautah.com/"
         }},
         "areaServed": {{
-          "@type": "City",
+          "@type": "{area_type}",
           "name": "{name}"
         }},
         "offers": {{
@@ -880,6 +884,7 @@ def main():
             name=area["name"],
             title_area=area["title_area"],
             meta_desc=area["meta_desc"],
+            area_type=area["area_type"],
             body=area["body"],
         )
         path = os.path.join(out_dir, f"massage-in-{area['slug']}.html")
