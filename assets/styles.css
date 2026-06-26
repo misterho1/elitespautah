@@ -12,8 +12,7 @@
   --brand-cream-deep: #ebe2d2;
   --ink: #2a2622;
   --ink-muted: #5b544c;
-  --ink-dim: #7a7268;
-  --ink-faint: #a8a09a;
+  --ink-dim: #6b6358; /* 5.2:1 on cream-soft (was #7a7268 = 4.17:1, failed AA) */
   --line: rgba(42, 38, 34, 0.10);
   --line-strong: rgba(42, 38, 34, 0.20);
 
@@ -658,6 +657,42 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
 .page-header h1 { margin-bottom: var(--space-2); }
 .page-header .lead { margin: 0 auto; }
 
+/* Service-page hero photo band (interim imagery). Fixed ratio = no layout shift. */
+.svc-hero-media {
+  margin: 0 auto;
+  max-width: var(--maxw-wide);
+  padding: var(--space-5) var(--space-3) 0;
+}
+.svc-hero-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Service-page utility classes (promoted from per-element inline styles in
+   build_services.py so generated pages stay lean). */
+.svc-subhead {
+  margin-top: var(--space-4);
+  font-size: var(--type-4);
+  font-family: var(--type-ui);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.svc-best-for {
+  padding-left: 1.2em;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+.svc-note {
+  margin-top: var(--space-3);
+  font-size: var(--type-7);
+  color: var(--ink-muted);
+}
+
 /* Two-column layout */
 .cols-2 {
   display: grid;
@@ -743,19 +778,25 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   border-radius: var(--radius-md);
   text-decoration: none;
   overflow: hidden;
-  background: var(--ink-deep);
+  background-color: var(--ink-deep);
+  background-size: cover;
+  background-position: center;
   color: var(--cream-on-dark);
   box-shadow: var(--shadow-soft);
   transition: transform var(--t-slow) var(--ease-organic), box-shadow var(--t-slow) var(--ease-organic);
 }
-.svc-feature--b { background: var(--brand-orange-deep); }
+/* Interim photography (swappable): see assets/img/*.webp comments in index.html. */
+.svc-feature--a { background-image: url("/assets/img/treatment-room.webp"); }
+.svc-feature--b { background-image: url("/assets/img/couples-suite.webp"); }
+/* Scrim keeps the cream title/desc legible over the photo (text sits bottom-left). */
 .svc-feature::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(120% 90% at 85% 10%, rgba(245, 239, 230, 0.10), transparent 60%);
+  background: linear-gradient(to top, rgba(31, 26, 22, 0.82) 0%, rgba(31, 26, 22, 0.45) 38%, rgba(31, 26, 22, 0.12) 70%, rgba(31, 26, 22, 0.05) 100%);
   pointer-events: none;
 }
+.svc-feature > div { position: relative; z-index: 1; }
 .svc-feature:hover { transform: translateY(-4px); box-shadow: var(--shadow-bloom); }
 .svc-feature:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: 4px; }
 .svc-feature__title {
@@ -771,7 +812,8 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   max-width: 44ch;
   margin: var(--space-1) 0 0;
 }
-.svc-feature .service-card__price { color: #c9805a; }
+/* Price sits on the dark photo scrim; cream keeps it AA-legible (was #c9805a, 2.62:1). */
+.svc-feature .service-card__price { color: var(--cream-on-dark); opacity: 0.92; }
 
 /* Editorial pull-quote reviews. */
 .pull-quote { position: relative; border: 0; background: transparent; padding: var(--space-3) 0 0; }
@@ -789,9 +831,18 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
 }
 .pull-quote .review__quote { font-size: var(--type-3); line-height: 1.35; }
 
-/* Most-booked pricing row — weighted, no copy. */
+/* Most-booked pricing row, weighted via background tint + heavier type (no side stripe). */
 .price-row--featured {
   background: var(--brand-cream-soft);
-  box-shadow: inset 3px 0 0 var(--brand-orange);
 }
+.price-row--featured .price-row__name { font-weight: 600; }
 .price-row--featured .price-row__amount { font-weight: 600; }
+
+/* Booking selector pills (book.html): meet 44px min touch target. CSS-only;
+   the booking markup/handler are unchanged. */
+.book-pick {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
