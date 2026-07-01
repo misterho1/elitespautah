@@ -38,6 +38,34 @@ SERVICES = [
         "description": "A scalp and neck ritual borrowed from Japanese spa tradition. Full-scalp treatment using rhythmic kneading and pressure-point work from the temples to the base of the skull. Most clients fall asleep.",
         "best_for": ["Tension headaches", "Migraines and screen fatigue", "Hair and scalp health", "Pure relaxation"],
         "prices": SINGLE_HOUR,
+        "extra": [
+            ("What a Japanese head spa actually is", [
+                "A Japanese head spa is a slow, deliberate treatment for your scalp, neck, and shoulders. It borrows from a spa tradition that has been popular in Japan for years and is only now catching on in Salt Lake City. Instead of the quick scalp rub you might get at the end of a haircut, this is a full session dedicated to one of the most tension-holding, most neglected parts of the body: the head.",
+                "Your therapist works through the scalp with rhythmic kneading and pressure-point work, from the temples and hairline to the base of the skull, then eases down into the neck and shoulders where so much screen-and-desk tension quietly settles. Most people go somewhere very far away in their head about ten minutes in. A lot of them fall asleep.",
+            ]),
+            ("What to expect, step by step", [
+                "You will be face-up and fully draped on a warm table in a private room. There is no haircut, no styling, and nothing you need to do but breathe.",
+                "The session opens with slow neck and shoulder work to settle your nervous system. From there your therapist moves to the scalp, covering the whole head in sections with steady pressure and small circular movements. Warm oil is optional. The pace stays unhurried the entire time, and pressure is always dialed to what feels good to you, never past it.",
+                "You leave loose, a little dreamy, and usually surprised at how much tension you were carrying above the neck. Give yourself a few quiet minutes before you drive.",
+            ]),
+            ("Japanese head spa vs. a regular scalp massage", [
+                "A scalp massage is a nice add-on. A Japanese head spa is the whole experience. The difference is time, intention, and range: a dedicated session that treats the scalp, neck, and shoulders as one connected area rather than an afterthought at the end of another service.",
+                "That is why people book it on its own, and why it pairs so well with a foot reflexology session or a full-body massage when you want to make an afternoon of it.",
+            ]),
+            ("Why Salt Lake City is booking head spa", [
+                "Demand for Japanese head spa is climbing fast, and very few studios in Salt Lake City actually offer it well. If you have seen it on your feed and wanted to try one without flying to the coast, this is the place to do it. We keep same-day slots open most days.",
+            ]),
+            ("Who it is for", [
+                "Anyone who lives on a screen, sleeps poorly, carries stress in the neck and shoulders, or simply wants an hour of deep quiet. It is a favorite for a first spa visit because there is nothing to figure out, and a favorite gift because almost no one has had one and everyone remembers their first.",
+            ]),
+        ],
+        "faqs": [
+            ("How long is a Japanese head spa session?", "Our head spa is a 60-minute session for $85. That gives your therapist time to cover the scalp, neck, and shoulders without rushing."),
+            ("Will my hair be wet or styled afterward?", "This is a dry, oil-optional treatment focused on the scalp and muscles, not a wash-and-blowout. If we use a little oil at your request, your hair may feel conditioned afterward. Bring a hair tie if you like."),
+            ("Is a head spa good for tension headaches?", "Many clients come in specifically because they hold tension in the scalp, jaw, and neck, and they leave feeling lighter. We keep the work relaxing rather than clinical; if you have a medical concern, check with your doctor."),
+            ("Can I add it to a massage?", "Yes. A head spa pairs beautifully with a full-body massage or foot reflexology. Book them back to back, or add a 30-minute infrared sauna at checkout."),
+            ("Do you offer same-day appointments?", "Most days, yes. Call (801) 839-8880 or book online; same-day slots appear automatically when a therapist is open."),
+        ],
         "related": ["swedish-massage", "couples-massage", "foot-reflexology-massage"],
     },
     {
@@ -214,6 +242,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     ]
   }}
   </script>
+{faq_schema}
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
        and usable without JS, so static service pages no longer ship ~116KB of
@@ -283,7 +312,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
         </div>
       </div>
     </section>
-
+{extra_section}
     <section class="section section--cream">
       <div class="container">
         <p class="eyebrow" data-reveal>Pairs well with</p>
@@ -293,7 +322,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
         </div>
       </div>
     </section>
-
+{faq_section}
     <section class="band-dark">
       <div class="cta-band container">
       <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
@@ -364,6 +393,59 @@ def render_related(related_slugs, services_by_slug):
     )
 
 
+def render_extra(s):
+    """Optional long-form content sections. s['extra'] is a list of (heading, [paragraphs])."""
+    blocks = s.get("extra")
+    if not blocks:
+        return ""
+    body = ""
+    for heading, paras in blocks:
+        body += f'      <h2 data-reveal>{heading}</h2>\n'
+        for p in paras:
+            body += f'      <p data-reveal>{p}</p>\n'
+    return (
+        '\n    <section class="container container--content section">\n'
+        + body
+        + '    </section>\n'
+    )
+
+
+def render_faq_section(s):
+    """Optional visible FAQ accordion. s['faqs'] is a list of (question, answer)."""
+    faqs = s.get("faqs")
+    if not faqs:
+        return ""
+    items = "\n".join(
+        f'        <details class="faq__item"><summary>{q}</summary><p class="faq__answer">{a}</p></details>'
+        for q, a in faqs
+    )
+    return (
+        '\n    <section class="container container--narrow section">\n'
+        '      <p class="eyebrow" data-reveal>Questions</p>\n'
+        '      <h2 data-reveal>Good to know</h2>\n'
+        f'      <div class="faq" data-reveal>\n{items}\n      </div>\n'
+        '    </section>\n'
+    )
+
+
+def render_faq_schema(s):
+    """FAQPage JSON-LD matching the visible FAQ. Empty when no faqs."""
+    import json as _json
+    faqs = s.get("faqs")
+    if not faqs:
+        return ""
+    entities = ", ".join(
+        '{"@type": "Question", "name": %s, "acceptedAnswer": {"@type": "Answer", "text": %s}}'
+        % (_json.dumps(q), _json.dumps(a))
+        for q, a in faqs
+    )
+    return (
+        '  <script type="application/ld+json">\n'
+        '  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [' + entities + ']}\n'
+        '  </script>\n'
+    )
+
+
 def main():
     out_dir = os.path.dirname(os.path.abspath(__file__))
     for s in SERVICES:
@@ -384,6 +466,9 @@ def main():
             best_for_html=render_best_for(s["best_for"]),
             prices_html=render_prices(s["prices"]),
             related_html=render_related(s["related"], SLUG_TO_NAME),
+            extra_section=render_extra(s),
+            faq_section=render_faq_section(s),
+            faq_schema=render_faq_schema(s),
             price_from=price_from,
             price_from_num=price_from_num,
             hero_img=hero["img"],
