@@ -163,24 +163,57 @@ SERVICES = [
 # Build slug -> name lookup for related services rendering
 SLUG_TO_NAME = {s["slug"]: s["name"] for s in SERVICES}
 
-# Service-page hero photography. INTERIM/SWAPPABLE placeholders downloaded to
-# assets/img/ on 2026-06-25, replace with real Elite Spa shots, keep the alt text.
-# Default = treatment room; couples + sauna-adjacent services get their own slot.
+# Service-page hero photography. Per-service brand shots generated 2026-07-05
+# (Higgsfield nano_banana_pro, seeded from the homepage hero for one exposure
+# family: warm candlelit amber, terracotta + cream). Swap freely for real
+# Elite Spa photography later — keep the alt text.
 DEFAULT_HERO = {
     "img": "treatment-room.webp", "w": 1376, "h": 768,
     "alt": "Warm, dimly lit private massage room with a draped table at Elite Spa Utah",
 }
 HERO_IMAGES = {
+    "deep-tissue-massage": {
+        "img": "deep-tissue.webp", "w": 2752, "h": 1536,
+        "alt": "Therapist applying firm forearm pressure along a client's upper back during a deep tissue massage at Elite Spa Utah",
+    },
+    "swedish-massage": {
+        "img": "swedish.webp", "w": 2752, "h": 1536,
+        "alt": "Long, flowing Swedish massage strokes across the shoulders in a candlelit private room at Elite Spa Utah",
+    },
+    "head-spa-massage": {
+        "img": "head-spa.webp", "w": 2752, "h": 1536,
+        "alt": "Client fully draped and face-up receiving a Japanese head spa scalp ritual at Elite Spa Utah",
+    },
+    "foot-reflexology-massage": {
+        "img": "foot-reflexology.webp", "w": 2752, "h": 1536,
+        "alt": "Therapist pressing thumbs into the arch of a client's foot during reflexology at Elite Spa Utah",
+    },
+    "ashiatsu-massage": {
+        "img": "ashiatsu.webp", "w": 2752, "h": 1536,
+        "alt": "Ashiatsu therapist holding overhead bars while gliding barefoot pressure along a client's draped back at Elite Spa Utah",
+    },
+    "prenatal-massage": {
+        "img": "prenatal.webp", "w": 2752, "h": 1536,
+        "alt": "Pregnant client resting on her side, supported by bolster pillows during a prenatal massage at Elite Spa Utah",
+    },
+    "sports-massage": {
+        "img": "sports.webp", "w": 2752, "h": 1536,
+        "alt": "Therapist guiding an assisted shoulder stretch during a sports massage at Elite Spa Utah",
+    },
+    "individual-massage": {
+        "img": "oil-ritual.webp", "w": 2752, "h": 1536,
+        "alt": "Warm massage oil poured into a therapist's palm above a terracotta dish at Elite Spa Utah",
+    },
     "couples-massage": {
         "img": "couples-suite.webp", "w": 2752, "h": 1536,
         "alt": "Private couples suite with two side-by-side massage tables at Elite Spa Utah",
     },
-    "head-spa-massage": {
-        # Neutral treatment-room photo until a real head-spa image exists; a
-        # sauna here was a semantic mismatch for a head-spa page.
-        "img": "treatment-room.webp", "w": 1376, "h": 768,
-        "alt": "Warm, dimly lit private treatment room at Elite Spa Utah",
-    },
+}
+
+# Optional ambient hero video per service (lazy-loaded over the hero photo by
+# assets/ambient-video.js; the photo stays the LCP + reduced-motion fallback).
+HERO_VIDEOS = {
+    "head-spa-massage": "/assets/vid/head-spa-ambient.mp4",
 }
 
 # Keyword clusters per service (primary phrase first). Used in meta description +
@@ -285,9 +318,8 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
       </div>
     </section>
 
-    <!-- Hero photo is INTERIM/SWAPPABLE (assets/img placeholder, 2026-06-25). -->
-    <figure class="svc-hero-media" data-reveal>
-      <img src="/assets/img/{hero_img}" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="eager" decoding="async">
+    <figure class="svc-hero-media{hero_media_class}" data-reveal>
+      <img src="/assets/img/{hero_img}" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="eager" decoding="async">{hero_video_tag}
     </figure>
 
     <section class="container container--content section">
@@ -366,7 +398,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     </div>
   </footer>
 
-  <script src="/assets/nav.js?v=2" defer></script>
+  <script src="/assets/nav.js?v=2" defer></script>{ambient_script}
   <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
        interaction (or idle) so it never competes with first paint. -->
 </body>
@@ -455,6 +487,11 @@ def main():
         kw_primary = kws[0]
         kw_csv = ", ".join(kws)
         hero = HERO_IMAGES.get(s["slug"], DEFAULT_HERO)
+        video_src = HERO_VIDEOS.get(s["slug"])
+        hero_video_tag = (
+            f'\n      <video class="ambient-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-src="{video_src}"></video>'
+            if video_src else ""
+        )
         html = PAGE_TEMPLATE.format(
             slug=s["slug"],
             name=s["name"],
@@ -475,6 +512,12 @@ def main():
             hero_alt=hero["alt"],
             hero_w=hero["w"],
             hero_h=hero["h"],
+            hero_media_class=" has-ambient" if video_src else "",
+            hero_video_tag=hero_video_tag,
+            ambient_script=(
+                '\n  <script src="/assets/ambient-video.js?v=1" defer></script>'
+                if video_src else ""
+            ),
         )
         path = os.path.join(out_dir, f"{s['slug']}.html")
         with open(path, "w", encoding="utf-8", newline="\n") as f:

@@ -108,6 +108,12 @@
              fetchpriority="high"
              width="2500"
              height="1406">
+        <!-- Ambient loop continues the hero photo (its first frame IS the photo).
+             Lazy-attached post-load by ambient-video.js; phones get the 9:16 cut;
+             reduced-motion / Save-Data visitors keep the still. -->
+        <video class="ambient-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+               data-src="/assets/vid/hero-ambient.mp4"
+               data-src-portrait="/assets/vid/hero-ambient-portrait.mp4"></video>
       </div>
       <div class="container hero__inner">
         <p class="eyebrow hero__eyebrow">Salt Lake City · Open today 10am–10pm</p>
@@ -147,12 +153,11 @@
       <p class="eyebrow" data-reveal>Services</p>
       <h2 data-reveal>Choose how you want to feel.</h2>
       <p class="lead" data-reveal>A full menu of massage modalities and spa services. Every session delivered by licensed therapists in private rooms at our State Street studio.</p>
-      <!-- Feature-card photography is INTERIM/SWAPPABLE (set as CSS background-image
-           on .svc-feature--a / --b in styles.css). Replace with real Elite Spa shots:
-           --a = treatment room (assets/img/treatment-room.webp, "Warm private massage
-           room with a draped table at Elite Spa Utah"); --b = couples suite
-           (assets/img/couples-suite.webp, "Private couples suite with two side-by-side
-           massage tables"). A bottom scrim keeps the cream copy AA-legible. -->
+      <!-- Feature-card photography (CSS background-image on .svc-feature--a / --b
+           in styles.css): --a = Japanese head spa (assets/img/head-spa.webp, brand
+           shot 2026-07-05); --b = couples suite (assets/img/couples-suite.webp).
+           Swappable for real Elite Spa shots anytime. A bottom scrim keeps the
+           cream copy AA-legible. -->
       <div class="svc-editorial">
         <a class="svc-feature svc-feature--a" href="/head-spa-massage" data-reveal>
           <div>
@@ -264,6 +269,7 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
+  <script src="/assets/ambient-video.js?v=1" defer></script>
   <!-- GoHighLevel chat widget is injected by assets/defer-load.js on first
        interaction (or idle) so it never competes with first paint. -->
 </body>

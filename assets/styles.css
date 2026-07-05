@@ -319,6 +319,28 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   inset: 0;
   background: linear-gradient(90deg, rgba(20,18,16,0.8) 0%, rgba(20,18,16,0.55) 30%, rgba(20,18,16,0.05) 65%, transparent 100%);
 }
+/* Ambient hero video — layered over the hero photo by ambient-video.js and
+   faded in once playing. The photo underneath stays the LCP element and the
+   only thing reduced-motion / Save-Data visitors see. The ::after scrim above
+   paints over both, so text contrast is unchanged. */
+.hero__media video,
+.svc-hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.hero__media video { object-position: 30% 80%; }
+.hero__media video.is-playing,
+.svc-hero-media video.is-playing { opacity: 1; }
+.svc-hero-media.has-ambient { position: relative; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .hero__media video,
+  .svc-hero-media video { display: none; }
+}
 .hero__inner {
   position: relative;
   z-index: 1;
@@ -785,8 +807,9 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   box-shadow: var(--shadow-soft);
   transition: transform var(--t-slow) var(--ease-organic), box-shadow var(--t-slow) var(--ease-organic);
 }
-/* Interim photography (swappable): see assets/img/*.webp comments in index.html. */
-.svc-feature--a { background-image: url("/assets/img/treatment-room.webp"); }
+/* Feature photography: --a = Japanese head spa (brand shot, 2026-07-05),
+   --b = couples suite. Swappable; see comments in index.html. */
+.svc-feature--a { background-image: url("/assets/img/head-spa.webp"); }
 .svc-feature--b { background-image: url("/assets/img/couples-suite.webp"); }
 /* Scrim keeps the cream title/desc legible over the photo (text sits bottom-left). */
 .svc-feature::after {
