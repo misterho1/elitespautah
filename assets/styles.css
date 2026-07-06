@@ -10,6 +10,7 @@
   --brand-cream: #faf7f3;
   --brand-cream-soft: #f5f0e8;
   --brand-cream-deep: #ebe2d2;
+  --surface: #fffdfb; /* card/input surface: white warmed a hair toward the brand hue so it sits on cream without reading cold */
   --ink: #2a2622;
   --ink-muted: #5b544c;
   --ink-dim: #6b6358; /* 5.2:1 on cream-soft (was #7a7268 = 4.17:1, failed AA) */
@@ -399,7 +400,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   margin-top: var(--space-4);
 }
 .service-card {
-  background: #fff;
+  background: var(--surface);
   padding: var(--space-3) var(--space-3) var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -453,7 +454,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   gap: var(--space-3);
 }
 .review {
-  background: #fff;
+  background: var(--surface);
   padding: var(--space-3);
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
@@ -499,7 +500,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
 }
 .price-row {
   display: grid;
@@ -570,7 +571,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   padding: 0.7em 1em;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   width: 100%;
   min-height: 48px;
