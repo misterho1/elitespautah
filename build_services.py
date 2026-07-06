@@ -237,44 +237,23 @@ SLUG_TO_SERVICE = {s["slug"]: s for s in SERVICES}
 # Elite Spa photography later — keep the alt text.
 DEFAULT_HERO = {
     "img": "treatment-room.webp", "w": 1376, "h": 768,
-    "alt": "Warm, dimly lit private massage room with a draped table at Elite Spa Utah",
+    "alt": "Warm, sunlit private massage room with a draped table and terracotta plaster walls at Elite Spa Utah",
 }
+# Distinct room setups, all shot in the SAME real boutique room for continuity
+# (seeded 2026-07-06). Single-massage services intentionally share the
+# treatment-room default so the whole site reads as one consistent space.
 HERO_IMAGES = {
-    "deep-tissue-massage": {
-        "img": "deep-tissue.webp", "w": 2752, "h": 1536,
-        "alt": "Therapist applying firm forearm pressure along a client's upper back during a deep tissue massage at Elite Spa Utah",
-    },
-    "swedish-massage": {
-        "img": "swedish.webp", "w": 2752, "h": 1536,
-        "alt": "Long, flowing Swedish massage strokes across the shoulders in a candlelit private room at Elite Spa Utah",
-    },
     "head-spa-massage": {
-        "img": "head-spa.webp", "w": 2752, "h": 1536,
-        "alt": "Client fully draped and face-up receiving a Japanese head spa scalp ritual at Elite Spa Utah",
+        "img": "head-spa.webp", "w": 1376, "h": 768,
+        "alt": "Reclining head-spa lounger with a ceramic scalp-wash basin in a warm terracotta treatment room at Elite Spa Utah",
     },
     "foot-reflexology-massage": {
-        "img": "foot-reflexology.webp", "w": 2752, "h": 1536,
-        "alt": "Therapist pressing thumbs into the arch of a client's foot during reflexology at Elite Spa Utah",
-    },
-    "ashiatsu-massage": {
-        "img": "ashiatsu.webp", "w": 2752, "h": 1536,
-        "alt": "Ashiatsu therapist holding overhead bars while gliding barefoot pressure along a client's draped back at Elite Spa Utah",
-    },
-    "prenatal-massage": {
-        "img": "prenatal.webp", "w": 2752, "h": 1536,
-        "alt": "Pregnant client resting on her side, supported by bolster pillows during a prenatal massage at Elite Spa Utah",
-    },
-    "sports-massage": {
-        "img": "sports.webp", "w": 2752, "h": 1536,
-        "alt": "Therapist guiding an assisted shoulder stretch during a sports massage at Elite Spa Utah",
-    },
-    "individual-massage": {
-        "img": "oil-ritual.webp", "w": 2752, "h": 1536,
-        "alt": "Warm massage oil poured into a therapist's palm above a terracotta dish at Elite Spa Utah",
+        "img": "foot-reflexology.webp", "w": 1376, "h": 768,
+        "alt": "Reclining reflexology chair with a folded throw and a copper foot basin in a warm terracotta treatment room at Elite Spa Utah",
     },
     "couples-massage": {
-        "img": "couples-suite.webp", "w": 2752, "h": 1536,
-        "alt": "Private couples suite with two side-by-side massage tables at Elite Spa Utah",
+        "img": "couples-suite.webp", "w": 1376, "h": 768,
+        "alt": "Private couples suite with two side-by-side massage tables in a warm terracotta room at Elite Spa Utah",
     },
 }
 
