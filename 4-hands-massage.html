@@ -40,6 +40,9 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a 4-hand massage like?", "acceptedAnswer": {"@type": "Answer", "text": "Two therapists work on you at once, moving in coordinated, mirrored strokes. Because your mind cannot track four hands at a time, it tends to stop trying and let go completely. Most people describe it as deeply immersive."}}, {"@type": "Question", "name": "Is it two massages at the same time?", "acceptedAnswer": {"@type": "Answer", "text": "In effect, yes. You get double the hands for the same session length, so more of your body is covered and the whole thing feels twice as full. It is a treat rather than an everyday massage for most clients."}}, {"@type": "Question", "name": "Can I choose the pressure?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. Both therapists match the pressure you ask for, from light and flowing to firm and deep, and check in as they go. You are always in control of how intense it feels."}}, {"@type": "Question", "name": "Why does it cost more than a single massage?", "acceptedAnswer": {"@type": "Answer", "text": "You are booking two licensed therapists for the full session instead of one. That is the reason for the premium price, and the reason it feels like a special occasion."}}]}
+  </script>
 
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
@@ -84,7 +87,7 @@
     </section>
 
     <figure class="svc-hero-media" data-reveal>
-      <img src="/assets/img/treatment-room.webp" alt="Warm, dimly lit private massage room with a draped table at Elite Spa Utah" width="1376" height="768" loading="eager" decoding="async">
+      <img src="/assets/img/treatment-room.webp" alt="Warm, dimly lit private massage room with a draped table at Elite Spa Utah" width="1376" height="768" loading="lazy" decoding="async">
     </figure>
 
     <section class="container container--content section">
@@ -120,10 +123,21 @@
         <p class="eyebrow" data-reveal>Pairs well with</p>
         <h2 data-reveal>Related services</h2>
         <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
-          <a class="service-card" href="/couples-massage"><h3 class="service-card__title">Couples Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/deep-tissue-massage"><h3 class="service-card__title">Deep Tissue Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
+          <a class="service-card" href="/couples-massage"><h3 class="service-card__title">Couples Massage</h3><p class="service-card__desc">Two therapists. One private suite.</p><p class="service-card__price">From $165</p></a>
+          <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">The classic, full-body unwind.</p><p class="service-card__price">From $85</p></a>
+          <a class="service-card" href="/deep-tissue-massage"><h3 class="service-card__title">Deep Tissue Massage</h3><p class="service-card__desc">Targeted pressure for chronic tension.</p><p class="service-card__price">From $85</p></a>
         </div>
+      </div>
+    </section>
+
+    <section class="container container--narrow section">
+      <p class="eyebrow" data-reveal>Questions</p>
+      <h2 data-reveal>Good to know</h2>
+      <div class="faq" data-reveal>
+        <details class="faq__item"><summary>What is a 4-hand massage like?</summary><p class="faq__answer">Two therapists work on you at once, moving in coordinated, mirrored strokes. Because your mind cannot track four hands at a time, it tends to stop trying and let go completely. Most people describe it as deeply immersive.</p></details>
+        <details class="faq__item"><summary>Is it two massages at the same time?</summary><p class="faq__answer">In effect, yes. You get double the hands for the same session length, so more of your body is covered and the whole thing feels twice as full. It is a treat rather than an everyday massage for most clients.</p></details>
+        <details class="faq__item"><summary>Can I choose the pressure?</summary><p class="faq__answer">Absolutely. Both therapists match the pressure you ask for, from light and flowing to firm and deep, and check in as they go. You are always in control of how intense it feels.</p></details>
+        <details class="faq__item"><summary>Why does it cost more than a single massage?</summary><p class="faq__answer">You are booking two licensed therapists for the full session instead of one. That is the reason for the premium price, and the reason it feels like a special occasion.</p></details>
       </div>
     </section>
 

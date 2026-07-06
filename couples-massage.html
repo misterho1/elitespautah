@@ -40,6 +40,9 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are we in the same room the whole time?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You are side by side on two tables in one private suite, each with your own therapist. You can talk quietly or simply relax together; the room is yours for the session."}}, {"@type": "Question", "name": "How does draping work for two people?", "acceptedAnswer": {"@type": "Answer", "text": "Exactly as it does for a single massage. Each of you undresses to your comfort level in private and stays fully draped under a sheet the entire time, with only the area being worked on uncovered. Privacy and modesty are the standard, not the exception."}}, {"@type": "Question", "name": "Does it have to be a romantic couple?", "acceptedAnswer": {"@type": "Answer", "text": "Not at all. The couples suite is just as popular with friends, a parent and adult child, or coworkers celebrating a win. Anyone who wants to share the experience side by side is welcome."}}, {"@type": "Question", "name": "Should we book ahead?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend it. Two therapists and a private suite means fewer slots than a single massage, so booking a few days out gives you the best choice of times, especially on weekends and around holidays."}}]}
+  </script>
 
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
@@ -84,7 +87,7 @@
     </section>
 
     <figure class="svc-hero-media" data-reveal>
-      <img src="/assets/img/couples-suite.webp" alt="Private couples suite with two side-by-side massage tables at Elite Spa Utah" width="2752" height="1536" loading="eager" decoding="async">
+      <img src="/assets/img/couples-suite.webp" alt="Private couples suite with two side-by-side massage tables at Elite Spa Utah" width="2752" height="1536" loading="lazy" decoding="async">
     </figure>
 
     <section class="container container--content section">
@@ -120,10 +123,21 @@
         <p class="eyebrow" data-reveal>Pairs well with</p>
         <h2 data-reveal>Related services</h2>
         <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
-          <a class="service-card" href="/4-hands-massage"><h3 class="service-card__title">4-Hands Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/head-spa-massage"><h3 class="service-card__title">Japanese Head Spa</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
+          <a class="service-card" href="/4-hands-massage"><h3 class="service-card__title">4-Hands Massage</h3><p class="service-card__desc">Two therapists working in sync, on you.</p><p class="service-card__price">From $165</p></a>
+          <a class="service-card" href="/head-spa-massage"><h3 class="service-card__title">Japanese Head Spa</h3><p class="service-card__desc">Scalp, neck, and shoulder ritual.</p><p class="service-card__price">From $85</p></a>
+          <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">The classic, full-body unwind.</p><p class="service-card__price">From $85</p></a>
         </div>
+      </div>
+    </section>
+
+    <section class="container container--narrow section">
+      <p class="eyebrow" data-reveal>Questions</p>
+      <h2 data-reveal>Good to know</h2>
+      <div class="faq" data-reveal>
+        <details class="faq__item"><summary>Are we in the same room the whole time?</summary><p class="faq__answer">Yes. You are side by side on two tables in one private suite, each with your own therapist. You can talk quietly or simply relax together; the room is yours for the session.</p></details>
+        <details class="faq__item"><summary>How does draping work for two people?</summary><p class="faq__answer">Exactly as it does for a single massage. Each of you undresses to your comfort level in private and stays fully draped under a sheet the entire time, with only the area being worked on uncovered. Privacy and modesty are the standard, not the exception.</p></details>
+        <details class="faq__item"><summary>Does it have to be a romantic couple?</summary><p class="faq__answer">Not at all. The couples suite is just as popular with friends, a parent and adult child, or coworkers celebrating a win. Anyone who wants to share the experience side by side is welcome.</p></details>
+        <details class="faq__item"><summary>Should we book ahead?</summary><p class="faq__answer">We recommend it. Two therapists and a private suite means fewer slots than a single massage, so booking a few days out gives you the best choice of times, especially on weekends and around holidays.</p></details>
       </div>
     </section>
 

@@ -40,6 +40,9 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is an individual massage exactly?", "acceptedAnswer": {"@type": "Answer", "text": "It is a fully customized session. Instead of picking a named style, you tell your therapist what you need that day and they blend techniques to match, from relaxing to focused, in one massage."}}, {"@type": "Question", "name": "How do I know what to ask for?", "acceptedAnswer": {"@type": "Answer", "text": "You do not have to know. Just describe how you feel and where you hold tension, and your therapist chooses the approach. This is the go-to for clients who would rather not decide between styles."}}, {"@type": "Question", "name": "Can the therapist mix relaxation and deep work?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, that is the whole point. You might get gentle, flowing work over most of the body and firmer pressure on a stubborn area, all in the same session."}}, {"@type": "Question", "name": "Is this good for regular clients?", "acceptedAnswer": {"@type": "Answer", "text": "It is a favorite for returning clients who trust their therapist to read the day and adjust. Over time, many people default to this once they know how their body responds."}}]}
+  </script>
 
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
@@ -84,7 +87,7 @@
     </section>
 
     <figure class="svc-hero-media" data-reveal>
-      <img src="/assets/img/oil-ritual.webp" alt="Warm massage oil poured into a therapist's palm above a terracotta dish at Elite Spa Utah" width="2752" height="1536" loading="eager" decoding="async">
+      <img src="/assets/img/oil-ritual.webp" alt="Warm massage oil poured into a therapist's palm above a terracotta dish at Elite Spa Utah" width="2752" height="1536" loading="lazy" decoding="async">
     </figure>
 
     <section class="container container--content section">
@@ -120,10 +123,21 @@
         <p class="eyebrow" data-reveal>Pairs well with</p>
         <h2 data-reveal>Related services</h2>
         <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
-          <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/deep-tissue-massage"><h3 class="service-card__title">Deep Tissue Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/head-spa-massage"><h3 class="service-card__title">Japanese Head Spa</h3><p class="service-card__desc">View details and pricing →</p></a>
+          <a class="service-card" href="/swedish-massage"><h3 class="service-card__title">Swedish Massage</h3><p class="service-card__desc">The classic, full-body unwind.</p><p class="service-card__price">From $85</p></a>
+          <a class="service-card" href="/deep-tissue-massage"><h3 class="service-card__title">Deep Tissue Massage</h3><p class="service-card__desc">Targeted pressure for chronic tension.</p><p class="service-card__price">From $85</p></a>
+          <a class="service-card" href="/head-spa-massage"><h3 class="service-card__title">Japanese Head Spa</h3><p class="service-card__desc">Scalp, neck, and shoulder ritual.</p><p class="service-card__price">From $85</p></a>
         </div>
+      </div>
+    </section>
+
+    <section class="container container--narrow section">
+      <p class="eyebrow" data-reveal>Questions</p>
+      <h2 data-reveal>Good to know</h2>
+      <div class="faq" data-reveal>
+        <details class="faq__item"><summary>What is an individual massage exactly?</summary><p class="faq__answer">It is a fully customized session. Instead of picking a named style, you tell your therapist what you need that day and they blend techniques to match, from relaxing to focused, in one massage.</p></details>
+        <details class="faq__item"><summary>How do I know what to ask for?</summary><p class="faq__answer">You do not have to know. Just describe how you feel and where you hold tension, and your therapist chooses the approach. This is the go-to for clients who would rather not decide between styles.</p></details>
+        <details class="faq__item"><summary>Can the therapist mix relaxation and deep work?</summary><p class="faq__answer">Yes, that is the whole point. You might get gentle, flowing work over most of the body and firmer pressure on a stubborn area, all in the same session.</p></details>
+        <details class="faq__item"><summary>Is this good for regular clients?</summary><p class="faq__answer">It is a favorite for returning clients who trust their therapist to read the day and adjust. Over time, many people default to this once they know how their body responds.</p></details>
       </div>
     </section>
 

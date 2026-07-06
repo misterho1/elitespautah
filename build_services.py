@@ -19,6 +19,12 @@ SERVICES = [
         "description": "Slow, deliberate strokes and firm pressure that reach the deeper layers of muscle and connective tissue. Unlike a relaxation massage, deep tissue targets the source of tension, the chronic adhesions that cause persistent pain.",
         "best_for": ["Chronic back pain", "Neck and shoulder tension", "Sports injuries and recovery", "IT band, hamstring, hip tightness"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("Is deep tissue supposed to hurt?", "It should feel like a firm, productive pressure, not sharp pain. Good deep tissue works at the edge of what your body can release, and your therapist checks in throughout. Tell us to ease off any time; the work is more effective when you stay relaxed."),
+            ("Will I be sore afterward?", "Some clients feel a mild next-day soreness, similar to after a workout, especially the first few sessions. Drink water, move gently, and it usually settles within a day. Let your therapist know your history so they can pace the pressure."),
+            ("How often should I come in for chronic tension?", "For a specific issue, many clients start with every one to two weeks, then space out to monthly maintenance once the tension eases. We will suggest a rhythm based on what we find, never a hard sell."),
+            ("Is a longer session worth it for deep tissue?", "Sixty minutes covers a focused area like back, neck, and shoulders. If you want full-body deep work or several problem spots addressed without rushing, the 90-minute session gives your therapist room to go deeper."),
+        ],
         "related": ["sports-massage", "shiatsu-massage", "ashiatsu-massage"],
     },
     {
@@ -29,6 +35,12 @@ SERVICES = [
         "description": "Long, flowing strokes designed to relax the whole nervous system. The default starting point for first-time clients and the easiest entry into regular bodywork.",
         "best_for": ["First-time massage clients", "Stress and overstimulation", "Better sleep", "Light muscle soreness"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("I have never had a massage. Is Swedish the right start?", "Yes. Swedish is the gentlest, most familiar style and the one we recommend for a first visit. There is nothing to prepare and nothing to know; your therapist walks you through it and adjusts to your comfort."),
+            ("Do I have to undress fully?", "You undress to your comfort level in private, then lie under a sheet and blanket. You are kept draped the whole session; only the area being worked on is uncovered at a time. Many clients keep underwear on, and that is completely fine."),
+            ("Is Swedish too light to help with tension?", "Swedish uses lighter, flowing pressure than deep tissue, but it still releases everyday tightness and calms the nervous system. If you want firmer work on a problem area, just ask; your therapist can add focused pressure without changing the relaxing feel."),
+            ("How long should my first session be?", "Sixty minutes is a great full-body introduction. If you know you hold a lot of stress or simply want to sink in without watching the clock, ninety minutes is the easy upgrade."),
+        ],
         "related": ["head-spa-massage", "foot-reflexology-massage", "individual-massage"],
     },
     {
@@ -77,6 +89,12 @@ SERVICES = [
         "description": "Side-by-side massage in our private couples suite. Two therapists working in sync, two tables, dim lighting. Anniversaries, date nights, traveling together. Book the suite, not just the appointment.",
         "best_for": ["Date nights and anniversaries", "Traveling couples", "Pre-event reset", "Gift experiences"],
         "prices": PREMIUM_PRICES,
+        "faqs": [
+            ("Are we in the same room the whole time?", "Yes. You are side by side on two tables in one private suite, each with your own therapist. You can talk quietly or simply relax together; the room is yours for the session."),
+            ("How does draping work for two people?", "Exactly as it does for a single massage. Each of you undresses to your comfort level in private and stays fully draped under a sheet the entire time, with only the area being worked on uncovered. Privacy and modesty are the standard, not the exception."),
+            ("Does it have to be a romantic couple?", "Not at all. The couples suite is just as popular with friends, a parent and adult child, or coworkers celebrating a win. Anyone who wants to share the experience side by side is welcome."),
+            ("Should we book ahead?", "We recommend it. Two therapists and a private suite means fewer slots than a single massage, so booking a few days out gives you the best choice of times, especially on weekends and around holidays."),
+        ],
         "related": ["4-hands-massage", "head-spa-massage", "swedish-massage"],
     },
     {
@@ -87,6 +105,12 @@ SERVICES = [
         "description": "Two therapists, one client, four hands moving in coordinated pressure. Covers double the body in the same time, and the sensory overload puts the nervous system in a state most single-therapist sessions never reach.",
         "best_for": ["Maximum bodywork in minimum time", "Special-occasion treatment", "Sensory escape", "Severe full-body tension"],
         "prices": PREMIUM_PRICES,
+        "faqs": [
+            ("What is a 4-hand massage like?", "Two therapists work on you at once, moving in coordinated, mirrored strokes. Because your mind cannot track four hands at a time, it tends to stop trying and let go completely. Most people describe it as deeply immersive."),
+            ("Is it two massages at the same time?", "In effect, yes. You get double the hands for the same session length, so more of your body is covered and the whole thing feels twice as full. It is a treat rather than an everyday massage for most clients."),
+            ("Can I choose the pressure?", "Absolutely. Both therapists match the pressure you ask for, from light and flowing to firm and deep, and check in as they go. You are always in control of how intense it feels."),
+            ("Why does it cost more than a single massage?", "You are booking two licensed therapists for the full session instead of one. That is the reason for the premium price, and the reason it feels like a special occasion."),
+        ],
         "related": ["couples-massage", "swedish-massage", "deep-tissue-massage"],
     },
     {
@@ -97,6 +121,12 @@ SERVICES = [
         "description": "Reflexology maps zones on the feet to organ systems and energy pathways throughout the body. Targeted pressure on these points releases tension you didn't know was there.",
         "best_for": ["Tired feet after long days", "Improved circulation", "Stress release without disrobing", "Pregnancy-safe relaxation"],
         "prices": SINGLE_HOUR,
+        "faqs": [
+            ("Do I have to undress for reflexology?", "No. Reflexology is done fully clothed, with only your feet and lower legs bare. It is a great option if you want real bodywork without disrobing."),
+            ("Does it only work on my feet, or the whole body?", "The hands-on work stays on your feet, but reflexology maps points there to the rest of the body, so many clients feel the effect well beyond their feet, often as a full-body calm."),
+            ("Is reflexology safe during pregnancy?", "It is one of the gentler, pregnancy-friendly options because you stay comfortably seated or reclined and clothed. Let us know you are expecting when you book, and check with your doctor if you have any concerns."),
+            ("Will it feel good or is it painful?", "Certain points can feel tender for a moment, but the work is meant to feel relieving, not painful. Your therapist keeps the pressure at a level you enjoy and eases off any sensitive spot."),
+        ],
         "related": ["swedish-massage", "head-spa-massage", "shiatsu-massage"],
     },
     {
@@ -107,6 +137,12 @@ SERVICES = [
         "description": "Deeper than Swedish, more dynamic than deep tissue. Combines stretching, compression, and targeted pressure to flush metabolic waste, restore range of motion, and prevent injury between training sessions.",
         "best_for": ["Athletes pre- and post-event", "Marathon and triathlon training", "CrossFit and Olympic lifting", "Climbers and skiers"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("Should I book sports massage before or after an event?", "Both work. A session a few days before helps loosen and prime the muscles, while one after helps flush fatigue and speed recovery. Tell your therapist your event timing and we will tailor the work."),
+            ("How is it different from deep tissue?", "Sports massage adds stretching, compression, and movement aimed at range of motion and recovery, not just deep pressure on knots. It is more dynamic and often targets the muscle groups your sport loads most."),
+            ("Do I need to be a serious athlete?", "No. Anyone who trains, lifts, runs, skis, or is simply active gets value from it. We scale the work to your body and your activity level, not a competition schedule."),
+            ("Will it help with an old nagging injury?", "It can ease the tension and compensation patterns around a recurring tight spot, and we work carefully around it. For a diagnosed injury, we stay in the relaxation-and-recovery lane and defer to your medical provider."),
+        ],
         "related": ["deep-tissue-massage", "ashiatsu-massage", "shiatsu-massage"],
     },
     {
@@ -117,6 +153,12 @@ SERVICES = [
         "description": "Therapist applies pressure with their feet using overhead bars for balance. Reaches muscle depth that elbows and forearms can't access. Surprisingly precise, despite the name.",
         "best_for": ["Severe back tension", "Chronic shoulder bracing", "Athletes who can't get deep enough", "Larger-bodied clients"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("The therapist uses their feet? Is that safe?", "Yes. Your therapist holds overhead bars for full control and balance, applying smooth, broad pressure with the soles of the feet. It is a trained, precise technique, and the pressure is more even and less pointed than an elbow."),
+            ("Does ashiatsu hurt?", "It should feel like deep, gliding compression rather than a sharp dig. Because the pressure spreads over a larger surface, many clients find it more comfortable than deep tissue at the same depth. You set the intensity."),
+            ("Who is ashiatsu best for?", "People who love deep pressure and feel that hands and elbows never quite reach deep enough, including athletes and larger-bodied clients. If regular deep tissue leaves you wanting more, this is worth trying."),
+            ("Do I stay draped?", "Yes. Ashiatsu is performed with oil on bare skin, and you stay fully draped with only the area being worked on uncovered, exactly as in any table massage."),
+        ],
         "related": ["deep-tissue-massage", "sports-massage", "shiatsu-massage"],
     },
     {
@@ -127,6 +169,12 @@ SERVICES = [
         "description": "Originated in Japan, shiatsu uses thumb, palm, and finger pressure along the body's energy meridians. Performed clothed on a mat or table, no oil, no draping.",
         "best_for": ["Stiffness without soreness", "Energy and fatigue rebalance", "Clients who prefer clothed sessions", "First-time pressure-point work"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("Do I stay dressed for shiatsu?", "Yes. Shiatsu is done fully clothed, with no oil and no draping, so wear something comfortable you can move in. It is a good fit if you would rather not undress for bodywork."),
+            ("What does shiatsu feel like?", "Your therapist applies steady thumb, palm, and finger pressure along the body's energy lines, sometimes with gentle stretches. It feels rhythmic and grounding rather than slippery or flowing, and many people leave feeling both calm and re-energized."),
+            ("Is it better for relaxation or for tension?", "Both, in its own way. Shiatsu eases stiffness and tension while also aiming to rebalance energy and fatigue, so it suits clients who feel tight and drained rather than simply sore."),
+            ("I have never tried pressure-point work. Is shiatsu a good start?", "It is a gentle, approachable introduction because it stays clothed and the pressure is easy to dial in. Tell your therapist it is your first time and they will guide you through it."),
+        ],
         "related": ["foot-reflexology-massage", "ashiatsu-massage", "swedish-massage"],
     },
     {
@@ -137,6 +185,12 @@ SERVICES = [
         "description": "Fully clothed, focused work on the neck, shoulders, upper back, and arms. Perfect for a between-meetings break or a first try if you've never had bodywork.",
         "best_for": ["Lunch breaks", "First-time clients", "Office workers and screen-staring", "Quick stress relief"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("Do I need to undress for a chair massage?", "No. Chair massage is done fully clothed, seated in a supportive massage chair. It is the easiest, lowest-commitment way to try bodywork or fit relief into a busy day."),
+            ("What areas does it cover?", "The focus is your neck, shoulders, upper back, and arms, the spots that carry desk and screen tension. It is targeted rather than full-body, which is what makes it quick and effective."),
+            ("Is chair massage good for a first-timer?", "Very. There is nothing to figure out, no oil, and no table, so it is a comfortable first taste of massage. Many clients start here and later book a full table session."),
+            ("How long does a chair session take?", "It is designed to be efficient, so you can fit it around a lunch break or errand. Let us know your time window when you book and we will suggest the right length."),
+        ],
         "related": ["foot-reflexology-massage", "swedish-massage", "shiatsu-massage"],
     },
     {
@@ -147,6 +201,12 @@ SERVICES = [
         "description": "Show up, talk to your therapist about what hurts, and get a custom blend of techniques tailored to that day. Most regular clients eventually default to this; they trust their therapist to read the room.",
         "best_for": ["Returning clients", "Mixed needs (some tension, some relaxation)", "When you don't want to choose", "Open-ended pampering"],
         "prices": STANDARD_PRICES,
+        "faqs": [
+            ("What is an individual massage exactly?", "It is a fully customized session. Instead of picking a named style, you tell your therapist what you need that day and they blend techniques to match, from relaxing to focused, in one massage."),
+            ("How do I know what to ask for?", "You do not have to know. Just describe how you feel and where you hold tension, and your therapist chooses the approach. This is the go-to for clients who would rather not decide between styles."),
+            ("Can the therapist mix relaxation and deep work?", "Yes, that is the whole point. You might get gentle, flowing work over most of the body and firmer pressure on a stubborn area, all in the same session."),
+            ("Is this good for regular clients?", "It is a favorite for returning clients who trust their therapist to read the day and adjust. Over time, many people default to this once they know how their body responds."),
+        ],
         "related": ["swedish-massage", "deep-tissue-massage", "head-spa-massage"],
     },
     {
@@ -158,12 +218,18 @@ SERVICES = [
         "best_for": ["Second- and third-trimester aches", "Lower back and hip relief", "Swelling and circulation", "Stress and better sleep"],
         "prices": PRENATAL_PRICES,
         "note_suffix": " Add 30 minutes to any prenatal session for $50.",
+        "faqs": [
+            ("Is prenatal massage safe during pregnancy?", "For most healthy pregnancies, yes, and it is performed by therapists experienced in prenatal positioning and pressure. We keep the work gentle and supportive. If your pregnancy is high-risk or you have any concern, please check with your doctor first."),
+            ("How am I positioned so it stays comfortable?", "You rest on your side, supported by bolster pillows, rather than lying face-down. This keeps pressure off your abdomen and lower back and is comfortable well into the third trimester."),
+            ("When in my pregnancy can I come in?", "Many clients start in the second and third trimesters, when lower-back, hip, and leg aches tend to build. If you are in your first trimester or have questions about timing, talk with your provider and we will follow their guidance."),
+            ("What if I need a little more time?", "You can add 30 minutes to any prenatal session for $50, which is a nice option if you want extra time on your back, hips, and legs at an unhurried pace."),
+        ],
         "related": ["swedish-massage", "individual-massage", "foot-reflexology-massage"],
     },
 ]
 
-# Build slug -> name lookup for related services rendering
-SLUG_TO_NAME = {s["slug"]: s["name"] for s in SERVICES}
+# Build slug -> service lookup for related-services cross-sell (name, tagline, price)
+SLUG_TO_SERVICE = {s["slug"]: s for s in SERVICES}
 
 # Service-page hero photography. Per-service brand shots generated 2026-07-05
 # (Higgsfield nano_banana_pro, seeded from the homepage hero for one exposure
@@ -321,7 +387,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     </section>
 
     <figure class="svc-hero-media{hero_media_class}" data-reveal>
-      <img src="/assets/img/{hero_img}" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="eager" decoding="async">{hero_video_tag}
+      <img src="/assets/img/{hero_img}" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="lazy" decoding="async">{hero_video_tag}
     </figure>
 
     <section class="container container--content section">
@@ -421,10 +487,19 @@ def render_prices(prices):
 
 
 def render_related(related_slugs, services_by_slug):
-    return "\n".join(
-        f'          <a class="service-card" href="/{slug}"><h3 class="service-card__title">{services_by_slug[slug]}</h3><p class="service-card__desc">View details and pricing →</p></a>'
-        for slug in related_slugs
-    )
+    # Real cross-sell: each card shows the related service's own tagline + a
+    # "From $X" price instead of identical boilerplate.
+    cards = []
+    for slug in related_slugs:
+        svc = services_by_slug[slug]
+        price_from = svc["prices"][0][1]
+        cards.append(
+            f'          <a class="service-card" href="/{slug}">'
+            f'<h3 class="service-card__title">{svc["name"]}</h3>'
+            f'<p class="service-card__desc">{svc["tagline"]}</p>'
+            f'<p class="service-card__price">From {price_from}</p></a>'
+        )
+    return "\n".join(cards)
 
 
 def render_extra(s):
@@ -504,7 +579,7 @@ def main():
             description=s["description"],
             best_for_html=render_best_for(s["best_for"]),
             prices_html=render_prices(s["prices"]),
-            related_html=render_related(s["related"], SLUG_TO_NAME),
+            related_html=render_related(s["related"], SLUG_TO_SERVICE),
             extra_section=render_extra(s),
             faq_section=render_faq_section(s),
             faq_schema=render_faq_schema(s),
