@@ -8,6 +8,7 @@ import os
 STANDARD_PRICES = [(60, "$85"), (90, "$125"), (120, "$165")]
 PREMIUM_PRICES  = [(60, "$165"), (90, "$245"), (120, "$325")]   # couples, 4-hand
 SINGLE_HOUR     = [(60, "$85")]                                 # foot reflexology, head spa
+PRENATAL_PRICES = [(60, "$105"), (90, "$155"), (120, "$205")]   # prenatal (2026-07-05)
 
 SERVICES = [
     {
@@ -155,7 +156,8 @@ SERVICES = [
         "tagline": "Safe, supportive bodywork through pregnancy.",
         "description": "Gentle, side-lying massage tailored to each trimester. Relieves the lower-back, hip, and leg tension pregnancy brings, improves circulation, and gives you a calm hour to rest. Performed by therapists experienced in prenatal positioning and pressure.",
         "best_for": ["Second- and third-trimester aches", "Lower back and hip relief", "Swelling and circulation", "Stress and better sleep"],
-        "prices": STANDARD_PRICES,
+        "prices": PRENATAL_PRICES,
+        "note_suffix": " Add 30 minutes to any prenatal session for $50.",
         "related": ["swedish-massage", "individual-massage", "foot-reflexology-massage"],
     },
 ]
@@ -337,7 +339,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
           <div class="price-table" data-reveal>
 {prices_html}
           </div>
-          <p class="svc-note">Add-ons · hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each, added at booking.</p>
+          <p class="svc-note">Add-ons · hot stones or cupping $20 each; infrared sauna (30 min) or CBD $30 each, added at booking.{note_suffix}</p>
           <p style="margin-top: var(--space-3)">
             <a class="btn btn--primary" href="/book">Book {name}</a>
           </p>
@@ -506,6 +508,7 @@ def main():
             extra_section=render_extra(s),
             faq_section=render_faq_section(s),
             faq_schema=render_faq_schema(s),
+            note_suffix=s.get("note_suffix", ""),
             price_from=price_from,
             price_from_num=price_from_num,
             hero_img=hero["img"],
