@@ -380,7 +380,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
         <h1><span class="line"><span class="line-inner">{name}</span></span></h1>
         <p class="lead">{tagline}</p>
         <p style="margin-top: var(--space-3)" data-hero-cta>
-          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--primary" href="/book?service={slug}" data-magnetic>Book Now</a>
           <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
         </p>
       </div>
@@ -407,7 +407,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
           </div>
           <p class="svc-note">Add-ons · hot stones or cupping $20 each; infrared sauna (30 min) or CBD $30 each, added at booking.{note_suffix}</p>
           <p style="margin-top: var(--space-3)">
-            <a class="btn btn--primary" href="/book">Book {name}</a>
+            <a class="btn btn--primary" href="/book?service={slug}">Book {name}</a>
           </p>
         </div>
       </div>
@@ -428,7 +428,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
       <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
       <p class="cta-band__text" data-reveal>Same-day appointments available. Open daily, 10am to 10pm.</p>
       <div class="cluster cluster--center" data-reveal>
-        <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+        <a class="btn btn--primary" href="/book?service={slug}" data-magnetic>Book Now</a>
         <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
       </div>
       </div>
