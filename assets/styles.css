@@ -10,6 +10,7 @@
   --brand-cream: #faf7f3;
   --brand-cream-soft: #f5f0e8;
   --brand-cream-deep: #ebe2d2;
+  --surface: #fffdfb; /* card/input surface: white warmed a hair toward the brand hue so it sits on cream without reading cold */
   --ink: #2a2622;
   --ink-muted: #5b544c;
   --ink-dim: #6b6358; /* 5.2:1 on cream-soft (was #7a7268 = 4.17:1, failed AA) */
@@ -313,11 +314,40 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   object-fit: cover;
   object-position: 30% 80%;
 }
+/* Mobile: a 16:9 hero over-crops inside a full-height portrait box and reads
+   off-center. Trim the height so more of the image shows, and center the crop. */
+@media (max-width: 640px) {
+  .hero { min-height: 82svh; }
+  .hero__media img,
+  .hero__media video { object-position: 50% 42%; }
+}
 .hero__media::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, rgba(20,18,16,0.8) 0%, rgba(20,18,16,0.55) 30%, rgba(20,18,16,0.05) 65%, transparent 100%);
+}
+/* Ambient hero video — layered over the hero photo by ambient-video.js and
+   faded in once playing. The photo underneath stays the LCP element and the
+   only thing reduced-motion / Save-Data visitors see. The ::after scrim above
+   paints over both, so text contrast is unchanged. */
+.hero__media video,
+.svc-hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.hero__media video { object-position: 30% 80%; }
+.hero__media video.is-playing,
+.svc-hero-media video.is-playing { opacity: 1; }
+.svc-hero-media.has-ambient { position: relative; overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .hero__media video,
+  .svc-hero-media video { display: none; }
 }
 .hero__inner {
   position: relative;
@@ -377,7 +407,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   margin-top: var(--space-4);
 }
 .service-card {
-  background: #fff;
+  background: var(--surface);
   padding: var(--space-3) var(--space-3) var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -431,7 +461,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   gap: var(--space-3);
 }
 .review {
-  background: #fff;
+  background: var(--surface);
   padding: var(--space-3);
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
@@ -477,7 +507,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
 }
 .price-row {
   display: grid;
@@ -548,7 +578,7 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   padding: 0.7em 1em;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   width: 100%;
   min-height: 48px;
@@ -785,8 +815,9 @@ p { margin: 0 0 var(--space-2); max-width: 65ch; }
   box-shadow: var(--shadow-soft);
   transition: transform var(--t-slow) var(--ease-organic), box-shadow var(--t-slow) var(--ease-organic);
 }
-/* Interim photography (swappable): see assets/img/*.webp comments in index.html. */
-.svc-feature--a { background-image: url("/assets/img/treatment-room.webp"); }
+/* Feature photography: --a = Japanese head spa (brand shot, 2026-07-05),
+   --b = couples suite. Swappable; see comments in index.html. */
+.svc-feature--a { background-image: url("/assets/img/head-spa.webp"); }
 .svc-feature--b { background-image: url("/assets/img/couples-suite.webp"); }
 /* Scrim keeps the cream title/desc legible over the photo (text sits bottom-left). */
 .svc-feature::after {

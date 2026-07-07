@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/styles.css?v=3">
+  <link rel="stylesheet" href="/assets/styles.css?v=4">
 
   <script type="application/ld+json">
   {
@@ -40,6 +40,10 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should I book sports massage before or after an event?", "acceptedAnswer": {"@type": "Answer", "text": "Both work. A session a few days before helps loosen and prime the muscles, while one after helps flush fatigue and speed recovery. Tell your therapist your event timing and we will tailor the work."}}, {"@type": "Question", "name": "How is it different from deep tissue?", "acceptedAnswer": {"@type": "Answer", "text": "Sports massage adds stretching, compression, and movement aimed at range of motion and recovery, not just deep pressure on knots. It is more dynamic and often targets the muscle groups your sport loads most."}}, {"@type": "Question", "name": "Do I need to be a serious athlete?", "acceptedAnswer": {"@type": "Answer", "text": "No. Anyone who trains, lifts, runs, skis, or is simply active gets value from it. We scale the work to your body and your activity level, not a competition schedule."}}, {"@type": "Question", "name": "Will it help with an old nagging injury?", "acceptedAnswer": {"@type": "Answer", "text": "It can ease the tension and compensation patterns around a recurring tight spot, and we work carefully around it. For a diagnosed injury, we stay in the relaxation-and-recovery lane and defer to your medical provider."}}]}
+  </script>
+
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
        and usable without JS, so static service pages no longer ship ~116KB of
@@ -56,6 +60,9 @@
         <button class="site-nav__menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
         <ul class="site-nav__list" id="primary-nav">
           <li><a class="site-nav__link" href="/services">Services</a></li>
+          <li><a class="site-nav__link" href="/pricing">Pricing</a></li>
+          <li><a class="site-nav__link" href="/reviews">Reviews</a></li>
+          <li><a class="site-nav__link" href="/about">About</a></li>
           <li><a class="site-nav__link" href="/gift-cards">Gift Cards</a></li>
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
@@ -73,15 +80,14 @@
         <h1><span class="line"><span class="line-inner">Sports Massage</span></span></h1>
         <p class="lead">Active recovery for active bodies.</p>
         <p style="margin-top: var(--space-3)" data-hero-cta>
-          <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+          <a class="btn btn--primary" href="/book?service=sports-massage" data-magnetic>Book Now</a>
           <a class="btn btn--secondary" href="tel:+18018398880" style="margin-left: var(--space-1)">Call (801) 839-8880</a>
         </p>
       </div>
     </section>
 
-    <!-- Hero photo is INTERIM/SWAPPABLE (assets/img placeholder, 2026-06-25). -->
     <figure class="svc-hero-media" data-reveal>
-      <img src="/assets/img/treatment-room.webp" alt="Warm, dimly lit private massage room with a draped table at Elite Spa Utah" width="1376" height="768" loading="eager" decoding="async">
+      <img src="/assets/img/treatment-room.webp" alt="Warm, sunlit private massage room with a draped table and terracotta plaster walls at Elite Spa Utah" width="1376" height="768" loading="lazy" decoding="async">
     </figure>
 
     <section class="container container--content section">
@@ -104,9 +110,9 @@
             <div class="price-row"><p class="price-row__name">90 min</p><span class="price-row__time">90 minutes</span><span class="price-row__amount">$125</span></div>
             <div class="price-row"><p class="price-row__name">120 min</p><span class="price-row__time">120 minutes</span><span class="price-row__amount">$165</span></div>
           </div>
-          <p class="svc-note">Add-ons · hot stones $20; cupping, infrared sauna (30 min), or CBD $30 each, added at booking.</p>
+          <p class="svc-note">Add-ons · hot stones or cupping $20 each; infrared sauna (30 min) or CBD $30 each, added at booking.</p>
           <p style="margin-top: var(--space-3)">
-            <a class="btn btn--primary" href="/book">Book Sports Massage</a>
+            <a class="btn btn--primary" href="/book?service=sports-massage">Book Sports Massage</a>
           </p>
         </div>
       </div>
@@ -117,10 +123,21 @@
         <p class="eyebrow" data-reveal>Pairs well with</p>
         <h2 data-reveal>Related services</h2>
         <div class="service-grid" style="margin-top: var(--space-3);" data-reveal-stagger>
-          <a class="service-card" href="/deep-tissue-massage"><h3 class="service-card__title">Deep Tissue Massage</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/ashiatsu-massage"><h3 class="service-card__title">Ashiatsu</h3><p class="service-card__desc">View details and pricing →</p></a>
-          <a class="service-card" href="/shiatsu-massage"><h3 class="service-card__title">Shiatsu</h3><p class="service-card__desc">View details and pricing →</p></a>
+          <a class="service-card" href="/deep-tissue-massage"><h3 class="service-card__title">Deep Tissue Massage</h3><p class="service-card__desc">Targeted pressure for chronic tension.</p><p class="service-card__price">From $85</p></a>
+          <a class="service-card" href="/ashiatsu-massage"><h3 class="service-card__title">Ashiatsu</h3><p class="service-card__desc">Deeper than hands can go.</p><p class="service-card__price">From $85</p></a>
+          <a class="service-card" href="/shiatsu-massage"><h3 class="service-card__title">Shiatsu</h3><p class="service-card__desc">Japanese pressure-point therapy.</p><p class="service-card__price">From $85</p></a>
         </div>
+      </div>
+    </section>
+
+    <section class="container container--narrow section">
+      <p class="eyebrow" data-reveal>Questions</p>
+      <h2 data-reveal>Good to know</h2>
+      <div class="faq" data-reveal>
+        <details class="faq__item"><summary>Should I book sports massage before or after an event?</summary><p class="faq__answer">Both work. A session a few days before helps loosen and prime the muscles, while one after helps flush fatigue and speed recovery. Tell your therapist your event timing and we will tailor the work.</p></details>
+        <details class="faq__item"><summary>How is it different from deep tissue?</summary><p class="faq__answer">Sports massage adds stretching, compression, and movement aimed at range of motion and recovery, not just deep pressure on knots. It is more dynamic and often targets the muscle groups your sport loads most.</p></details>
+        <details class="faq__item"><summary>Do I need to be a serious athlete?</summary><p class="faq__answer">No. Anyone who trains, lifts, runs, skis, or is simply active gets value from it. We scale the work to your body and your activity level, not a competition schedule.</p></details>
+        <details class="faq__item"><summary>Will it help with an old nagging injury?</summary><p class="faq__answer">It can ease the tension and compensation patterns around a recurring tight spot, and we work carefully around it. For a diagnosed injury, we stay in the relaxation-and-recovery lane and defer to your medical provider.</p></details>
       </div>
     </section>
 
@@ -129,7 +146,7 @@
       <h2 class="cta-band__heading" data-reveal>Ready when you are.</h2>
       <p class="cta-band__text" data-reveal>Same-day appointments available. Open daily, 10am to 10pm.</p>
       <div class="cluster cluster--center" data-reveal>
-        <a class="btn btn--primary" href="/book" data-magnetic>Book Now</a>
+        <a class="btn btn--primary" href="/book?service=sports-massage" data-magnetic>Book Now</a>
         <a class="btn btn--ghost btn--on-dark" href="tel:+18018398880">Call (801) 839-8880</a>
       </div>
       </div>

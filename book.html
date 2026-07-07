@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://microsite.talech.com">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/styles.css?v=3">
+  <link rel="stylesheet" href="/assets/styles.css?v=4">
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
        and usable without JS, so it no longer ships ~116KB of GSAP eagerly. -->
@@ -32,6 +32,9 @@
         <button class="site-nav__menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">☰</button>
         <ul class="site-nav__list" id="primary-nav">
           <li><a class="site-nav__link" href="/services">Services</a></li>
+          <li><a class="site-nav__link" href="/pricing">Pricing</a></li>
+          <li><a class="site-nav__link" href="/reviews">Reviews</a></li>
+          <li><a class="site-nav__link" href="/about">About</a></li>
           <li><a class="site-nav__link" href="/gift-cards">Gift Cards</a></li>
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
@@ -61,13 +64,43 @@
         .book-pick{cursor:pointer;opacity:1;transition:box-shadow .15s,transform .15s;padding:.6rem 1.1rem;font-size:.82rem;}
         .book-pick:hover{transform:translateY(-1px);}
         .book-pick.is-active{box-shadow:inset 0 0 0 2px #fff,0 0 0 2px var(--brand-orange-deep,#7d3d23);}
+
+        /* Reassurance rail — real trust signals beside the scheduler. */
+        .book-reassure{
+          max-width:1080px;margin:0 auto 1.1rem;list-style:none;padding:0;
+          display:flex;flex-wrap:wrap;gap:.55rem 1.4rem;
+          font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink-muted);
+        }
+        .book-reassure li{display:flex;align-items:center;gap:.5rem;}
+        .book-reassure svg{flex:0 0 auto;width:1.05rem;height:1.05rem;color:var(--brand-orange);}
+
+        /* Booking iframe container + loading overlay (shown on src swap,
+           cleared on the iframe load event). */
+        .book-frame{position:relative;max-width:1080px;margin:0 auto;background:var(--surface);
+          border:1px solid var(--line);border-radius:var(--radius-md);
+          box-shadow:0 28px 70px -34px rgba(20,12,4,0.32);overflow:hidden;}
+        .book-frame__overlay{
+          position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;
+          align-items:center;justify-content:center;gap:1rem;
+          background:var(--surface);color:var(--ink-muted);
+          font-family:'DM Sans',sans-serif;font-size:.85rem;letter-spacing:.04em;
+          opacity:0;visibility:hidden;transition:opacity .2s ease-out,visibility .2s ease-out;
+        }
+        .book-frame.is-loading .book-frame__overlay{opacity:1;visibility:visible;}
+        .book-frame__spinner{
+          width:2rem;height:2rem;border-radius:50%;
+          border:2px solid var(--brand-orange-soft);border-top-color:var(--brand-orange);
+          animation:book-spin .7s linear infinite;
+        }
+        @keyframes book-spin{to{transform:rotate(360deg);}}
+        @media (prefers-reduced-motion:reduce){.book-frame__spinner{animation:none;}}
       </style>
 
       <div class="book-menu" style="max-width:1080px;margin:0 auto 1.9rem;">
         <div class="book-menu__group">
           <p class="book-menu__title">Single Massage (Select Massage Style at Check Out) <small>— Swedish · Deep Tissue · Sports · Ashiatsu · Shiatsu · Individual · Chair · Prenatal</small></p>
           <div class="book-menu__row">
-            <button type="button" class="btn btn--primary book-pick is-active" data-cal="Chgg3kYAkD4RvRustCt8">60 min</button>
+            <button type="button" class="btn btn--primary book-pick is-active" data-cal="Chgg3kYAkD4RvRustCt8" data-service="swedish-massage deep-tissue-massage sports-massage ashiatsu-massage shiatsu-massage individual-massage chair-massage prenatal-massage">60 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="EINbDqoDm2f8oAUatoWb">90 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="BtwM9fP0EPQYvOsIetqX">120 min</button>
           </div>
@@ -75,7 +108,7 @@
         <div class="book-menu__group">
           <p class="book-menu__title">Couples Massage <small>— side by side</small></p>
           <div class="book-menu__row">
-            <button type="button" class="btn btn--primary book-pick" data-cal="YuuvZfzH7rhU5cMLCqfi">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="YuuvZfzH7rhU5cMLCqfi" data-service="couples-massage">60 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="5izvoRzi3v4NgpBadip1">90 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="sPaFVDx5XVh9icIr5Tag">120 min</button>
           </div>
@@ -83,7 +116,7 @@
         <div class="book-menu__group">
           <p class="book-menu__title">4-Hand Massage <small>— two therapists</small></p>
           <div class="book-menu__row">
-            <button type="button" class="btn btn--primary book-pick" data-cal="uTGS6RFwi0jtSzw8MRBA">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="uTGS6RFwi0jtSzw8MRBA" data-service="4-hands-massage">60 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="7qhje4ttI4U88KNi86Cp">90 min</button>
             <button type="button" class="btn btn--primary book-pick" data-cal="ac8W21n4qQ5bXcyY9g8H">120 min</button>
           </div>
@@ -91,13 +124,36 @@
         <div class="book-menu__group">
           <p class="book-menu__title">Spa Treatments <small>— 60 min each</small></p>
           <div class="book-menu__row">
-            <button type="button" class="btn btn--primary book-pick" data-cal="CAedvMjVuIJ4XjmNbhWn">Foot / Reflexology</button>
-            <button type="button" class="btn btn--primary book-pick" data-cal="bECoUAPFFpFdPDlL9Rth">Head Spa</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="CAedvMjVuIJ4XjmNbhWn" data-service="foot-reflexology-massage">Foot / Reflexology</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="bECoUAPFFpFdPDlL9Rth" data-service="head-spa-massage">Head Spa</button>
           </div>
         </div>
       </div>
 
-      <div style="max-width: 1080px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: 0 28px 70px -34px rgba(20,12,4,0.32); overflow: hidden;">
+      <ul class="book-reassure">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/></svg>
+          <span>Licensed Utah massage therapists</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Same-day appointments often available</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8V5a2 2 0 1 0-2 2h4a2 2 0 1 0-2-2v3"/><rect x="4" y="8" width="16" height="4" rx="1"/><path d="M6 12v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-7"/><path d="M12 12v8"/></svg>
+          <span>Gift cards redeemed at the spa</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/></svg>
+          <span>Need to reschedule? Just call ahead</span>
+        </li>
+      </ul>
+
+      <div class="book-frame">
+        <div class="book-frame__overlay" aria-hidden="true">
+          <div class="book-frame__spinner"></div>
+          <span>Loading available times…</span>
+        </div>
         <iframe src="https://api.leadconnectorhq.com/widget/booking/Chgg3kYAkD4RvRustCt8" style="width: 100%; border: none; min-height: 760px; display: block;" scrolling="no" id="ghl-booking-elite" title="Book your appointment with Elite Spa Utah"></iframe>
       </div>
 
@@ -140,7 +196,7 @@
         </div>
       </div>
       <div class="site-footer__legal">
-        <span>© 2026 Elite Spa Utah · Operated by J Massage LLC</span>
+        <span>© 2026 Elite Spa Utah · Operated by <a href="https://jmassageslc.com" rel="noopener" style="color:inherit;">J Massage LLC</a></span>
         <span>Licensed massage therapists, State of Utah</span>
       </div>
     </div>
@@ -150,14 +206,17 @@
 
   <!-- Booking picker: swap the GHL booking iframe to the calendar the visitor
        selects. Each .book-pick's data-cal is its LeadConnector calendar id,
-       verified 1:1 against Elite Spa's GHL calendars on 2026-06-25. Vanilla,
-       no deps — matches nav.js/motion.js style. -->
+       verified 1:1 against Elite Spa's GHL calendars on 2026-06-25. A pill may
+       also carry data-service (space-separated service slugs) so a service page
+       can deep-link into it via /book?service=<slug>. Vanilla, no deps —
+       matches nav.js/motion.js style. -->
   <script>
     (function () {
       'use strict';
       var WIDGET_BASE = 'https://api.leadconnectorhq.com/widget/booking/';
       var menu = document.querySelector('.book-menu');
       var iframe = document.getElementById('ghl-booking-elite');
+      var frame = document.querySelector('.book-frame');
       if (!menu || !iframe) return;
 
       var picks = menu.querySelectorAll('.book-pick');
@@ -166,13 +225,18 @@
         b.setAttribute('aria-pressed', b.classList.contains('is-active') ? 'true' : 'false');
       });
 
-      menu.addEventListener('click', function (e) {
-        var btn = e.target.closest('.book-pick');
-        if (!btn) return;
+      // Show the skeleton overlay until the freshly-swapped iframe finishes
+      // loading. The load event fires for every navigation, so it clears itself.
+      iframe.addEventListener('load', function () {
+        if (frame) frame.classList.remove('is-loading');
+      });
+
+      function activate(btn) {
         var calId = btn.getAttribute('data-cal');
-        // Ignore clicks with no id or on the already-active service (avoids reload).
+        // Ignore no id or the already-active pill (avoids a needless reload).
         if (!calId || btn.classList.contains('is-active')) return;
 
+        if (frame) frame.classList.add('is-loading');
         iframe.src = WIDGET_BASE + encodeURIComponent(calId);
 
         picks.forEach(function (b) {
@@ -180,7 +244,28 @@
           b.classList.toggle('is-active', on);
           b.setAttribute('aria-pressed', on ? 'true' : 'false');
         });
+      }
+
+      menu.addEventListener('click', function (e) {
+        var btn = e.target.closest('.book-pick');
+        if (btn) activate(btn);
       });
+
+      // Deep-link: /book?service=head-spa -> pre-select the matching pill so the
+      // intent from a service-page CTA carries into booking. Slugs are matched
+      // against each pill's data-service list; unknown values fall through to
+      // the default (Single Massage 60 min) with no error.
+      var params = new URLSearchParams(window.location.search);
+      var want = (params.get('service') || '').trim().toLowerCase();
+      if (want) {
+        for (var i = 0; i < picks.length; i++) {
+          var services = (picks[i].getAttribute('data-service') || '').toLowerCase().split(/\s+/);
+          if (services.indexOf(want) !== -1) {
+            activate(picks[i]);
+            break;
+          }
+        }
+      }
     })();
   </script>
 
