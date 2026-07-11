@@ -9,3 +9,6 @@ https://www.elitespautah.com/* https://elitespautah.com/:splat 301
 /hot-stone-massage      /services   301
 /cupping-therapy        /services   301
 /medical-infrared-sauna /services   301
+
+# Staff receipt-reprint tool -> private n8n hosted form (not linked publicly). 302 so the target URL can change.
+/print https://misterho.app.n8n.cloud/form/reprint-receipt 302
