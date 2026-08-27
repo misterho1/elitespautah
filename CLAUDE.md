@@ -12,7 +12,7 @@ Elite owns facials, sauna, reflexology, head spa. Massage-modality topics belong
 ## Facts
 - Pricing: standard $85/$125/$165 (60/90/120) · premium $165/$245/$325 · add-ons $30 (cupping $20) · prenatal 105/155/205.
 - Photos: current brand imagery is AI-generated INTERIM (same-room continuity set) — replace when the real shoot lands. Never fabricate "real client" photos or reviews.
-- Real rating: 4.9/153 on Google. Use real numbers only.
+- Real rating: 4.8/249 on Google (synced 2026-08-26). Use real numbers only.
 - Ambient video pattern: `ambient-video.js` (looping brand videos). Mobile gets the FULL cinematic tier — verify at 375px.
 - GA4 currently shares J Massage's `G-HR9MP6ENEP` — Elite should get its OWN id (open task; don't propagate the shared one to new work).
 

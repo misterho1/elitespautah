@@ -912,8 +912,8 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
         "priceRange": "$$",
         "aggregateRating": {{
           "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "153",
+          "ratingValue": "4.8",
+          "reviewCount": "249",
           "bestRating": "5"
         }},
         "areaServed": {{
