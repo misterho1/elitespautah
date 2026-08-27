@@ -68,6 +68,7 @@ SERVICES = [
             ]),
             ("Why Salt Lake City is booking head spa", [
                 "Demand for Japanese head spa is climbing fast, and very few studios in Salt Lake City actually offer it well. If you have seen it on your feed and wanted to try one without flying to the coast, this is the place to do it. We keep same-day slots open most days.",
+                'Wondering about price before you book? Read our guide to <a href="/blog/head-spa-cost-worth-it-salt-lake-city">what a head spa costs in Salt Lake City and whether it is worth it</a>.',
             ]),
             ("Who it is for", [
                 "Anyone who lives on a screen, sleeps poorly, carries stress in the neck and shoulders, or simply wants an hour of deep quiet. It is a favorite for a first spa visit because there is nothing to figure out, and a favorite gift because almost no one has had one and everyone remembers their first.",
