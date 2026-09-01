@@ -7,7 +7,9 @@ NAP: (801) 839-8880 · 1136 S State Street, Salt Lake City UT 84111 · daily 10a
 Service pages are GENERATED. Never hand-edit a generated `{slug}.html` — edit the `SERVICES` list in `build_services.py` and re-run `python build_services.py`. Hand edits get silently destroyed on the next regeneration.
 
 ## Topic ownership (shared strategy with J Massage SLC)
-Elite owns facials, sauna, reflexology, head spa. Massage-modality topics belong to jmassageslc.com — never build the same keyword on both. The spa-blog / spa-gbp-post / spa-service-page skills enforce this; follow them for content work.
+Elite owns head spa, sauna, reflexology, ashiatsu. Massage-modality topics belong to jmassageslc.com — never build the same keyword on both. The spa-blog / spa-gbp-post / spa-service-page skills enforce this; follow them for content work.
+
+Two corrections from Andrew, 2026-08-31. **Facials are not an Elite topic** — neither spa sells facials and this repo has no facial pages; the old line claiming them was stale. And **couples massage is Elite's**, a deliberate exception to the modality split: Elite already holds Google map pack #1 and organic #5 for "couples massage salt lake city" while jmassageslc.com is absent from the top 20.
 
 ## Facts
 - Pricing: standard $85/$125/$165 (60/90/120) · premium $165/$245/$325 · add-ons $30 (cupping $20) · prenatal 105/155/205.
