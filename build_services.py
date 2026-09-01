@@ -354,6 +354,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
           <li><a class="site-nav__link" href="/about">About</a></li>
           <li><a class="site-nav__link" href="/gift-cards">Gift Cards</a></li>
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
+          <li><a class="site-nav__link" href="/blog">Blog</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
           <li><a class="site-nav__link" href="tel:+18018398880">(801) 839-8880</a></li>
           <li><a class="btn btn--primary" href="/book" data-magnetic>Book Now</a></li>
@@ -966,6 +967,7 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
           <li><a class="site-nav__link" href="/services">Services</a></li>
           <li><a class="site-nav__link" href="/gift-cards">Gift Cards</a></li>
           <li><a class="site-nav__link" href="/faq">FAQ</a></li>
+          <li><a class="site-nav__link" href="/blog">Blog</a></li>
           <li><a class="site-nav__link" href="/contact">Contact</a></li>
           <li><a class="site-nav__link" href="tel:+18018398880">(801) 839-8880</a></li>
           <li><a class="btn btn--primary" href="/book" data-magnetic>Book Now</a></li>
