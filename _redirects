@@ -16,11 +16,13 @@ https://www.elitespautah.com/* https://elitespautah.com/:splat 301
 # Internal repo files must never be publicly served. This is a static-HTML Pages
 # project with no build step, so Cloudflare publishes the whole repo root — every
 # committed file is reachable, and robots.txt invites GPTBot/ClaudeBot/PerplexityBot
-# to read them. robots.txt, 404.html and the domain-verification .txt stay public.
-/CLAUDE.md          /404.html  404
-/PRODUCT.md         /404.html  404
-/README.md          /404.html  404
-/content-gaps.md    /404.html  404
-/build_services.py  /404.html  404
-/chat-widget.py     /404.html  404
-/.gitignore         /404.html  404
+# to read them. 301 to / because Pages _redirects does NOT support a 404 status
+# (docs list 404 as an unsupported example; only 301/302/303/307/308 and 200 work).
+# robots.txt, 404.html and the domain-verification .txt stay public.
+/CLAUDE.md  /  301
+/PRODUCT.md  /  301
+/README.md  /  301
+/content-gaps.md  /  301
+/build_services.py  /  301
+/chat-widget.py  /  301
+/.gitignore  /  301
