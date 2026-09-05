@@ -292,6 +292,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', 'AW-17967111406');
+    gtag('config', 'G-N0NTBPE7FC');
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -870,6 +871,7 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', 'AW-17967111406');
+    gtag('config', 'G-N0NTBPE7FC');
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
