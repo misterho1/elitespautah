@@ -13,10 +13,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reviews · Elite Spa Utah</title>
-  <meta name="description" content="Elite Spa Utah is rated 4.8 stars across 249 Google reviews. Read what Salt Lake City clients say about our massage, couples suites, and Japanese head spa. 1136 S State St.">
+  <meta name="description" content="Elite Spa Utah is rated 4.8 stars on Google. Read what Salt Lake City clients say about our massage, couples suites, and Japanese head spa. 1136 S State St.">
   <link rel="canonical" href="https://elitespautah.com/reviews">
   <meta property="og:title" content="Reviews · Elite Spa Utah">
-  <meta property="og:description" content="4.8 stars across 249 Google reviews. See what Salt Lake City clients say.">
+  <meta property="og:description" content="4.8 stars on Google. See what Salt Lake City clients say.">
   <meta property="og:url" content="https://elitespautah.com/reviews">
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +24,63 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/styles.css?v=4">
+
+  <style>
+    /* Live Google reviews widget — consumes /api/reviews. Section stays [hidden]
+       until the fetch confirms >=1 real review; the static attributed fallback
+       below stays visible if the fetch fails or returns nothing. */
+    #reviews { animation: reviewsIn 0.7s var(--ease-organic) both; }
+    @keyframes reviewsIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .reviews-summary {
+      font-family: var(--type-ui);
+      font-size: var(--type-5);
+      color: var(--ink-muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.4em 0.6em;
+      margin: 0;
+    }
+    .reviews-summary__stars { color: var(--brand-orange); letter-spacing: 0.08em; }
+    .reviews-summary [data-rating] { color: var(--ink); font-weight: 600; }
+    .reviews-summary__dot { color: var(--line-strong); }
+    .reviews-summary a { white-space: nowrap; }
+    .review--live { display: flex; flex-direction: column; }
+    .review--live .review__quote {
+      font-family: var(--type-body);
+      font-size: var(--type-5);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .review__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-1);
+      margin: auto 0 0;
+      padding-top: var(--space-2);
+    }
+    .review__when {
+      font-family: var(--type-ui);
+      font-size: var(--type-7);
+      letter-spacing: 0.04em;
+      color: var(--ink-dim);
+    }
+    .reviews-attribution {
+      font-family: var(--type-ui);
+      font-size: var(--type-7);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      text-align: center;
+      margin: var(--space-3) 0 0;
+    }
+  </style>
 
   <script type="application/ld+json">
   {
@@ -34,8 +91,7 @@
     "url": "https://elitespautah.com/",
     "telephone": "+18018398880",
     "priceRange": "$$",
-    "address": { "@type": "PostalAddress", "streetAddress": "1136 S State St", "addressLocality": "Salt Lake City", "addressRegion": "UT", "postalCode": "84111", "addressCountry": "US" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "249", "bestRating": "5" }
+    "address": { "@type": "PostalAddress", "streetAddress": "1136 S State St", "addressLocality": "Salt Lake City", "addressRegion": "UT", "postalCode": "84111", "addressCountry": "US" }
   }
   </script>
   <script src="/assets/defer-load.js?v=1" defer></script>
@@ -68,14 +124,42 @@
     <section class="page-header" data-hero>
       <div class="container container--narrow">
         <p class="eyebrow">What people say</p>
-        <h1><span class="line"><span class="line-inner">4.8 stars, 249 reviews.</span></span></h1>
+        <h1><span class="line"><span class="line-inner">What Salt Lake City says.</span></span></h1>
         <p class="lead">Salt Lake City has been generous with us. Here's a sample, and a link to read all of it on Google.</p>
         <p class="review__stars" aria-label="4.8 out of 5 stars" style="font-size:1.5rem">★★★★★</p>
       </div>
     </section>
 
+    <!-- Live Google reviews feed (/api/reviews). Hidden until the fetch returns
+         >=1 real review; on success the static attributed fallback below is
+         hidden so we never show duplicates. Fetch fails or empty -> the real
+         attributed fallback stays visible. Honest empty state either way. -->
+    <section class="container container--narrow section" id="reviews" hidden>
+      <p class="reviews-summary">
+        <span class="reviews-summary__stars" data-stars aria-hidden="true">★★★★★</span>
+        <span><span data-rating>—</span> on Google</span>
+        <span class="reviews-summary__dot" aria-hidden="true">·</span>
+        <span data-count></span>
+        <span class="reviews-summary__dot" aria-hidden="true">·</span>
+        <a data-all href="https://www.google.com/search?q=Elite+Spa+Utah+Salt+Lake+City+reviews" rel="noopener" target="_blank">read them on Google</a>
+      </p>
+      <div class="reviews reviews--live" style="margin-top: var(--space-4)" data-list></div>
+      <p class="reviews-attribution">Reviews from Google</p>
+    </section>
+
+    <template id="review-card-tpl">
+      <article class="review review--live">
+        <p class="review__stars" data-c-stars aria-hidden="true">★★★★★</p>
+        <p class="review__quote" data-c-text></p>
+        <p class="review__meta">
+          <span class="review__author" data-c-author></span>
+          <span class="review__when" data-c-when></span>
+        </p>
+      </article>
+    </template>
+
     <section class="container container--narrow section">
-      <div class="reviews" data-reveal-stagger>
+      <div class="reviews" id="reviews-fallback" data-reveal-stagger>
         <article class="review pull-quote">
           <p class="review__stars" aria-label="5 out of 5 stars">★★★★★</p>
           <p class="review__quote">"A beautiful new spa with lots of modalities to choose from. My therapist knew exactly which muscles to massage and stretch, very professional. Pick this place, you will not be disappointed."</p>
@@ -94,7 +178,7 @@
       </div>
 
       <div class="cluster cluster--center" style="margin-top:var(--space-4)">
-        <a class="btn btn--primary" href="https://www.google.com/search?q=Elite+Spa+Utah+Salt+Lake+City+reviews" target="_blank" rel="noopener">Read all 249 reviews on Google</a>
+        <a class="btn btn--primary" data-all href="https://www.google.com/search?q=Elite+Spa+Utah+Salt+Lake+City+reviews" target="_blank" rel="noopener">Read reviews on Google</a>
         <a class="btn btn--ghost" href="/book">Book your visit</a>
       </div>
     </section>
@@ -143,5 +227,33 @@
   </footer>
 
   <script src="/assets/nav.js?v=2" defer></script>
+
+  <!-- Live Google reviews: fetch /api/reviews and reveal #reviews only when
+       there is real content. On success, hide the static attributed fallback so
+       reviews are never duplicated. No reviews / fetch error -> fallback stays. -->
+  <script>
+  (async () => {
+    const s = document.getElementById('reviews'); if (!s) return;
+    const stars = (n) => { const r = Math.max(0, Math.min(5, Math.round(Number(n)||0))); return '★'.repeat(r) + '☆'.repeat(5-r); };
+    try {
+      const res = await fetch('/api/reviews'); if (!res.ok) return;
+      const d = await res.json();
+      if (!d || !Array.isArray(d.reviews) || d.reviews.length === 0) return; // keep static fallback
+      const q = (sel) => s.querySelector(sel);
+      if (d.rating != null) { const el=q('[data-rating]'); if(el) el.textContent = Number(d.rating).toFixed(1); const st=q('[data-stars]'); if(st) st.textContent = stars(d.rating); }
+      if (d.count) { const c=q('[data-count]'); if(c) c.textContent = 'across ' + d.count + ' reviews'; }
+      if (d.profileUrl) s.querySelectorAll('[data-all]').forEach(a => { a.href = d.profileUrl; });
+      const list = q('[data-list]'); const tpl = document.getElementById('review-card-tpl');
+      d.reviews.slice(0,6).forEach((rv) => { const node = tpl.content.cloneNode(true);
+        node.querySelector('[data-c-stars]').textContent = stars(rv.rating);
+        node.querySelector('[data-c-text]').textContent = rv.text;
+        node.querySelector('[data-c-author]').textContent = rv.author || 'Google user';
+        node.querySelector('[data-c-when]').textContent = rv.when || '';
+        list.appendChild(node); });
+      s.hidden = false;
+      const fb = document.getElementById('reviews-fallback'); if (fb) fb.hidden = true;
+    } catch {}
+  })();
+  </script>
 </body>
 </html>

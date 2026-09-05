@@ -915,12 +915,6 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
         }},
         "openingHours": "Mo-Su 10:00-22:00",
         "priceRange": "$$",
-        "aggregateRating": {{
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "249",
-          "bestRating": "5"
-        }},
         "areaServed": {{
           "@type": "{area_type}",
           "name": "{name}"

@@ -26,6 +26,63 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/styles.css?v=4">
+
+  <style>
+    /* Live Google reviews widget — consumes /api/reviews. Section stays [hidden]
+       until the fetch confirms >=1 real review; nothing is hardcoded, so an
+       empty or failed fetch simply leaves the block out (honest empty state). */
+    #reviews { animation: reviewsIn 0.7s var(--ease-organic) both; }
+    @keyframes reviewsIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    .reviews-summary {
+      font-family: var(--type-ui);
+      font-size: var(--type-5);
+      color: var(--ink-muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.4em 0.6em;
+      margin: var(--space-2) 0 0;
+    }
+    .reviews-summary__stars { color: var(--brand-orange); letter-spacing: 0.08em; }
+    .reviews-summary [data-rating] { color: var(--ink); font-weight: 600; }
+    .reviews-summary__dot { color: var(--line-strong); }
+    .reviews-summary a { white-space: nowrap; }
+    .review--live { display: flex; flex-direction: column; }
+    .review--live .review__quote {
+      font-family: var(--type-body);
+      font-size: var(--type-5);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .review__meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-1);
+      margin: auto 0 0;
+      padding-top: var(--space-2);
+    }
+    .review__when {
+      font-family: var(--type-ui);
+      font-size: var(--type-7);
+      letter-spacing: 0.04em;
+      color: var(--ink-dim);
+    }
+    .reviews-attribution {
+      font-family: var(--type-ui);
+      font-size: var(--type-7);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      text-align: center;
+      margin: var(--space-3) 0 0;
+    }
+  </style>
   <!-- Motion + chat widget are deferred off the first-paint path (idle /
        first-interaction). See assets/defer-load.js. The page is fully visible
        and usable without JS, so it no longer ships ~116KB of GSAP eagerly. -->
@@ -178,6 +235,34 @@
         <iframe src="https://api.leadconnectorhq.com/widget/booking/Chgg3kYAkD4RvRustCt8" style="width: 100%; border: none; min-height: 760px; display: block;" scrolling="no" id="ghl-booking-elite" title="Book your appointment with Elite Spa Utah"></iframe>
       </div>
 
+      <!-- Live Google reviews (/api/reviews) as booking-decision reassurance,
+           reusing the homepage widget pattern. Hidden until the fetch returns
+           >=1 real review; nothing is hardcoded. Scheduler above is untouched. -->
+      <section id="reviews" hidden style="max-width:1080px;margin:var(--space-6) auto 0;">
+        <p class="eyebrow text-center">What clients say</p>
+        <p class="reviews-summary">
+          <span class="reviews-summary__stars" data-stars aria-hidden="true">★★★★★</span>
+          <span><span data-rating>—</span> on Google</span>
+          <span class="reviews-summary__dot" aria-hidden="true">·</span>
+          <span data-count></span>
+          <span class="reviews-summary__dot" aria-hidden="true">·</span>
+          <a data-all href="https://www.google.com/search?q=Elite+Spa+Utah+Salt+Lake+City+reviews" rel="noopener" target="_blank">read them on Google</a>
+        </p>
+        <div class="reviews reviews--live" style="margin-top: var(--space-4)" data-list></div>
+        <p class="reviews-attribution">Reviews from Google</p>
+      </section>
+
+      <template id="review-card-tpl">
+        <article class="review review--live">
+          <p class="review__stars" data-c-stars aria-hidden="true">★★★★★</p>
+          <p class="review__quote" data-c-text></p>
+          <p class="review__meta">
+            <span class="review__author" data-c-author></span>
+            <span class="review__when" data-c-when></span>
+          </p>
+        </article>
+      </template>
+
       <p style="text-align: center; margin-top: var(--space-4); color: var(--ink-muted); font-size: var(--type-6);">
         Have a gift card? Call <a href="tel:+18018398880">(801) 839-8880</a> to book - gift cards are redeemed at the spa.
       </p>
@@ -288,6 +373,32 @@
         }
       }
     })();
+  </script>
+
+  <!-- Live Google reviews: fetch /api/reviews and reveal #reviews only when
+       there is real content. No reviews / fetch error -> section stays hidden. -->
+  <script>
+  (async () => {
+    const s = document.getElementById('reviews'); if (!s) return;
+    const stars = (n) => { const r = Math.max(0, Math.min(5, Math.round(Number(n)||0))); return '★'.repeat(r) + '☆'.repeat(5-r); };
+    try {
+      const res = await fetch('/api/reviews'); if (!res.ok) return;
+      const d = await res.json();
+      if (!d || !Array.isArray(d.reviews) || d.reviews.length === 0) return; // stay hidden
+      const q = (sel) => s.querySelector(sel);
+      if (d.rating != null) { const el=q('[data-rating]'); if(el) el.textContent = Number(d.rating).toFixed(1); const st=q('[data-stars]'); if(st) st.textContent = stars(d.rating); }
+      if (d.count) { const c=q('[data-count]'); if(c) c.textContent = 'across ' + d.count + ' reviews'; }
+      if (d.profileUrl) s.querySelectorAll('[data-all]').forEach(a => { a.href = d.profileUrl; });
+      const list = q('[data-list]'); const tpl = document.getElementById('review-card-tpl');
+      d.reviews.slice(0,3).forEach((rv) => { const node = tpl.content.cloneNode(true);
+        node.querySelector('[data-c-stars]').textContent = stars(rv.rating);
+        node.querySelector('[data-c-text]').textContent = rv.text;
+        node.querySelector('[data-c-author]').textContent = rv.author || 'Google user';
+        node.querySelector('[data-c-when]').textContent = rv.when || '';
+        list.appendChild(node); });
+      s.hidden = false;
+    } catch {}
+  })();
   </script>
 
   <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
