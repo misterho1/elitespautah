@@ -131,11 +131,22 @@
             <button type="button" class="btn btn--primary book-pick" data-cal="ac8W21n4qQ5bXcyY9g8H">120 min</button>
           </div>
         </div>
+        <!-- Spa Treatments now offer 60 + 90 min each. The 90-min pills carry
+             PLACEHOLDER data-cal tokens (REPLACE_HEADSPA90 / REPLACE_FOOT90):
+             swap each for its real LeadConnector calendar id before deploy, or
+             booking the 90-min option will 404 the iframe. -->
         <div class="book-menu__group">
-          <p class="book-menu__title">Spa Treatments <small>— 60 min each</small></p>
+          <p class="book-menu__title">Japanese Head Spa</p>
           <div class="book-menu__row">
-            <button type="button" class="btn btn--primary book-pick" data-cal="CAedvMjVuIJ4XjmNbhWn" data-service="foot-reflexology-massage">Foot / Reflexology</button>
-            <button type="button" class="btn btn--primary book-pick" data-cal="bECoUAPFFpFdPDlL9Rth" data-service="head-spa-massage">Head Spa</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="bECoUAPFFpFdPDlL9Rth" data-service="head-spa-massage">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="REPLACE_HEADSPA90">90 min</button>
+          </div>
+        </div>
+        <div class="book-menu__group">
+          <p class="book-menu__title">Foot / Reflexology</p>
+          <div class="book-menu__row">
+            <button type="button" class="btn btn--primary book-pick" data-cal="CAedvMjVuIJ4XjmNbhWn" data-service="foot-reflexology-massage">60 min</button>
+            <button type="button" class="btn btn--primary book-pick" data-cal="REPLACE_FOOT90">90 min</button>
           </div>
         </div>
       </div>
@@ -245,6 +256,9 @@
         var calId = btn.getAttribute('data-cal');
         // Ignore no id or the already-active pill (avoids a needless reload).
         if (!calId || btn.classList.contains('is-active')) return;
+        // A 90-min pill still holding its REPLACE_ placeholder is not yet wired
+        // to a real calendar — no-op rather than swap the iframe to a 404.
+        if (calId.indexOf('REPLACE_') === 0) return;
 
         if (frame) frame.classList.add('is-loading');
         iframe.src = WIDGET_BASE + encodeURIComponent(calId);
