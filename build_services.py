@@ -8,7 +8,7 @@ import os
 # Tiered pricing (2026-06-13 restructure). No 30-minute sessions.
 STANDARD_PRICES = [(60, "$85"), (90, "$125"), (120, "$165")]
 PREMIUM_PRICES  = [(60, "$165"), (90, "$245"), (120, "$325")]   # couples, 4-hand
-SINGLE_HOUR     = [(60, "$85")]                                 # foot reflexology, head spa
+SPA_TREATMENT_PRICES = [(60, "$85"), (90, "$125")]             # foot reflexology, head spa (90-min added 2026-09-04)
 PRENATAL_PRICES = [(60, "$105"), (90, "$155"), (120, "$205")]   # prenatal (2026-07-05)
 
 SERVICES = [
@@ -51,7 +51,7 @@ SERVICES = [
         "tagline": "Scalp, neck, and shoulder ritual.",
         "description": "A scalp and neck ritual borrowed from Japanese spa tradition. Full-scalp treatment using rhythmic kneading and pressure-point work from the temples to the base of the skull. Most clients fall asleep.",
         "best_for": ["Tension headaches", "Migraines and screen fatigue", "Hair and scalp health", "Pure relaxation"],
-        "prices": SINGLE_HOUR,
+        "prices": SPA_TREATMENT_PRICES,
         "extra": [
             ("What a Japanese head spa actually is", [
                 "A Japanese head spa is a slow, deliberate treatment for your scalp, neck, and shoulders. It borrows from a spa tradition that has been popular in Japan for years and is only now catching on in Salt Lake City. Instead of the quick scalp rub you might get at the end of a haircut, this is a full session dedicated to one of the most tension-holding, most neglected parts of the body: the head.",
@@ -75,7 +75,7 @@ SERVICES = [
             ]),
         ],
         "faqs": [
-            ("How long is a Japanese head spa session?", "Our head spa is a 60-minute session for $85. That gives your therapist time to cover the scalp, neck, and shoulders without rushing."),
+            ("How long is a Japanese head spa session?", "Our head spa comes in a 60-minute session for $85 or a 90-minute session for $125. Either way, your therapist has time to cover the scalp, neck, and shoulders without rushing."),
             ("Will my hair be wet or styled afterward?", "This is a dry, oil-optional treatment focused on the scalp and muscles, not a wash-and-blowout. If we use a little oil at your request, your hair may feel conditioned afterward. Bring a hair tie if you like."),
             ("Is a head spa good for tension headaches?", "Many clients come in specifically because they hold tension in the scalp, jaw, and neck, and they leave feeling lighter. We keep the work relaxing rather than clinical; if you have a medical concern, check with your doctor."),
             ("Can I add it to a massage?", "Yes. A head spa pairs beautifully with a full-body massage or foot reflexology. Book them back to back, or add a 30-minute infrared sauna at checkout."),
@@ -122,7 +122,7 @@ SERVICES = [
         "tagline": "Pressure-point work that resets the whole body.",
         "description": "Reflexology maps zones on the feet to organ systems and energy pathways throughout the body. Targeted pressure on these points releases tension you didn't know was there.",
         "best_for": ["Tired feet after long days", "Improved circulation", "Stress release without disrobing", "Pregnancy-safe relaxation"],
-        "prices": SINGLE_HOUR,
+        "prices": SPA_TREATMENT_PRICES,
         "faqs": [
             ("Do I have to undress for reflexology?", "No. Reflexology is done fully clothed, with only your feet and lower legs bare. It is a great option if you want real bodywork without disrobing."),
             ("Does it only work on my feet, or the whole body?", "The hands-on work stays on your feet, but reflexology maps points there to the rest of the body, so many clients feel the effect well beyond their feet, often as a full-body calm."),
@@ -292,6 +292,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', 'AW-17967111406');
+    gtag('config', 'G-N0NTBPE7FC');
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -870,6 +871,7 @@ HUB_TEMPLATE = '''<!DOCTYPE html>
     function gtag(){{dataLayer.push(arguments);}}
     gtag('js', new Date());
     gtag('config', 'AW-17967111406');
+    gtag('config', 'G-N0NTBPE7FC');
   </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
