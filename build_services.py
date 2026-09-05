@@ -310,6 +310,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Marcellus&family=PT+Serif:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/styles.css?v=4">
+  <link rel="preload" as="image" href="/assets/img/{hero_img}" imagesrcset="/assets/img/{hero_img_750} 750w, /assets/img/{hero_img} {hero_w}w" imagesizes="100vw" fetchpriority="high">
 
   <script type="application/ld+json">
   {{
@@ -378,7 +379,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     </section>
 
     <figure class="svc-hero-media{hero_media_class}" data-reveal>
-      <img src="/assets/img/{hero_img}" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="lazy" decoding="async">{hero_video_tag}
+      <img src="/assets/img/{hero_img}" srcset="/assets/img/{hero_img_750} 750w, /assets/img/{hero_img} {hero_w}w" sizes="100vw" alt="{hero_alt}" width="{hero_w}" height="{hero_h}" loading="eager" fetchpriority="high" decoding="async">{hero_video_tag}
     </figure>
 
     <section class="container container--content section">
@@ -1071,6 +1072,7 @@ def main():
             price_from=price_from,
             price_from_num=price_from_num,
             hero_img=hero["img"],
+            hero_img_750=hero["img"].replace(".webp", "-750.webp"),
             hero_alt=hero["alt"],
             hero_w=hero["w"],
             hero_h=hero["h"],
