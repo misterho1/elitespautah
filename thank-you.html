@@ -11,11 +11,13 @@
     gtag('config', 'G-N0NTBPE7FC');
   </script>
   <!-- Event snippet for Book appointment (Website) conversion page -->
+  <!-- No value is passed on purpose: Google applies the conversion action's own
+       default value, so the amount stays editable in Ads without a deploy.
+       This previously hardcoded 'value': 1.0, which overrode that default and
+       recorded every booking as $1. -->
   <script>
     gtag('event', 'conversion', {
-      'send_to': 'AW-17967111406/DKVuCPm8is8cEO65sfdC',
-      'value': 1.0,
-      'currency': 'USD'
+      'send_to': 'AW-17967111406/DKVuCPm8is8cEO65sfdC'
     });
   </script>
   <meta charset="utf-8">
