@@ -81,7 +81,7 @@ SERVICES = [
             ("Can I add it to a massage?", "Yes. A head spa pairs beautifully with a full-body massage or foot reflexology. Book them back to back, or add a 30-minute infrared sauna at checkout."),
             ("Do you offer same-day appointments?", "Most days, yes. Call (801) 839-8880 or book online; same-day slots appear automatically when a therapist is open."),
         ],
-        "related": ["swedish-massage", "couples-massage", "foot-reflexology-massage"],
+        "related": ["spa-combo", "foot-reflexology-massage", "couples-massage"],
     },
     {
         "slug": "couples-massage",
@@ -129,7 +129,7 @@ SERVICES = [
             ("Is reflexology safe during pregnancy?", "It is one of the gentler, pregnancy-friendly options because you stay comfortably seated or reclined and clothed. Let us know you are expecting when you book, and check with your doctor if you have any concerns."),
             ("Will it feel good or is it painful?", "Certain points can feel tender for a moment, but the work is meant to feel relieving, not painful. Your therapist keeps the pressure at a level you enjoy and eases off any sensitive spot."),
         ],
-        "related": ["swedish-massage", "head-spa-massage", "shiatsu-massage"],
+        "related": ["spa-combo", "head-spa-massage", "swedish-massage"],
     },
     {
         "slug": "sports-massage",
@@ -228,6 +228,55 @@ SERVICES = [
         ],
         "related": ["swedish-massage", "individual-massage", "foot-reflexology-massage"],
     },
+    {
+        "slug": "spa-combo",
+        "name": "Two-Hour Spa Combo",
+        "category": "Specialty & couples",
+        "tagline": "Two services, two hours, one visit.",
+        "description": "Pick any two of our signature hour-long treatments, Japanese head spa, foot reflexology, or a full-body massage, and take them back to back in one unhurried two-hour visit. One booking, one room, head to toe.",
+        "best_for": ["A full head-to-toe reset", "Head spa and massage together", "A slower afternoon for yourself", "Gifting an experience"],
+        "prices": [(120, "$165")],
+        "extra": [
+            ("How the combo works", [
+                "Choose two of three hour-long services: a Japanese head spa, a foot reflexology session, or a full-body massage. We schedule them back to back, so you settle in once and stay put for the full two hours.",
+                "A natural pairing is the head spa with foot reflexology, head to toe in one sitting. If you would rather trade the reflexology for a full-body massage, that works too. Tell us your two when you book.",
+            ]),
+            ("Why people book the combo", [
+                "One hour is a treatment. Two hours is an afternoon. The combo gives your body time to settle, and it lets you try the head spa alongside a service you already like without making two trips.",
+                "It also makes a thoughtful gift, since few people book themselves two full hours.",
+            ]),
+        ],
+        "faqs": [
+            ("Which two services can I combine?", "Any two of the three: Japanese head spa, foot reflexology, or a full-body massage. Head spa with reflexology is a natural pairing. Choose your two when you book, or call and we will help you decide."),
+            ("Is the combo cheaper than booking two services?", "The two-hour combo is $165, priced as a full two hours of hands-on time, the same rate as any two-hour session with us. You are paying for the time rather than a discount. What you gain is one visit instead of two."),
+            ("Can I add an infrared sauna or cupping?", "Yes. Add a 30-minute infrared sauna or CBD for $30, or hot stones or cupping for $20, at booking. They slot in around your two services."),
+            ("Can we do the combo as a couple?", "We can. Two people, side by side, each with the full two-hour combo. Ask about it when you book, or reserve our couples spa combo directly."),
+        ],
+        "related": ["head-spa-massage", "foot-reflexology-massage", "couples-spa"],
+    },
+    {
+        "slug": "couples-spa",
+        "name": "Couples Spa Combo",
+        "category": "Specialty & couples",
+        "tagline": "Two people, two hours, side by side.",
+        "description": "You and a guest, side by side in our private couples suite. Each of you takes the two-hour combo, a Japanese head spa paired with your choice of foot reflexology or a full-body massage. Two therapists, one quiet room.",
+        "best_for": ["Date nights and anniversaries", "A shared afternoon off", "Gifting two", "Head to toe, together"],
+        "prices": [(120, "$325")],
+        "note_suffix": " The $325 is the total for both of you, not per person.",
+        "extra": [
+            ("What the couples spa combo includes", [
+                "Both of you get the full two-hour combo: a Japanese head spa, then your choice of foot reflexology or a full-body massage. You are side by side on two tables in one private suite, each with your own therapist, for the whole two hours.",
+                "You can pick different second services from each other. One of you can do head spa and reflexology while the other does head spa and a massage. Tell us your pairings when you book.",
+            ]),
+        ],
+        "faqs": [
+            ("Are we in the same room the whole time?", "Yes. You are side by side in one private couples suite, each with your own therapist, for the full two hours. You can talk quietly or simply rest; the room is yours."),
+            ("Does it have to be a romantic couple?", "Not at all. The suite is just as welcoming for friends, a parent and adult child, or two people celebrating something. Anyone who wants the experience side by side is welcome."),
+            ("How does draping work?", "Exactly as it does for a single session. Each of you undresses to your comfort level in private and stays fully draped the entire time, with only the area being worked on uncovered."),
+            ("Should we book ahead?", "We recommend it. Two therapists and a private suite mean fewer slots, so a few days out gives you the best choice of times, especially on weekends and around holidays."),
+        ],
+        "related": ["couples-massage", "head-spa-massage", "4-hands-massage"],
+    },
 ]
 
 # Build slug -> service lookup for related-services cross-sell (name, tagline, price)
@@ -257,6 +306,14 @@ HERO_IMAGES = {
         "img": "couples-suite.webp", "w": 1376, "h": 768,
         "alt": "Private couples suite with two side-by-side massage tables in a warm terracotta room at Elite Spa Utah",
     },
+    "couples-spa": {
+        "img": "couples-suite.webp", "w": 1376, "h": 768,
+        "alt": "Private couples suite with two side-by-side massage tables in a warm terracotta room at Elite Spa Utah",
+    },
+    "spa-combo": {
+        "img": "head-spa.webp", "w": 1376, "h": 768,
+        "alt": "Reclining head-spa lounger with a ceramic scalp-wash basin in a warm terracotta treatment room at Elite Spa Utah",
+    },
 }
 
 # Optional ambient hero video per service (lazy-loaded over the hero photo by
@@ -280,6 +337,8 @@ KEYWORDS = {
     "chair-massage": ["Chair massage in Salt Lake City", "office chair massage", "neck and shoulder massage", "quick massage"],
     "individual-massage": ["Custom massage in Salt Lake City", "personalized massage session", "tailored bodywork"],
     "prenatal-massage": ["Prenatal massage in Salt Lake City", "pregnancy massage", "side-lying massage", "maternity massage"],
+    "spa-combo": ["Two-hour spa combo in Salt Lake City", "head spa and massage package", "spa combo package", "head to toe spa"],
+    "couples-spa": ["Couples spa in Salt Lake City", "couples head spa", "couples spa package", "couples spa combo"],
 }
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
