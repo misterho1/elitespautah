@@ -8,7 +8,8 @@ import os
 # Tiered pricing (2026-06-13 restructure). No 30-minute sessions.
 STANDARD_PRICES = [(60, "$85"), (90, "$125"), (120, "$165")]
 PREMIUM_PRICES  = [(60, "$165"), (90, "$245"), (120, "$325")]   # couples, 4-hand
-SPA_TREATMENT_PRICES = [(60, "$85"), (90, "$125")]             # foot reflexology, head spa (90-min added 2026-09-04)
+SPA_TREATMENT_PRICES = [(60, "$85"), (90, "$125")]             # foot reflexology
+HEAD_SPA_PRICES      = [(60, "$100"), (90, "$140")]            # head spa (+$15 across the board, 2026-09-06)
 PRENATAL_PRICES = [(60, "$105"), (90, "$155"), (120, "$205")]   # prenatal (2026-07-05)
 
 SERVICES = [
@@ -51,7 +52,7 @@ SERVICES = [
         "tagline": "Scalp, neck, and shoulder ritual.",
         "description": "A scalp and neck ritual borrowed from Japanese spa tradition. Full-scalp treatment using rhythmic kneading and pressure-point work from the temples to the base of the skull. Most clients fall asleep.",
         "best_for": ["Tension headaches", "Migraines and screen fatigue", "Hair and scalp health", "Pure relaxation"],
-        "prices": SPA_TREATMENT_PRICES,
+        "prices": HEAD_SPA_PRICES,
         "extra": [
             ("What a Japanese head spa actually is", [
                 "A Japanese head spa is a slow, deliberate treatment for your scalp, neck, and shoulders. It borrows from a spa tradition that has been popular in Japan for years and is only now catching on in Salt Lake City. Instead of the quick scalp rub you might get at the end of a haircut, this is a full session dedicated to one of the most tension-holding, most neglected parts of the body: the head.",
@@ -75,7 +76,7 @@ SERVICES = [
             ]),
         ],
         "faqs": [
-            ("How long is a Japanese head spa session?", "Our head spa comes in a 60-minute session for $85 or a 90-minute session for $125. Either way, your therapist has time to cover the scalp, neck, and shoulders without rushing."),
+            ("How long is a Japanese head spa session?", "Our head spa comes in a 60-minute session for $100 or a 90-minute session for $140. Either way, your therapist has time to cover the scalp, neck, and shoulders without rushing."),
             ("Will my hair be wet or styled afterward?", "This is a dry, oil-optional treatment focused on the scalp and muscles, not a wash-and-blowout. If we use a little oil at your request, your hair may feel conditioned afterward. Bring a hair tie if you like."),
             ("Is a head spa good for tension headaches?", "Many clients come in specifically because they hold tension in the scalp, jaw, and neck, and they leave feeling lighter. We keep the work relaxing rather than clinical; if you have a medical concern, check with your doctor."),
             ("Can I add it to a massage?", "Yes. A head spa pairs beautifully with a full-body massage or foot reflexology. Book them back to back, or add a 30-minute infrared sauna at checkout."),
@@ -235,7 +236,7 @@ SERVICES = [
         "tagline": "Two services, two hours, one visit.",
         "description": "Pick any two of our signature hour-long treatments, Japanese head spa, foot reflexology, or a full-body massage, and take them back to back in one unhurried two-hour visit. One booking, one room, head to toe.",
         "best_for": ["A full head-to-toe reset", "Head spa and massage together", "A slower afternoon for yourself", "Gifting an experience"],
-        "prices": [(120, "$165")],
+        "prices": [(120, "$180")],
         "extra": [
             ("How the combo works", [
                 "Choose two of three hour-long services: a Japanese head spa, a foot reflexology session, or a full-body massage. We schedule them back to back, so you settle in once and stay put for the full two hours.",
@@ -248,7 +249,7 @@ SERVICES = [
         ],
         "faqs": [
             ("Which two services can I combine?", "Any two of the three: Japanese head spa, foot reflexology, or a full-body massage. Head spa with reflexology is a natural pairing. Choose your two when you book, or call and we will help you decide."),
-            ("Is the combo cheaper than booking two services?", "The two-hour combo is $165, priced as a full two hours of hands-on time, the same rate as any two-hour session with us. You are paying for the time rather than a discount. What you gain is one visit instead of two."),
+            ("Is the combo cheaper than booking two services?", "The two-hour combo is $180 for a full two hours of hands-on time. It sits just above a standard two-hour session because one of your two services is our Japanese head spa. You are paying for the time and the treatments together, in one visit instead of two."),
             ("Can I add an infrared sauna or cupping?", "Yes. Add a 30-minute infrared sauna or CBD for $30, or hot stones or cupping for $20, at booking. They slot in around your two services."),
             ("Can we do the combo as a couple?", "We can. Two people, side by side, each with the full two-hour combo. Ask about it when you book, or reserve our couples spa combo directly."),
         ],
@@ -261,8 +262,8 @@ SERVICES = [
         "tagline": "Two people, two hours, side by side.",
         "description": "You and a guest, side by side in our private couples suite. Each of you takes the two-hour combo, a Japanese head spa paired with your choice of foot reflexology or a full-body massage. Two therapists, one quiet room.",
         "best_for": ["Date nights and anniversaries", "A shared afternoon off", "Gifting two", "Head to toe, together"],
-        "prices": [(120, "$325")],
-        "note_suffix": " The $325 is the total for both of you, not per person.",
+        "prices": [(120, "$340")],
+        "note_suffix": " The $340 is the total for both of you, not per person.",
         "extra": [
             ("What the couples spa combo includes", [
                 "Both of you get the full two-hour combo: a Japanese head spa, then your choice of foot reflexology or a full-body massage. You are side by side on two tables in one private suite, each with your own therapist, for the whole two hours.",
