@@ -289,7 +289,7 @@ SLUG_TO_SERVICE = {s["slug"]: s for s in SERVICES}
 # Elite Spa photography later — keep the alt text.
 DEFAULT_HERO = {
     "img": "treatment-room.webp", "w": 1376, "h": 768,
-    "alt": "Warm, sunlit private massage room with a draped table and terracotta plaster walls at Elite Spa Utah",
+    "alt": "A therapist giving a relaxing back massage in a warm private room at Elite Spa Utah",
 }
 # Distinct room setups, all shot in the SAME real boutique room for continuity
 # (seeded 2026-07-06). Single-massage services intentionally share the
@@ -297,23 +297,23 @@ DEFAULT_HERO = {
 HERO_IMAGES = {
     "head-spa-massage": {
         "img": "head-spa.webp", "w": 1376, "h": 768,
-        "alt": "Reclining head-spa lounger with a ceramic scalp-wash basin in a warm terracotta treatment room at Elite Spa Utah",
+        "alt": "A guest receiving a Japanese head spa with a warm water scalp rinse at Elite Spa Utah",
     },
     "foot-reflexology-massage": {
         "img": "foot-reflexology.webp", "w": 1376, "h": 768,
-        "alt": "Reclining reflexology chair with a folded throw and a copper foot basin in a warm terracotta treatment room at Elite Spa Utah",
+        "alt": "A therapist giving a foot reflexology massage at Elite Spa Utah",
     },
     "couples-massage": {
         "img": "couples-suite.webp", "w": 1376, "h": 768,
-        "alt": "Private couples suite with two side-by-side massage tables in a warm terracotta room at Elite Spa Utah",
+        "alt": "A couple receiving side-by-side massages in a private suite at Elite Spa Utah",
     },
     "couples-spa": {
         "img": "couples-suite.webp", "w": 1376, "h": 768,
-        "alt": "Private couples suite with two side-by-side massage tables in a warm terracotta room at Elite Spa Utah",
+        "alt": "A couple enjoying a side-by-side spa treatment in a private suite at Elite Spa Utah",
     },
     "spa-combo": {
-        "img": "head-spa.webp", "w": 1376, "h": 768,
-        "alt": "Reclining head-spa lounger with a ceramic scalp-wash basin in a warm terracotta treatment room at Elite Spa Utah",
+        "img": "spa-combo.webp", "w": 1376, "h": 768,
+        "alt": "A relaxing foot and body treatment, part of the two-hour spa combo, at Elite Spa Utah",
     },
 }
 
